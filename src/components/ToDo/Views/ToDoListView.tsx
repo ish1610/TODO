@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import backgroundImg from "../../../assets/images/homeBackground.png";
-import ToDoItem from "./ToDoItem";
-import CrateToDo from "./CrateToDo";
+import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`
   width: 100%;
@@ -31,7 +30,6 @@ const BackGroundImg = styled.div`
 const ToDoList = () => {
   return (
     <Container>
-      <CrateToDo />
       <BackGroundImg />
       <ToDoItem />
       <ToDoItem />

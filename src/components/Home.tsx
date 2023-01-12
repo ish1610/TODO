@@ -1,7 +1,5 @@
 import React from "react";
-import ToDoList from "./ToDo/Views/ToDoList";
-import styled from "@emotion/styled";
-import CrateToDo from "./ToDo/Views/CrateToDo";
+import ToDoList from "./ToDo/Views/ToDoListView";
 
 const Home = () => {
   return (
