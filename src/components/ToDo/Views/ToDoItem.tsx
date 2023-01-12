@@ -2,11 +2,11 @@ import React from "react";
 import styled from "@emotion/styled";
 import todoIconSheep from "../../../assets/images/todoIcon-sheep.png";
 
-import { RiDeleteBin5Line, RiPencilFill } from "react-icons/ri";
+import { RiDeleteBin5Line, RiPencilFill, RiZoomInLine } from "react-icons/ri";
 
 const ToDoItemWrap = styled.li`
   position: relative;
-  width: 800px;
+  width: 700px;
   height: 120px;
   border: 1px solid;
   border-radius: 8px;
@@ -82,6 +82,7 @@ const ToDoItem = () => {
     <ToDoItemWrap>
       <ToDoItemIcon src={todoIconSheep} />
       <ToDoControl>
+        <RiZoomInLine />
         <RiPencilFill />
         <RiDeleteBin5Line />
       </ToDoControl>

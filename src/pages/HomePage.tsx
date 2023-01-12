@@ -1,8 +1,7 @@
-import React from "react";
-import ToDoList from "../components/ToDo/Views/ToDoList";
+import Home from "../components/Home";
 
 const HomePage = () => {
-  return <ToDoList></ToDoList>;
+  return <Home />;
 };
 
 export default HomePage;
