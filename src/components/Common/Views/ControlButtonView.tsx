@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { IControlButton } from "../type";
 
 const ControlButton = styled.button`
   font-weight: 700;
@@ -15,8 +16,8 @@ const ControlButton = styled.button`
   }
 `;
 
-const ControllButtonView = ({ content }: { content: string }) => {
+const ControlButtonView = ({ content }: IControlButton) => {
   return <ControlButton>{content}</ControlButton>;
 };
 
-export default ControllButtonView;
+export default ControlButtonView;

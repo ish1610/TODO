@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
-import ConstrollButton from "../../Common/ConstrollButton";
+import ConstrolButton from "../../Common/ConstrolButton";
 
 const CrateToDo = () => {
-  return <ConstrollButton content="ToDo 작성" />;
+  return <ConstrolButton content="ToDo 작성" />;
 };
 
 export default CrateToDo;
