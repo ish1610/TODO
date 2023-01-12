@@ -2,9 +2,12 @@ import { css, Global } from "@emotion/react";
 import reset from "emotion-reset";
 
 const styles = css`
-  @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&family=Roboto&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto&family=Yeon+Sung&display=swap");
 
   ${reset}
+  * {
+    box-sizing: border-box;
+  }
 
   body {
     font-family: "Roboto", "Nanum Gothic", sans-serif;
@@ -14,6 +17,8 @@ const styles = css`
 
   button {
     cursor: pointer;
+    background-color: inherit;
+    border: none;
   }
 
   a {
