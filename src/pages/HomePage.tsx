@@ -1,7 +1,7 @@
-import Home from "../components/Home";
+import ToDoLayout from "../components/ToDo/ToDoLayout";
 
 const HomePage = () => {
-  return <Home />;
+  return <ToDoLayout />;
 };
 
 export default HomePage;

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import backgroundImg from "../../../assets/images/homeBackground.png";
-import { IAddTdoProps } from "../type";
+import { IToDoLayoutProps } from "../type";
+
 import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`
@@ -43,10 +44,10 @@ const AddToDoBtn = styled.button`
   }
 `;
 
-const ToDoListView = ({ handleAddToDo }: IAddTdoProps) => {
+const ToDoListView = ({ onShowModal }: IToDoLayoutProps) => {
   return (
     <Container>
-      <AddToDoBtn>ToDo 작성</AddToDoBtn>
+      <AddToDoBtn onClick={onShowModal}>ToDo 작성</AddToDoBtn>
       <BackGroundImg />
       <ToDoItem />
       <ToDoItem />

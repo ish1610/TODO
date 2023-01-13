@@ -1,3 +1,5 @@
-export interface IAddTdoProps {
-  handleAddToDo: () => void;
+export interface IToDoLayoutProps {
+  isShowModal?: boolean;
+  onShowModal?: () => void;
+  onCloseModal?: () => void;
 }

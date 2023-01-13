@@ -1,20 +1,10 @@
 import React from "react";
 
-import { IAddTdoProps } from "./type";
+import { IToDoLayoutProps } from "./type";
 import ToDoListView from "./Views/ToDoListView";
 
-const ToDoList = () => {
-  const handleAddToDo = () => {
-    console.log("handleAddToto");
-  };
-
-  const AddtoDoprops: IAddTdoProps = {
-    handleAddToDo: () => {
-      handleAddToDo();
-    },
-  };
-
-  return <ToDoListView {...AddtoDoprops} />;
+const ToDoList = ({ onShowModal }: IToDoLayoutProps) => {
+  return <ToDoListView onShowModal={onShowModal} />;
 };
 
 export default ToDoList;
