@@ -1,3 +1,6 @@
-export interface IControlButton {
+export interface IControlCRUDButton {
+  content: string;
+}
+export interface IControlLoginButton {
   content: string;
 }

@@ -1,16 +1,15 @@
-import React from "react";
 import styled from "@emotion/styled";
 import backgroundImg from "../../../assets/images/homeBackground.png";
 import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 80px 0;
 `;
 
 const BackGroundImg = styled.div`
