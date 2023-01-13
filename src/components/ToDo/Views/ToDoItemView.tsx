@@ -77,7 +77,7 @@ const ToDoItemContent = styled.div`
   }
 `;
 
-const ToDoItem = () => {
+const ToDoItemView = () => {
   return (
     <ToDoItemWrap>
       <ToDoItemIcon src={todoIconSheep} />
@@ -95,4 +95,4 @@ const ToDoItem = () => {
   );
 };
 
-export default ToDoItem;
+export default ToDoItemView;

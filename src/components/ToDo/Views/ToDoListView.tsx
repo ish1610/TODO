@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import backgroundImg from "../../../assets/images/homeBackground.png";
+import { IAddTdoProps } from "../type";
 import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`
@@ -26,9 +27,26 @@ const BackGroundImg = styled.div`
   opacity: 0.6;
 `;
 
-const ToDoList = () => {
+const AddToDoBtn = styled.button`
+  border: 1px solid RGB(22, 83, 100);
+  border-radius: 8px;
+  padding: 8px 18px;
+  color: #fff;
+  background-color: RGB(22, 83, 100);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: 0.3s;
+
+  :hover {
+    background-color: RGB(255, 154, 61);
+  }
+`;
+
+const ToDoListView = ({ handleAddToDo }: IAddTdoProps) => {
   return (
     <Container>
+      <AddToDoBtn>ToDo 작성</AddToDoBtn>
       <BackGroundImg />
       <ToDoItem />
       <ToDoItem />
@@ -38,4 +56,4 @@ const ToDoList = () => {
   );
 };
 
-export default ToDoList;
+export default ToDoListView;

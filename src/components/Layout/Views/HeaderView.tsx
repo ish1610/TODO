@@ -32,8 +32,8 @@ const HeaderView = () => {
       <HeaderLogoWrap>
         <img src={logo} alt="ToDo's logo" />
         <h1>ToDo's</h1>
+        <HeaderControllView />
       </HeaderLogoWrap>
-      <HeaderControllView />
     </HeaderWrap>
   );
 };
