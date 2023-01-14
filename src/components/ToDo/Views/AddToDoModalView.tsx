@@ -27,7 +27,6 @@ const AddToModal = styled.div`
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 80%;
-  height: 500px;
   border: 1px solid ${blue};
   border-radius: 5px;
   background-color: #fff;
@@ -36,7 +35,7 @@ const AddToModal = styled.div`
   header {
     ${flexCenter}
     height: 54px;
-    margin-bottom: 42px;
+
     font-size: 22px;
     font-weight: 700;
     border-bottom: 1px solid ${blue};
@@ -51,13 +50,14 @@ const AddToModal = styled.div`
   .addToDo-Content {
     ${flexCenter}
     flex-direction: column;
+    padding-top: 42px;
   }
 `;
 
 const AddToDoInputWrap = styled.div`
   display: flex;
   width: 80%;
-  margin-bottom: 24px;
+  margin-bottom: 42px;
 
   label {
     margin-right: 12px;
@@ -66,28 +66,29 @@ const AddToDoInputWrap = styled.div`
     font-weight: 700;
   }
 
+  input,
+  textarea {
+    flex-grow: 1;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+
   input {
     font-family: inherit;
-    font-size: 16px;
     font-weight: 700;
     padding: 4px 10px;
-
-    flex-grow: 1;
   }
 
   textarea {
     font-family: "Yeon Sung", cursive;
-    font-size: 22px;
-
     height: 240px;
     padding: 10px;
-
-    flex-grow: 1;
   }
 `;
 
 const AddToDoControl = styled.section`
   ${flexCenter}
+  padding-bottom: 20px;
   button {
     padding: 10px 42px;
     border-radius: 6px;

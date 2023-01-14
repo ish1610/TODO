@@ -33,6 +33,7 @@ const styles = css`
   input,
   textarea {
     outline: none;
+    border: 1px solid rgb(180, 180, 180);
   }
 `;
 
