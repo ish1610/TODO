@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import backgroundImg from "../../../assets/images/homeBackground.png";
+import { blue, orange } from "../../../styles/commonColor";
 import { IToDoListProps } from "../type";
 
 import ToDoItem from "./ToDoItemView";
@@ -29,18 +30,18 @@ const BackGroundImg = styled.div`
 `;
 
 const AddToDoBtn = styled.button`
-  border: 1px solid RGB(22, 83, 100);
+  border: 1px solid ${blue};
   border-radius: 8px;
   padding: 8px 18px;
   color: #fff;
-  background-color: RGB(22, 83, 100);
+  background-color: ${blue};
   position: absolute;
   top: 20px;
   right: 20px;
   transition: 0.3s;
 
   :hover {
-    background-color: RGB(255, 154, 61);
+    background-color: ${orange};
   }
 `;
 

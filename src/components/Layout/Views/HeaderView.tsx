@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 import logo from "../../../assets/images/homeBackground.png";
+import { blue } from "../../../styles/commonColor";
 import HeaderControllView from "./HeaderControllView";
 
 const HeaderWrap = styled.header`
@@ -9,7 +10,7 @@ const HeaderWrap = styled.header`
   justify-content: space-between;
   padding: 22px 20px 22px;
   height: 80px;
-  border-bottom: 1px solid RGB(43, 46, 74);
+  border-bottom: 1px solid ${blue};
 `;
 
 const HeaderLogoWrap = styled.div`

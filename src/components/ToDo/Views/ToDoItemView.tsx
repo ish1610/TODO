@@ -3,16 +3,22 @@ import styled from "@emotion/styled";
 import todoIconSheep from "../../../assets/images/todoIcon-sheep.png";
 
 import { RiDeleteBin5Line, RiPencilFill, RiZoomInLine } from "react-icons/ri";
+import {
+  boxShadow,
+  orange,
+  warning,
+  yellow,
+} from "../../../styles/commonColor";
 
 const ToDoItemWrap = styled.li`
   position: relative;
   width: 700px;
   height: 120px;
-  border: 1px solid;
+  border: 1px solid ${yellow};
   border-radius: 8px;
   padding: 10px 32px;
   background-color: #fff;
-  box-shadow: 2px 2px 8px rgba(43, 46, 74, 0.5);
+  box-shadow: ${boxShadow};
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -51,8 +57,13 @@ const ToDoControl = styled.div`
     cursor: pointer;
   }
 
-  svg:hover {
-    color: RGB(232, 69, 70);
+  svg:nth-child(1):hover,
+  svg:nth-child(2):hover {
+    color: ${orange};
+  }
+
+  svg:nth-child(3):hover {
+    color: ${warning};
   }
 `;
 

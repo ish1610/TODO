@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { IAddToDoModalProps } from "../type";
 import { flexCenter } from "../../../styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
+import { boxShadow, blue } from "../../../styles/commonColor";
 
 const BackDrop = styled.div`
   width: 100%;
@@ -22,17 +23,17 @@ const AddToModal = styled.div`
   z-index: 2;
   width: 80%;
   height: 500px;
-  border: 1px solid RGB(22, 83, 100);
+  border: 1px solid ${blue};
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 2px 2px 8px rgba(43, 46, 74, 0.5);
+  box-shadow: ${boxShadow};
 
   header {
     ${flexCenter}
     height: 54px;
     font-size: 22px;
     font-weight: 700;
-    border-bottom: 1px solid RGB(22, 83, 100);
+    border-bottom: 1px solid ${blue};
   }
 
   img {
@@ -48,13 +49,13 @@ const AddToDoModalView = ({
 }: IAddToDoModalProps) => {
   return (
     <React.Fragment>
-      <BackDrop onClick={onCloseModal} />
+      {/* <BackDrop onClick={onCloseModal} />
 
       <AddToModal>
         <header>
           <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
         </header>
-      </AddToModal>
+      </AddToModal> */}
 
       {/* {isShowModal && <BackDrop onClick={onCloseModal} />}
       {isShowModal && (
