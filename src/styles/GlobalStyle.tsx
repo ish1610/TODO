@@ -29,6 +29,11 @@ const styles = css`
   ul {
     list-style: none;
   }
+
+  input,
+  textarea {
+    outline: none;
+  }
 `;
 
 const GlobalStyle = () => {

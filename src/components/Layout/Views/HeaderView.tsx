@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 import logo from "../../../assets/images/homeBackground.png";
 import { blue } from "../../../styles/commonColor";
+import { flexCenter } from "../../../styles/FlexCenter";
 import HeaderControllView from "./HeaderControllView";
 
 const HeaderWrap = styled.header`
@@ -14,9 +15,8 @@ const HeaderWrap = styled.header`
 `;
 
 const HeaderLogoWrap = styled.div`
-  display: flex;
+  ${flexCenter}
   flex-direction: column;
-  align-items: center;
 
   img {
     width: 40px;

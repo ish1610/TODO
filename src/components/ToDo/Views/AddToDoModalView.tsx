@@ -3,7 +3,12 @@ import styled from "@emotion/styled";
 import { IAddToDoModalProps } from "../type";
 import { flexCenter } from "../../../styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
-import { boxShadow, blue } from "../../../styles/commonColor";
+import {
+  boxShadow,
+  blue,
+  cancel,
+  lightOrange,
+} from "../../../styles/commonColor";
 
 const BackDrop = styled.div`
   width: 100%;
@@ -31,6 +36,7 @@ const AddToModal = styled.div`
   header {
     ${flexCenter}
     height: 54px;
+    margin-bottom: 42px;
     font-size: 22px;
     font-weight: 700;
     border-bottom: 1px solid ${blue};
@@ -41,6 +47,69 @@ const AddToModal = styled.div`
     width: 42px;
     margin-right: 10px;
   }
+
+  .addToDo-Content {
+    ${flexCenter}
+    flex-direction: column;
+  }
+`;
+
+const AddToDoInputWrap = styled.div`
+  display: flex;
+  width: 80%;
+  margin-bottom: 24px;
+
+  label {
+    margin-right: 12px;
+    padding-top: 4px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  input {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 10px;
+
+    flex-grow: 1;
+  }
+
+  textarea {
+    font-family: "Yeon Sung", cursive;
+    font-size: 22px;
+
+    height: 240px;
+    padding: 10px;
+
+    flex-grow: 1;
+  }
+`;
+
+const AddToDoControl = styled.section`
+  ${flexCenter}
+  button {
+    padding: 10px 42px;
+    border-radius: 6px;
+  }
+
+  .add-todo {
+    margin-right: 14px;
+    color: #fff;
+    background-color: ${lightOrange};
+    border: 1px solid ${lightOrange};
+    transition: 0.2s;
+  }
+  .add-todo:hover {
+    color: ${lightOrange};
+    background-color: #fff;
+  }
+
+  .cancel-todo {
+    color: #333;
+    background-color: ${cancel};
+    border: 1px solid ${cancel};
+  }
 `;
 
 const AddToDoModalView = ({
@@ -49,19 +118,36 @@ const AddToDoModalView = ({
 }: IAddToDoModalProps) => {
   return (
     <React.Fragment>
-      {/* <BackDrop onClick={onCloseModal} />
+      <BackDrop onClick={onCloseModal} />
 
       <AddToModal>
         <header>
           <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
         </header>
-      </AddToModal> */}
+        <section className="addToDo-Content">
+          <AddToDoInputWrap>
+            <label htmlFor="toDotitle">제목</label>
+            <input id="toDotitle" type="text" />
+          </AddToDoInputWrap>
+
+          <AddToDoInputWrap>
+            <label htmlFor="toDoContent">내용</label>
+            <textarea id="toDoContent" cols={30} rows={10}></textarea>
+          </AddToDoInputWrap>
+        </section>
+
+        <AddToDoControl>
+          <button className="add-todo">추가</button>
+          <button className="cancel-todo" onClick={onCloseModal}>
+            닫기
+          </button>
+        </AddToDoControl>
+      </AddToModal>
 
       {/* {isShowModal && <BackDrop onClick={onCloseModal} />}
       {isShowModal && (
         <AddToModal>
-          <button></button>
-          <button onClick={onCloseModal}>닫기</button>
+       
         </AddToModal>
       )} */}
     </React.Fragment>
