@@ -1,9 +1,9 @@
 import React from "react";
 
-import { IToDoLayoutProps } from "./type";
+import { IToDoListProps } from "./type";
 import ToDoListView from "./Views/ToDoListView";
 
-const ToDoList = ({ onShowModal }: IToDoLayoutProps) => {
+const ToDoList = ({ onShowModal }: IToDoListProps) => {
   return <ToDoListView onShowModal={onShowModal} />;
 };
 

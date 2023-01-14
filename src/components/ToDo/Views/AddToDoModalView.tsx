@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { IToDoLayoutProps } from "../type";
+import { IAddToDoModalProps } from "../type";
 
 const BackDrop = styled.div`
   width: 100%;
@@ -26,7 +26,10 @@ const AddToModal = styled.div`
   box-shadow: 2px 2px 8px rgba(43, 46, 74, 0.5);
 `;
 
-const AddToDoModalView = ({ isShowModal, onCloseModal }: IToDoLayoutProps) => {
+const AddToDoModalView = ({
+  isShowModal,
+  onCloseModal,
+}: IAddToDoModalProps) => {
   return (
     <React.Fragment>
       {isShowModal && <BackDrop onClick={onCloseModal} />}

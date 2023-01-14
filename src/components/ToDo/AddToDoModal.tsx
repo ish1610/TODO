@@ -1,8 +1,8 @@
 import React from "react";
-import { IToDoLayoutProps } from "./type";
+import { IAddToDoModalProps } from "./type";
 import AddToDoModalView from "./Views/AddToDoModalView";
 
-const AddToDoModal = ({ isShowModal, onCloseModal }: IToDoLayoutProps) => {
+const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   return (
     <AddToDoModalView isShowModal={isShowModal} onCloseModal={onCloseModal} />
   );
