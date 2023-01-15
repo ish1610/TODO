@@ -23,6 +23,7 @@ export interface IAddToDoModalProps {
 export interface IAddToDoModalViewProps {
   isShowModal: boolean;
   disabledAddToDo: boolean;
+  onClickAddToDo: () => void;
   onClickCancel: () => void;
   onChangedTitle: (e: any) => void;
   onChangedContent: (e: any) => void;

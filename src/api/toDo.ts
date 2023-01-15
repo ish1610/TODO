@@ -4,7 +4,7 @@ export const ToDoAPI = {
   createToDo: (toDo: ToDoInputValue) => {
     const newToDo = [
       {
-        toDo,
+        todos: toDo,
       },
     ];
     localStorage.setItem("todo", JSON.stringify(newToDo));

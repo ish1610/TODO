@@ -108,6 +108,7 @@ const AddToDoControl = styled.div<{ disabledAddToDo: boolean }>`
 const AddToDoModalView = ({
   isShowModal,
   disabledAddToDo = false,
+  onClickAddToDo,
   onClickCancel,
   onChangedTitle,
   onChangedContent,
@@ -156,9 +157,7 @@ const AddToDoModalView = ({
             <button
               className="add-todo"
               disabled={disabledAddToDo}
-              onClick={() => {
-                console.log("click");
-              }}
+              onClick={onClickAddToDo}
             >
               작성
             </button>
