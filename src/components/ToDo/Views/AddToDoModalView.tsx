@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+
 import { TextField } from "@mui/material";
-import { AddToDoBtn, IAddToDoModalProps } from "../type";
+import { IAddToDoModalViewProps } from "../type";
 import { flexCenter } from "../../../styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
 import {
@@ -108,74 +108,66 @@ const AddToDoControl = styled.div<{ disabledAddToDo: boolean }>`
 const AddToDoModalView = ({
   isShowModal,
   disabledAddToDo = false,
-  onCloseModal,
+  onClickCancel,
   onChangedTitle,
   onChangedContent,
-}: IAddToDoModalProps) => {
+}: IAddToDoModalViewProps) => {
   return (
     <React.Fragment>
-      <BackDrop onClick={onCloseModal} />
+      {isShowModal && <BackDrop onClick={onClickCancel} />}
 
-      <AddToModal>
-        <header>
-          <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
-        </header>
-        <form className="addToDo-Content">
-          <AddToDoInputWrap>
-            <TextField
-              label="Title"
-              name="title"
-              fullWidth={true}
-              autoFocus={true}
-              helperText="제목은 최소 5글자 작성해주세요!"
-              placeholder="작성할 ToDo의 제목을 입력해주세요."
-              required
-              size="small"
-              color="warning"
-              onChange={onChangedTitle}
-              margin="normal"
-            />
-
-            <TextField
-              label="Content"
-              name="content"
-              fullWidth={true}
-              minRows={5}
-              multiline
-              helperText="내용은 최소 5글자 작성해주세요!"
-              placeholder="작성할 ToDo의 내용을 입력해주세요."
-              required
-              color="warning"
-              onChange={onChangedContent}
-            />
-          </AddToDoInputWrap>
-        </form>
-
-        {/* <AddToDoControl> */}
-        <AddToDoControl disabledAddToDo={disabledAddToDo}>
-          <button
-            className="add-todo"
-            disabled={disabledAddToDo}
-            onClick={() => {
-              console.log("click");
-            }}
-          >
-            작성
-          </button>
-          <button className="cancel-todo" onClick={onCloseModal}>
-            닫기
-          </button>
-        </AddToDoControl>
-
-        {/* </AddToDoControl> */}
-      </AddToModal>
-
-      {/* {isShowModal && <BackDrop onClick={onCloseModal} />}
       {isShowModal && (
         <AddToModal>
-       
+          <header>
+            <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
+          </header>
+          <form className="addToDo-Content">
+            <AddToDoInputWrap>
+              <TextField
+                label="Title"
+                name="title"
+                fullWidth={true}
+                autoFocus={true}
+                helperText="제목은 최소 5글자 작성해주세요!"
+                placeholder="작성할 ToDo의 제목을 입력해주세요."
+                required
+                size="small"
+                color="warning"
+                onChange={onChangedTitle}
+                margin="normal"
+              />
+
+              <TextField
+                label="Content"
+                name="content"
+                fullWidth={true}
+                minRows={5}
+                multiline
+                helperText="내용은 최소 5글자 작성해주세요!"
+                placeholder="작성할 ToDo의 내용을 입력해주세요."
+                required
+                color="warning"
+                onChange={onChangedContent}
+              />
+            </AddToDoInputWrap>
+          </form>
+
+          <AddToDoControl disabledAddToDo={disabledAddToDo}>
+            <button
+              className="add-todo"
+              disabled={disabledAddToDo}
+              onClick={() => {
+                console.log("click");
+              }}
+            >
+              작성
+            </button>
+            <button className="cancel-todo" onClick={onClickCancel}>
+              닫기
+            </button>
+          </AddToDoControl>
         </AddToModal>
-      )} */}
+      )}
     </React.Fragment>
   );
 };

@@ -1,26 +1,42 @@
 import Joi from "joi";
 import React, { useState } from "react";
-import { IAddToDoModalProps } from "./type";
+import {
+  IAddToDoModalProps,
+  IAddToDoModalViewProps,
+  ToDoInputValue,
+} from "./type";
 import AddToDoModalView from "./Views/AddToDoModalView";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
 
-  const handleDisabledAddToDo = (title: string, content: string) => {
+  const handleDisabledAddToDo = (inputValue: ToDoInputValue) => {
+    const { title, content } = inputValue;
     if (title.length < 5 || content.length < 5) {
       return true;
     }
     return false;
-    // const addToDoInput = [title, content];
   };
 
-  const addToDoProps: IAddToDoModalProps = {
+  // const addToDoInput = [title, content];
+
+  const onClickCancel = () => {
+    setToDoInput({ title: "", content: "" });
+    onCloseModal();
+  };
+
+  const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
-    disabledAddToDo: handleDisabledAddToDo(title, content),
-    onCloseModal,
-    onChangedTitle: (e) => setTitle(e.target.value),
-    onChangedContent: (e) => setContent(e.target.value),
+    disabledAddToDo: handleDisabledAddToDo(toDoInput),
+    onClickCancel: () => onClickCancel(),
+    onChangedTitle: (e) =>
+      setToDoInput((prev) => {
+        return { ...prev, title: e.target.value };
+      }),
+    onChangedContent: (e) =>
+      setToDoInput((prev) => {
+        return { ...prev, content: e.target.value };
+      }),
   };
 
   return <AddToDoModalView {...addToDoProps} />;

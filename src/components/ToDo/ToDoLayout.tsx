@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
-import { IToDoLayoutProps } from "./type";
+import { IToDoLayoutProps, OnCloseModal } from "./type";
 import ToDoLayoutView from "./Views/ToDoLayoutView";
 
 const ToDoLayout = () => {
   const [isShowModal, setIsShowModal] = useState(false);
 
+  const onCloseModal = () => {
+    setIsShowModal(false);
+  };
+
   const ToDoLayouyProps: IToDoLayoutProps = {
-    onCloseModal: () => setIsShowModal(false),
+    onCloseModal: () => onCloseModal(),
     onShowModal: () => setIsShowModal(true),
     isShowModal,
   };
