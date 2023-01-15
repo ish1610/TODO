@@ -1,4 +1,3 @@
-import Joi from "joi";
 import React, { useState } from "react";
 import {
   IAddToDoModalProps,
@@ -11,17 +10,17 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
 
   const handleDisabledAddToDo = (inputValue: ToDoInputValue) => {
-    const { title, content } = inputValue;
-    if (title.length < 5 || content.length < 5) {
-      return true;
-    }
-    return false;
+    const inputValues = [inputValue.title, inputValue.content];
+
+    return inputValues.every((value) => value.length > 5);
   };
 
-  // const addToDoInput = [title, content];
+  const resetToDoInput = () => {
+    setToDoInput({ title: "", content: "" });
+  };
 
   const onClickCancel = () => {
-    setToDoInput({ title: "", content: "" });
+    resetToDoInput();
     onCloseModal();
   };
 

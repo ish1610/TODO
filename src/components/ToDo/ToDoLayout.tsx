@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { IToDoLayoutProps, OnCloseModal } from "./type";
+import { IToDoLayoutProps } from "./type";
 import ToDoLayoutView from "./Views/ToDoLayoutView";
 
 const ToDoLayout = () => {
