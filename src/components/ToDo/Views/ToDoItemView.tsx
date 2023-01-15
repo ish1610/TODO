@@ -57,12 +57,12 @@ const ToDoControl = styled.div`
     cursor: pointer;
   }
 
-  svg:nth-child(1):hover,
-  svg:nth-child(2):hover {
+  svg:nth-of-type(1):hover,
+  svg:nth-of-type(2):hover {
     color: ${orange};
   }
 
-  svg:nth-child(3):hover {
+  svg:nth-of-type(3):hover {
     color: ${warning};
   }
 `;

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { IAddToDoModalProps } from "../type";
+import { css } from "@emotion/react";
+import { TextField } from "@mui/material";
+import { AddToDoBtn, IAddToDoModalProps } from "../type";
 import { flexCenter } from "../../../styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
 import {
@@ -9,6 +11,8 @@ import {
   cancel,
   lightOrange,
 } from "../../../styles/commonColor";
+
+import { yellow } from "@mui/material/colors";
 
 const BackDrop = styled.div`
   width: 100%;
@@ -56,37 +60,18 @@ const AddToModal = styled.div`
 
 const AddToDoInputWrap = styled.div`
   display: flex;
+  flex-direction: column;
   width: 80%;
   margin-bottom: 42px;
 
-  label {
-    margin-right: 12px;
-    padding-top: 4px;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
   input,
   textarea {
-    flex-grow: 1;
-    font-size: 18px;
-    border-radius: 5px;
-  }
-
-  input {
-    font-family: inherit;
-    font-weight: 700;
-    padding: 4px 10px;
-  }
-
-  textarea {
-    font-family: "Yeon Sung", cursive;
-    height: 240px;
-    padding: 10px;
+    font-family: "yeon sung";
+    outline-color: ${yellow};
   }
 `;
 
-const AddToDoControl = styled.section`
+const AddToDoControl = styled.div<{ disabledAddToDo: boolean }>`
   ${flexCenter}
   padding-bottom: 20px;
   button {
@@ -97,13 +82,20 @@ const AddToDoControl = styled.section`
   .add-todo {
     margin-right: 14px;
     color: #fff;
-    background-color: ${lightOrange};
-    border: 1px solid ${lightOrange};
     transition: 0.2s;
+
+    cursor: ${(props) => (props.disabledAddToDo ? "default" : "pointer")};
+
+    background-color: ${(props) =>
+      props.disabledAddToDo ? cancel : lightOrange};
+
+    border: 1px solid
+      ${(props) => (props.disabledAddToDo ? cancel : lightOrange)};
   }
+
   .add-todo:hover {
-    color: ${lightOrange};
-    background-color: #fff;
+    color: ${(props) => (props.disabledAddToDo ? "fff" : lightOrange)};
+    background-color: ${(props) => (props.disabledAddToDo ? cancel : "#fff")};
   }
 
   .cancel-todo {
@@ -115,7 +107,10 @@ const AddToDoControl = styled.section`
 
 const AddToDoModalView = ({
   isShowModal,
+  disabledAddToDo = false,
   onCloseModal,
+  onChangedTitle,
+  onChangedContent,
 }: IAddToDoModalProps) => {
   return (
     <React.Fragment>
@@ -125,24 +120,54 @@ const AddToDoModalView = ({
         <header>
           <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
         </header>
-        <section className="addToDo-Content">
+        <form className="addToDo-Content">
           <AddToDoInputWrap>
-            <label htmlFor="toDotitle">제목</label>
-            <input id="toDotitle" type="text" />
-          </AddToDoInputWrap>
+            <TextField
+              label="Title"
+              name="title"
+              fullWidth={true}
+              autoFocus={true}
+              helperText="제목은 최소 5글자 작성해주세요!"
+              placeholder="작성할 ToDo의 제목을 입력해주세요."
+              required
+              size="small"
+              color="warning"
+              onChange={onChangedTitle}
+              margin="normal"
+            />
 
-          <AddToDoInputWrap>
-            <label htmlFor="toDoContent">내용</label>
-            <textarea id="toDoContent" cols={30} rows={10}></textarea>
+            <TextField
+              label="Content"
+              name="content"
+              fullWidth={true}
+              minRows={5}
+              multiline
+              helperText="내용은 최소 5글자 작성해주세요!"
+              placeholder="작성할 ToDo의 내용을 입력해주세요."
+              required
+              color="warning"
+              onChange={onChangedContent}
+            />
           </AddToDoInputWrap>
-        </section>
+        </form>
 
-        <AddToDoControl>
-          <button className="add-todo">추가</button>
+        {/* <AddToDoControl> */}
+        <AddToDoControl disabledAddToDo={disabledAddToDo}>
+          <button
+            className="add-todo"
+            disabled={disabledAddToDo}
+            onClick={() => {
+              console.log("click");
+            }}
+          >
+            작성
+          </button>
           <button className="cancel-todo" onClick={onCloseModal}>
             닫기
           </button>
         </AddToDoControl>
+
+        {/* </AddToDoControl> */}
       </AddToModal>
 
       {/* {isShowModal && <BackDrop onClick={onCloseModal} />}
