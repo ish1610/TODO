@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ToDoAPI } from "../../api/toDo";
 import {
   IAddToDoModalProps,
   IAddToDoModalViewProps,
@@ -23,6 +24,12 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
     resetToDoInput();
     onCloseModal();
   };
+
+  const onClickAddToDo = (todo: { title: string; content: string }) => {
+    ToDoAPI.createToDo(todo);
+  };
+
+  onClickAddToDo({ title: "123", content: "123" });
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
