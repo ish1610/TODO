@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import backgroundImg from "../../../assets/images/homeBackground.png";
 import { blue, orange } from "../../../styles/commonColor";
-import { IToDoListProps } from "../type";
-
+import { IToDoListProps } from "../../../types/todos";
 import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`

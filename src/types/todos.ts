@@ -1,3 +1,13 @@
+export interface ToDo {
+  content: string;
+  createdAt: string;
+  id: string;
+  title: string;
+  updatedAt: string;
+}
+
+export type ToDoInputValue = Pick<ToDo, "title" | "content">;
+
 export interface IToDoLayoutProps {
   isShowModal: boolean;
   onShowModal: () => void;
@@ -25,8 +35,3 @@ export type OnCloseModal = (
   setTitleCb: (title: string) => void,
   setContentCb: (content: string) => void
 ) => void;
-
-export type ToDoInputValue = {
-  title: string;
-  content: string;
-};

@@ -4,7 +4,7 @@ import {
   IAddToDoModalProps,
   IAddToDoModalViewProps,
   ToDoInputValue,
-} from "./type";
+} from "../../types/todos";
 import AddToDoModalView from "./Views/AddToDoModalView";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
@@ -25,11 +25,9 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
     onCloseModal();
   };
 
-  const onClickAddToDo = (todo: { title: string; content: string }) => {
+  const onClickAddToDo = (todo: ToDoInputValue) => {
     ToDoAPI.createToDo(todo);
   };
-
-  onClickAddToDo({ title: "123", content: "123" });
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,

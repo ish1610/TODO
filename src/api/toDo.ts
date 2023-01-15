@@ -1,5 +1,7 @@
+import { ToDoInputValue } from "../types/todos";
+
 export const ToDoAPI = {
-  createToDo: (toDo: { title: string; content: string }) => {
+  createToDo: (toDo: ToDoInputValue) => {
     const newToDo = [
       {
         toDo,

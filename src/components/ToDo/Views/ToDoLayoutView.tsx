@@ -1,7 +1,7 @@
 import React from "react";
 import AddToDoModal from "../AddToDoModal";
 import ToDoList from "../ToDoList";
-import { IToDoLayoutProps } from "../type";
+import { IToDoLayoutProps } from "../../../types/todos";
 
 const ToDoLayoutView = ({
   onCloseModal,

@@ -1,6 +1,4 @@
-import React from "react";
-
-import { IToDoListProps } from "./type";
+import { IToDoListProps } from "../../types/todos";
 import ToDoListView from "./Views/ToDoListView";
 
 const ToDoList = ({ onShowModal }: IToDoListProps) => {

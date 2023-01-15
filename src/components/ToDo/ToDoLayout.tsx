@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { IToDoLayoutProps } from "./type";
+import { IToDoLayoutProps } from "../../types/todos";
 import ToDoLayoutView from "./Views/ToDoLayoutView";
 
 const ToDoLayout = () => {
