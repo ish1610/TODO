@@ -15,9 +15,9 @@ $ npm start
 ## 사용 라이브러리
 
 ```plaintext
-`axios`
-`redux`
-`redux-tookit`
-`@emotion-react`
-`@emotion-styled`
+axios
+redux
+redux-tookit
+@emotion-react
+@emotion-styled
 ```
