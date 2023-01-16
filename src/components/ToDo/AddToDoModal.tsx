@@ -27,6 +27,8 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const onClickAddToDo = (todo: ToDoInputValue) => {
     ToDoAPI.createToDo(todo);
+    resetToDoInput();
+    onCloseModal();
   };
 
   const addToDoProps: IAddToDoModalViewProps = {

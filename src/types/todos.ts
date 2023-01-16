@@ -14,7 +14,10 @@ export interface IToDoLayoutProps {
   onCloseModal: () => void;
 }
 
-export type IToDoListProps = Pick<IToDoLayoutProps, "onShowModal">;
+export interface IToDoListProps {
+  onShowModal: () => void;
+  toDos?: ToDo[];
+}
 
 export interface IAddToDoModalProps {
   isShowModal: boolean;

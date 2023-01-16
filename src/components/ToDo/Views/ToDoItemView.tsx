@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "@emotion/styled";
-import todoIconSheep from "../../../assets/images/todoIcon-sheep.png";
+import todoIconMonky from "../../../assets/images/todoIcon-monky.png";
 
 import { RiDeleteBin5Line, RiPencilFill, RiZoomInLine } from "react-icons/ri";
 import {
@@ -10,10 +9,12 @@ import {
   yellow,
 } from "../../../styles/commonColor";
 
+import { ToDo } from "../../../types/todos";
+
 const ToDoItemWrap = styled.li`
   position: relative;
   width: 700px;
-  height: 120px;
+
   border: 1px solid ${yellow};
   border-radius: 8px;
   padding: 10px 32px;
@@ -72,26 +73,49 @@ const ToDoItemContent = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  h3,
+  .todo-content {
+    font-family: "Yeon Sung", cursive;
+  }
 
   h3 {
+    width: 380px;
     font-weight: 700;
     font-size: 22px;
+    padding-bottom: 12px;
     margin-bottom: 12px;
-    height: 22px;
+    height: 34px;
     overflow: hidden;
+    border-bottom: 1px solid #ccc;
   }
-  p {
-    flex-grow: 1;
 
-    font-family: "Yeon Sung", cursive;
+  .todo-content {
+    flex-grow: 1;
     font-size: 18px;
+    word-break: break-all;
+    line-height: 1.6;
+
+    padding-bottom: 20px;
+  }
+
+  .createTime {
+    font-size: 12px;
+    font-family: inherit;
+    position: absolute;
+    bottom: 0;
+    right: -24px;
+    color: rgb(180, 180, 180);
+  }
+  .createTime span {
   }
 `;
 
-const ToDoItemView = () => {
+const ToDoItemView = ({ title, content, createdAt }: ToDo) => {
   return (
     <ToDoItemWrap>
-      <ToDoItemIcon src={todoIconSheep} />
+      <ToDoItemIcon src={todoIconMonky} />
       <ToDoControl>
         <RiZoomInLine />
         <RiPencilFill />
@@ -99,8 +123,12 @@ const ToDoItemView = () => {
       </ToDoControl>
 
       <ToDoItemContent>
-        <h3>ToDo Title</h3>
-        <p>투두리스트 내용</p>
+        <h3>{title}</h3>
+        <p className="todo-content">{content}</p>
+        <p className="createTime">
+          <span>작성 시간 : </span>
+          {createdAt}
+        </p>
       </ToDoItemContent>
     </ToDoItemWrap>
   );
