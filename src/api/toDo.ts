@@ -1,17 +1,17 @@
 import axios from "axios";
-import { GetToDoCb, ToDo, ToDoInputValue } from "../types/todos";
+import { CreateToDoCb, GetToDoCb, ToDo, ToDoInputValue } from "../types/todos";
 import { getDate } from "../util/date";
 
 export const ToDoAPI = {
-  createToDo: async (toDo: ToDoInputValue) => {
+  createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
     const newToDo = {
-      id: 1,
+      id: "1",
       createdAt: getDate(),
       updatedAt: getDate(),
       ...toDo,
     };
 
-    await axios
+    axios
       .post(
         "https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json",
         newToDo
@@ -19,13 +19,15 @@ export const ToDoAPI = {
       .catch((error) => {
         console.log(`🚨 CreateToDoAPI : ${error.message}`);
       });
+
+    createToDoCb(newToDo);
   },
   getToDo: (setTodoListCb: GetToDoCb) => {
     axios
       .get("https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json")
-      .then((resoponse) => {
+      .then((response) => {
         const loadedToDos: ToDo[] = [];
-        const { data: toDos } = resoponse;
+        const { data: toDos } = response;
 
         for (const key in toDos) {
           loadedToDos.push(toDos[key]);

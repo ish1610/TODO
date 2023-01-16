@@ -11,7 +11,6 @@ const toDoSlice = createSlice({
   initialState: initialToDoState,
   reducers: {
     createToDo: (state, action) => {
-      ToDoAPI.createToDo(action.payload);
       state.toDoList.push(action.payload);
     },
     getToDoList: (state, action) => {

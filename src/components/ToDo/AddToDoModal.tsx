@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { ToDoAPI } from "../../api/toDo";
+import { toDoAction } from "../../store/ToDo/toDoSlice";
 import {
   IAddToDoModalProps,
   IAddToDoModalViewProps,
+  ToDo,
   ToDoInputValue,
 } from "../../types/todos";
 import AddToDoModalView from "./Views/AddToDoModalView";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
+  const dispatch = useDispatch();
 
   const handleDisabledAddToDo = (inputValue: ToDoInputValue) => {
     const inputValues = [inputValue.title, inputValue.content];
@@ -26,7 +30,9 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   };
 
   const onClickAddToDo = (todo: ToDoInputValue) => {
-    ToDoAPI.createToDo(todo);
+    ToDoAPI.createToDo(todo, (toDoContent: ToDo) =>
+      dispatch(toDoAction.createToDo(toDoContent))
+    );
     resetToDoInput();
     onCloseModal();
   };
