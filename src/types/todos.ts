@@ -39,3 +39,7 @@ export type OnCloseModal = (
   setTitleCb: (title: string) => void,
   setContentCb: (content: string) => void
 ) => void;
+
+export type ToDoListState = {
+  toDoList: ToDo[];
+};

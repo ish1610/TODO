@@ -11,30 +11,31 @@ export const ToDoAPI = {
       ...toDo,
     };
 
-    const { data } = await axios.post(
-      "https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json",
-      newToDo
-    );
+    await axios
+      .post(
+        "https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json",
+        newToDo
+      )
+      .catch((error) => {
+        console.log(`🚨 CreateToDoAPI : ${error.message}`);
+      });
   },
-  getToDo: (setterCb: (toDos: ToDo[]) => void) => {
-    const loadedToDos: ToDo[] = [];
 
-    axios
+  getToDo: async (setTodoListCb: any) => {
+    await axios
       .get("https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json")
-      .then((resondse) => {
-        const { data: toDos } = resondse;
+      .then((resoponse) => {
+        const loadedToDos: ToDo[] = [];
+        const { data: toDos } = resoponse;
 
         for (const key in toDos) {
           loadedToDos.push(toDos[key]);
         }
 
-        // console.log(loadedToDos);
+        setTodoListCb(loadedToDos);
       })
       .catch((error) => {
         console.log(`🚨 getToDoAPI : ${error.message}`);
-      })
-      .finally(() => {
-        setterCb(loadedToDos);
       });
   },
 };
