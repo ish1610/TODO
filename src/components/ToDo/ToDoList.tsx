@@ -5,17 +5,11 @@ import { IToDoListProps } from "../../types/todos";
 import ToDoListView from "./Views/ToDoListView";
 
 const ToDoList = ({ onShowModal }: IToDoListProps) => {
-  const [toDos, setToDos] = useState([
-    { content: "", createdAt: "", id: "", title: "", updatedAt: "" },
-  ]);
-
-  const toDoListCtx = useSelector((state: any) => state.toDoList.toDoList);
-
-  // console.log(toDoListCtx);
+  const toDoList = useSelector((state: any) => state.toDoList.toDoList);
 
   const toDoListProps = {
     onShowModal,
-    toDos,
+    toDoList,
   };
 
   return <ToDoListView {...toDoListProps} />;

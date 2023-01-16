@@ -16,7 +16,7 @@ export interface IToDoLayoutProps {
 
 export interface IToDoListProps {
   onShowModal: () => void;
-  toDos?: ToDo[];
+  toDoList?: ToDo[];
 }
 
 export interface IAddToDoModalProps {
@@ -43,3 +43,5 @@ export type OnCloseModal = (
 export type ToDoListState = {
   toDoList: ToDo[];
 };
+
+export type GetToDoCb = (toDoList: ToDo[]) => void;

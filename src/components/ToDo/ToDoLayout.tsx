@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ToDoAPI } from "../../api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 
-import { IToDoLayoutProps } from "../../types/todos";
+import { IToDoLayoutProps, ToDo } from "../../types/todos";
 import ToDoLayoutView from "./Views/ToDoLayoutView";
 
 const ToDoLayout = () => {
@@ -21,7 +21,9 @@ const ToDoLayout = () => {
   };
 
   useEffect(() => {
-    ToDoAPI.getToDo((test: any) => dispatch(toDoAction.getToDoList(test)));
+    ToDoAPI.getToDo((toDoList: ToDo[]) =>
+      dispatch(toDoAction.getToDoList(toDoList))
+    );
   }, []);
 
   return <ToDoLayoutView {...ToDoLayouyProps} />;

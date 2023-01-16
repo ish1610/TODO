@@ -44,12 +44,12 @@ const AddToDoBtn = styled.button`
   }
 `;
 
-const ToDoListView = ({ onShowModal, toDos }: IToDoListProps) => {
+const ToDoListView = ({ onShowModal, toDoList }: IToDoListProps) => {
   return (
     <Container>
       <AddToDoBtn onClick={onShowModal}>ToDo 작성</AddToDoBtn>
       <BackGroundImg />
-      {toDos?.map((toDo, idx) => (
+      {toDoList?.map((toDo, idx) => (
         <ToDoItem key={idx} {...toDo} />
       ))}
     </Container>
