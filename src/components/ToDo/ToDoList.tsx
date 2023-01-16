@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToDoAPI } from "../../api/toDo";
+import { useSelector } from "react-redux";
+
 import { IToDoListProps } from "../../types/todos";
 import ToDoListView from "./Views/ToDoListView";
 

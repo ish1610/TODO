@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import backgroundImg from "../../../assets/images/homeBackground.png";
+
 import { blue, orange } from "../../../styles/commonColor";
-import { IToDoListProps, ToDo } from "../../../types/todos";
+import { IToDoListProps } from "../../../types/todos";
+import NoneTodoView from "./NoneTodoView";
 import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`
@@ -12,20 +13,6 @@ const Container = styled.ul`
   align-items: center;
   position: relative;
   padding: 80px 0;
-`;
-
-const BackGroundImg = styled.div`
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url(${backgroundImg});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.6;
 `;
 
 const AddToDoBtn = styled.button`
@@ -48,7 +35,9 @@ const ToDoListView = ({ onShowModal, toDoList }: IToDoListProps) => {
   return (
     <Container>
       <AddToDoBtn onClick={onShowModal}>ToDo 작성</AddToDoBtn>
-      <BackGroundImg />
+
+      {!toDoList?.length && <NoneTodoView />}
+
       {toDoList?.map((toDo, idx) => (
         <ToDoItem key={idx} {...toDo} />
       ))}
