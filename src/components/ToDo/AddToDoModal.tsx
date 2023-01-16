@@ -13,7 +13,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const handleDisabledAddToDo = (inputValue: ToDoInputValue) => {
     const inputValues = [inputValue.title, inputValue.content];
 
-    return inputValues.every((value) => value.length <= 5);
+    return inputValues.some((value) => value.length < 5);
   };
 
   const resetToDoInput = () => {
