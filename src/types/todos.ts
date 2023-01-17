@@ -40,7 +40,10 @@ export interface IToDoItemProps {
 
 export interface ITodoDetailProps {
   toDoDetail: ToDo;
+  isEdit: boolean;
   onClickCancel: () => void;
+  onClickEdit: () => void;
+  onClickSave: () => void;
 }
 
 export type AddToDoBtn = { disabledAddToDo: boolean };

@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { lightOrange, orange, yellow } from "../../../styles/commonColor";
 import { flexCenter } from "../../../styles/FlexCenter";
 import { ITodoDetailProps } from "../../../types/todos";
+import { TextField } from "@mui/material";
 
 const Container = styled.div`
   ${flexCenter}
@@ -11,6 +12,7 @@ const Container = styled.div`
 const ToDoDetailWrap = styled.div`
   margin-top: 50px;
   width: 90%;
+  max-width: 800px;
 
   header {
     ${flexCenter}
@@ -44,12 +46,10 @@ const ToDoDetailContent = styled.section`
     font-family: "Yeon Sung", cursive;
   }
 
-  .title span,
-  .content span {
-    background-color: ${orange};
+  .title {
   }
 
-  span {
+  .toDoDetail-sortation {
     margin-right: 20px;
     font-family: "Roboto", "Nanum Gothic", sans-serif;
     font-weight: 700;
@@ -59,6 +59,12 @@ const ToDoDetailContent = styled.section`
     padding: 10px 14px;
   }
 
+  .title .toDoDetail-sortation,
+  .content .toDoDetail-sortation {
+    min-width: 120px;
+    background-color: ${orange};
+  }
+
   .todoDateWrap {
     display: flex;
     margin-top: 50px;
@@ -66,6 +72,12 @@ const ToDoDetailContent = styled.section`
 
   .todoDateWrap .createdAt {
     margin-right: 50px;
+  }
+
+  input,
+  textarea {
+    font-family: "yeon sung";
+    outline-color: ${yellow};
   }
 `;
 
@@ -99,8 +111,15 @@ const DetailControl = styled.div`
   }
 `;
 
-const ToDoDetailView = ({ toDoDetail, onClickCancel }: ITodoDetailProps) => {
+const ToDoDetailView = ({
+  toDoDetail,
+  isEdit,
+  onClickCancel,
+  onClickEdit,
+  onClickSave,
+}: ITodoDetailProps) => {
   const { content, title, createdAt, updatedAt } = toDoDetail;
+  console.log(isEdit);
   return (
     <Container>
       <ToDoDetailWrap>
@@ -108,26 +127,80 @@ const ToDoDetailView = ({ toDoDetail, onClickCancel }: ITodoDetailProps) => {
 
         <ToDoDetailContent>
           <div className="title">
-            <span>ToDo 제목</span>
-            <p> {title}</p>
+            {isEdit && (
+              <React.Fragment>
+                <span className="toDoDetail-sortation">ToDo 제목</span>
+                <p> {title}</p>
+              </React.Fragment>
+            )}
+
+            {!isEdit && (
+              <TextField
+                label="Title"
+                name="title"
+                fullWidth={true}
+                autoFocus={true}
+                helperText="제목은 최소 5글자 작성해주세요!"
+                placeholder="작성할 ToDo의 제목을 입력해주세요."
+                required
+                size="small"
+                color="warning"
+                // onChange={onChangeTitle}
+                margin="normal"
+                value={title}
+              />
+            )}
           </div>
           <div className="content">
-            <span>ToDo 내용</span>
-            <p> {content}</p>
-          </div>
-          <div className="todoDateWrap">
-            <div className="createdAt">
-              <span>ToDo 작성 시간</span>
-              <p> {createdAt}</p>
-            </div>
-            <div className="updatedAt">
-              <span>ToDo 최근 수정</span>
-              <p> {updatedAt}</p>
-            </div>
+            {isEdit && (
+              <React.Fragment>
+                <span className="toDoDetail-sortation">ToDo 내용</span>{" "}
+                <p> {content}</p>
+              </React.Fragment>
+            )}
+
+            {!isEdit && (
+              <TextField
+                label="Content"
+                name="content"
+                fullWidth={true}
+                minRows={5}
+                multiline
+                helperText="내용은 최소 5글자 작성해주세요!"
+                placeholder="작성할 ToDo의 내용을 입력해주세요."
+                required
+                color="warning"
+                value={content}
+                // onChange={onChangeContent}
+              />
+            )}
           </div>
 
+          {isEdit && (
+            <div className="todoDateWrap">
+              <div className="createdAt">
+                <span className="toDoDetail-sortation">ToDo 작성 시간</span>
+                <p> {createdAt}</p>
+              </div>
+              <div className="updatedAt">
+                <span className="toDoDetail-sortation">ToDo 최근 수정</span>
+                <p> {updatedAt}</p>
+              </div>
+            </div>
+          )}
+
           <DetailControl>
-            <button className="update">수정</button>
+            {!isEdit && (
+              <button className="update" onClick={() => onClickEdit()}>
+                수정
+              </button>
+            )}
+            {isEdit && (
+              <button className="update" onClick={() => onClickSave()}>
+                저장
+              </button>
+            )}
+
             <button className="cancel" onClick={onClickCancel}>
               취소
             </button>
