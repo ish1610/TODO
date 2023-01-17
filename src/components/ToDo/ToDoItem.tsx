@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToDoAPI } from "../../api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";

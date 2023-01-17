@@ -1,10 +1,10 @@
-export interface ToDo {
+export type ToDo = {
   content: string;
   createdAt: string;
   id: string;
   title: string;
   updatedAt: string;
-}
+};
 
 export type ToDoInputValue = Pick<ToDo, "title" | "content">;
 
@@ -38,6 +38,10 @@ export interface IToDoItemProps {
   toDo: ToDo;
 }
 
+export interface ITodoDetailProps {
+  toDoDetail: ToDo;
+}
+
 export type AddToDoBtn = { disabledAddToDo: boolean };
 
 export type OnCloseModal = (
@@ -48,6 +52,7 @@ export type OnCloseModal = (
 
 export type ToDoListState = {
   toDoList: ToDo[];
+  toDoDetail: ToDo;
 };
 
 export type GetToDoCb = (toDoList: ToDo[]) => void;

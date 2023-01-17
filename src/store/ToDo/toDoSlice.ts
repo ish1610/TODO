@@ -4,6 +4,7 @@ import { ToDoListState } from "../../types/todos";
 
 const initialToDoState: ToDoListState = {
   toDoList: [],
+  toDoDetail: { content: "", createdAt: "", id: "", title: "", updatedAt: "" },
 };
 
 const toDoSlice = createSlice({
@@ -24,7 +25,13 @@ const toDoSlice = createSlice({
       state.toDoList = filtedToDo;
     },
     DetailToDo: (state, action) => {
-      console.log(action.payload);
+      const toDoDetail = state.toDoList.find(
+        (todo) => todo.id === action.payload.id
+      );
+
+      if (toDoDetail) {
+        state.toDoDetail = toDoDetail;
+      }
     },
   },
 });
