@@ -99,7 +99,7 @@ const DetailControl = styled.div`
   }
 `;
 
-const ToDoDetailView = ({ toDoDetail }: ITodoDetailProps) => {
+const ToDoDetailView = ({ toDoDetail, onClickCancel }: ITodoDetailProps) => {
   const { content, title, createdAt, updatedAt } = toDoDetail;
   return (
     <Container>
@@ -128,7 +128,9 @@ const ToDoDetailView = ({ toDoDetail }: ITodoDetailProps) => {
 
           <DetailControl>
             <button className="update">수정</button>
-            <button className="cancel">취소</button>
+            <button className="cancel" onClick={onClickCancel}>
+              취소
+            </button>
           </DetailControl>
         </ToDoDetailContent>
       </ToDoDetailWrap>
