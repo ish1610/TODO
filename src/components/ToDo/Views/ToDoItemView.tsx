@@ -81,7 +81,7 @@ const ToDoItemContent = styled.div`
   }
 
   h3 {
-    width: 380px;
+    width: 420px;
     font-weight: 700;
     font-size: 22px;
     padding-bottom: 12px;
@@ -119,8 +119,10 @@ const ToDoItemView = ({ toDo, onClickDelete }: IToDoItemProps) => {
     <ToDoItemWrap>
       <ToDoItemIcon src={todoIconMonky} />
       <ToDoControl>
-        <RiZoomInLine />
-        <RiPencilFill />
+        <button>
+          <RiZoomInLine />
+        </button>
+
         <button onClick={() => onClickDelete(id)}>
           <RiDeleteBin5Line />
         </button>
