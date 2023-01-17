@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ToDoAPI } from "../../api/toDo";
+
 import { ToDoListState } from "../../types/todos";
 
 const initialToDoState: ToDoListState = {
@@ -15,6 +15,13 @@ const toDoSlice = createSlice({
     },
     getToDoList: (state, action) => {
       state.toDoList = action.payload;
+    },
+    deleteToDo: (state, action) => {
+      const filtedToDo = state.toDoList.filter(
+        (toDo) => toDo.id !== action.payload
+      );
+
+      state.toDoList = filtedToDo;
     },
   },
 });

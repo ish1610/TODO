@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 
 import { blue, orange } from "../../../styles/commonColor";
-import { IToDoListProps } from "../../../types/todos";
+import { IToDoListProps, ToDo } from "../../../types/todos";
+import ToDoItem from "../ToDoItem";
 import NoneTodoView from "./NoneTodoView";
-import ToDoItem from "./ToDoItemView";
 
 const Container = styled.ul`
   width: 100%;
@@ -38,8 +38,8 @@ const ToDoListView = ({ onShowModal, toDoList }: IToDoListProps) => {
 
       {!toDoList?.length && <NoneTodoView />}
 
-      {toDoList?.map((toDo, idx) => (
-        <ToDoItem key={idx} {...toDo} />
+      {toDoList?.map((toDo: ToDo) => (
+        <ToDoItem key={toDo.id} toDo={toDo} />
       ))}
     </Container>
   );

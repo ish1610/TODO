@@ -28,8 +28,13 @@ export interface IAddToDoModalViewProps {
   disabledAddToDo: boolean;
   onClickAddToDo: () => void;
   onClickCancel: () => void;
-  onChangedTitle: (e: any) => void;
-  onChangedContent: (e: any) => void;
+  onChangeTitle: (e: any) => void;
+  onChangeContent: (e: any) => void;
+}
+
+export interface IToDoItemProps {
+  onClickDelete: (id: string) => void;
+  toDo: ToDo;
 }
 
 export type AddToDoBtn = { disabledAddToDo: boolean };

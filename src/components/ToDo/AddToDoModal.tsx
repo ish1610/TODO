@@ -41,12 +41,13 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
     isShowModal,
     disabledAddToDo: handleDisabledAddToDo(toDoInput),
     onClickAddToDo: () => onClickAddToDo(toDoInput),
+
     onClickCancel: () => onClickCancel(),
-    onChangedTitle: (e) =>
+    onChangeTitle: (e) =>
       setToDoInput((prev) => {
         return { ...prev, title: e.target.value };
       }),
-    onChangedContent: (e) =>
+    onChangeContent: (e) =>
       setToDoInput((prev) => {
         return { ...prev, content: e.target.value };
       }),

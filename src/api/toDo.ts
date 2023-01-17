@@ -1,11 +1,12 @@
 import axios from "axios";
 import { CreateToDoCb, GetToDoCb, ToDo, ToDoInputValue } from "../types/todos";
 import { getDate } from "../util/date";
+import { randomString } from "../util/randomString";
 
 export const ToDoAPI = {
   createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
     const newToDo = {
-      id: "1",
+      id: randomString(10),
       createdAt: getDate(),
       updatedAt: getDate(),
       ...toDo,
@@ -37,6 +38,25 @@ export const ToDoAPI = {
       })
       .catch((error) => {
         console.log(`🚨 getToDoAPI : ${error.message}`);
+      });
+  },
+  deleteToDo: (id: string, deleteToDoCb: any) => {
+    axios
+      .delete(
+        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json`,
+        {
+          data: {
+            id: id,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          deleteToDoCb(id);
+        }
+      })
+      .catch((error) => {
+        console.log(`🚨 deleteToDoAPI : ${error.message}`);
       });
   },
 };

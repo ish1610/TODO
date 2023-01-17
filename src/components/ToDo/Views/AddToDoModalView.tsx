@@ -110,8 +110,8 @@ const AddToDoModalView = ({
   disabledAddToDo = false,
   onClickAddToDo,
   onClickCancel,
-  onChangedTitle,
-  onChangedContent,
+  onChangeTitle,
+  onChangeContent,
 }: IAddToDoModalViewProps) => {
   return (
     <React.Fragment>
@@ -134,7 +134,7 @@ const AddToDoModalView = ({
                 required
                 size="small"
                 color="warning"
-                onChange={onChangedTitle}
+                onChange={onChangeTitle}
                 margin="normal"
               />
 
@@ -148,7 +148,7 @@ const AddToDoModalView = ({
                 placeholder="작성할 ToDo의 내용을 입력해주세요."
                 required
                 color="warning"
-                onChange={onChangedContent}
+                onChange={onChangeContent}
               />
             </AddToDoInputWrap>
           </form>

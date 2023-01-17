@@ -9,7 +9,7 @@ import {
   yellow,
 } from "../../../styles/commonColor";
 
-import { ToDo } from "../../../types/todos";
+import { IToDoItemProps, ToDo } from "../../../types/todos";
 
 const ToDoItemWrap = styled.li`
   position: relative;
@@ -55,7 +55,7 @@ const ToDoControl = styled.div`
     margin-right: 10px;
 
     transition: 0.3s;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 
   svg:nth-of-type(1):hover,
@@ -112,14 +112,18 @@ const ToDoItemContent = styled.div`
   }
 `;
 
-const ToDoItemView = ({ title, content, createdAt }: ToDo) => {
+const ToDoItemView = ({ toDo, onClickDelete }: IToDoItemProps) => {
+  const { title, createdAt, content, id } = toDo;
+
   return (
     <ToDoItemWrap>
       <ToDoItemIcon src={todoIconMonky} />
       <ToDoControl>
         <RiZoomInLine />
         <RiPencilFill />
-        <RiDeleteBin5Line />
+        <button onClick={() => onClickDelete(id)}>
+          <RiDeleteBin5Line />
+        </button>
       </ToDoControl>
 
       <ToDoItemContent>
