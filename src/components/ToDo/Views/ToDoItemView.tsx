@@ -46,6 +46,7 @@ const ToDoItemIcon = styled.img`
 
 const ToDoControl = styled.div`
   position: absolute;
+  z-index: 1;
   top: 10px;
   right: 10px;
 
@@ -53,17 +54,14 @@ const ToDoControl = styled.div`
     width: 28px;
     height: 28px;
     margin-right: 10px;
-
     transition: 0.3s;
-    /* cursor: pointer; */
   }
 
-  svg:nth-of-type(1):hover,
-  svg:nth-of-type(2):hover {
+  .detail svg:hover {
     color: ${orange};
   }
 
-  svg:nth-of-type(3):hover {
+  .delete svg:hover {
     color: ${warning};
   }
 `;
@@ -112,18 +110,22 @@ const ToDoItemContent = styled.div`
   }
 `;
 
-const ToDoItemView = ({ toDo, onClickDelete }: IToDoItemProps) => {
+const ToDoItemView = ({
+  toDo,
+  onClickDelete,
+  onClickDetail,
+}: IToDoItemProps) => {
   const { title, createdAt, content, id } = toDo;
 
   return (
     <ToDoItemWrap>
       <ToDoItemIcon src={todoIconMonky} />
       <ToDoControl>
-        <button>
+        <button className="detail" onClick={() => onClickDetail(id)}>
           <RiZoomInLine />
         </button>
 
-        <button onClick={() => onClickDelete(id)}>
+        <button className="delete" onClick={() => onClickDelete(id)}>
           <RiDeleteBin5Line />
         </button>
       </ToDoControl>

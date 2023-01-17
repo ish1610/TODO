@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { ToDoAPI } from "../../api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { IToDoItemProps, ToDo } from "../../types/todos";
@@ -6,6 +7,7 @@ import ToDoItemView from "./Views/ToDoItemView";
 
 const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onClickDelete = (id: string) => {
     if (window.confirm("ToDo를 정말 삭제하시겠습니까?")) {
@@ -15,8 +17,13 @@ const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
     }
   };
 
+  const onClickDetail = (id: string) => {
+    navigate(`/toDoDetail/${id}`);
+  };
+
   const ToDoItemProps: IToDoItemProps = {
     onClickDelete: (id) => onClickDelete(id),
+    onClickDetail: (id) => onClickDetail(id),
     toDo,
   };
 

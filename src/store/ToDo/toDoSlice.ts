@@ -23,6 +23,9 @@ const toDoSlice = createSlice({
 
       state.toDoList = filtedToDo;
     },
+    DetailToDo: (state, action) => {
+      console.log(action.payload);
+    },
   },
 });
 

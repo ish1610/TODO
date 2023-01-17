@@ -34,6 +34,7 @@ export interface IAddToDoModalViewProps {
 
 export interface IToDoItemProps {
   onClickDelete: (id: string) => void;
+  onClickDetail: (id: string) => void;
   toDo: ToDo;
 }
 
