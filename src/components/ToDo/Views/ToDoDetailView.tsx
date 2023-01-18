@@ -14,7 +14,7 @@ import EmptyTodoView from "../../Common/Views/Empty/EmptyTodoView";
 
 const Container = styled.div`
   ${flexCenter}
-  padding-top: 150px;
+  padding-top: 120px;
 `;
 const ToDoDetailWrap = styled.div`
   margin-top: 50px;
@@ -37,7 +37,7 @@ const ToDoDetailContent = styled.section`
   border: 3px solid ${yellow};
   border-top: none;
 
-  padding: 0 20px 50px;
+  padding: 50px 20px 50px;
 
   .title,
   .content,
