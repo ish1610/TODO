@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ToDoAPI } from "../../api/toDo";
+import { ToDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { IToDoItemProps, ToDo } from "./types/todos";
 import ToDoItemView from "./Views/ToDoItemView";

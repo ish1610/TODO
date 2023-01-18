@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { ToDoAPI } from "../../api/toDo";
+import { ToDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 
 import { IToDoLayoutProps, ToDo } from "./types/todos";
