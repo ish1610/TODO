@@ -10,9 +10,11 @@ import {
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ITodoDetailProps } from "../types/todos";
 import { TextField } from "@mui/material";
+import EmptyTodoView from "../../Common/Views/Empty/EmptyTodoView";
 
 const Container = styled.div`
   ${flexCenter}
+  padding-top: 150px;
 `;
 const ToDoDetailWrap = styled.div`
   margin-top: 50px;
@@ -35,7 +37,7 @@ const ToDoDetailContent = styled.section`
   border: 3px solid ${yellow};
   border-top: none;
 
-  padding: 40px 20px 50px;
+  padding: 0 20px 50px;
 
   .title,
   .content,
@@ -131,98 +133,105 @@ const ToDoDetailView = ({
 }: ITodoDetailProps) => {
   const { content, title, createdAt, updatedAt } = toDoDetail;
   const { content: prevContent, title: prevTitle } = toDoInput;
-  console.log(isDisabledEditToDo);
+  console.log(toDoDetail);
+
   return (
     <Container>
-      <ToDoDetailWrap>
-        <header>ToDo 상세보기</header>
+      {!content && !title && (
+        <EmptyTodoView>ToDo 정보를 확인 할 수 없습니다.</EmptyTodoView>
+      )}
 
-        <ToDoDetailContent>
-          <div className="title">
-            {!isEdit && (
-              <React.Fragment>
-                <span className="toDoDetail-sortation">ToDo 제목</span>
-                <p> {title}</p>
-              </React.Fragment>
-            )}
+      {content && title && (
+        <ToDoDetailWrap>
+          <header>ToDo 상세보기</header>
 
-            {isEdit && (
-              <TextField
-                label="Title"
-                name="title"
-                fullWidth={true}
-                autoFocus={true}
-                helperText="제목은 최소 5글자 작성해주세요!"
-                placeholder="작성할 ToDo의 제목을 입력해주세요."
-                required
-                size="small"
-                color="warning"
-                onChange={onChangeTitle}
-                margin="dense"
-                value={prevTitle}
-              />
-            )}
-          </div>
-          <div className="content">
-            {!isEdit && (
-              <React.Fragment>
-                <span className="toDoDetail-sortation">ToDo 내용</span>
-                <p> {content}</p>
-              </React.Fragment>
-            )}
+          <ToDoDetailContent>
+            <div className="title">
+              {!isEdit && (
+                <React.Fragment>
+                  <span className="toDoDetail-sortation">ToDo 제목</span>
+                  <p> {title}</p>
+                </React.Fragment>
+              )}
 
-            {isEdit && (
-              <TextField
-                label="Content"
-                name="content"
-                fullWidth={true}
-                minRows={5}
-                multiline
-                helperText="내용은 최소 5글자 작성해주세요!"
-                placeholder="작성할 ToDo의 내용을 입력해주세요."
-                required
-                color="warning"
-                value={prevContent}
-                onChange={onChangeContent}
-              />
-            )}
-          </div>
-
-          {!isEdit && (
-            <div className="todoDateWrap">
-              <div className="createdAt">
-                <span className="toDoDetail-sortation">ToDo 작성 시간</span>
-                <p> {createdAt}</p>
-              </div>
-              <div className="updatedAt">
-                <span className="toDoDetail-sortation">ToDo 최근 수정</span>
-                <p> {updatedAt}</p>
-              </div>
+              {isEdit && (
+                <TextField
+                  label="Title"
+                  name="title"
+                  fullWidth={true}
+                  autoFocus={true}
+                  helperText="제목은 최소 5글자 작성해주세요!"
+                  placeholder="작성할 ToDo의 제목을 입력해주세요."
+                  required
+                  size="small"
+                  color="warning"
+                  onChange={onChangeTitle}
+                  margin="dense"
+                  value={prevTitle}
+                />
+              )}
             </div>
-          )}
+            <div className="content">
+              {!isEdit && (
+                <React.Fragment>
+                  <span className="toDoDetail-sortation">ToDo 내용</span>
+                  <p> {content}</p>
+                </React.Fragment>
+              )}
 
-          <DetailControl isDisabled={isDisabledEditToDo}>
+              {isEdit && (
+                <TextField
+                  label="Content"
+                  name="content"
+                  fullWidth={true}
+                  minRows={5}
+                  multiline
+                  helperText="내용은 최소 5글자 작성해주세요!"
+                  placeholder="작성할 ToDo의 내용을 입력해주세요."
+                  required
+                  color="warning"
+                  value={prevContent}
+                  onChange={onChangeContent}
+                />
+              )}
+            </div>
+
             {!isEdit && (
-              <button className="update" onClick={() => onClickEdit()}>
-                수정
-              </button>
-            )}
-            {isEdit && (
-              <button
-                className="update"
-                onClick={() => onClickSave()}
-                disabled={isDisabledEditToDo}
-              >
-                저장
-              </button>
+              <div className="todoDateWrap">
+                <div className="createdAt">
+                  <span className="toDoDetail-sortation">ToDo 작성 시간</span>
+                  <p> {createdAt}</p>
+                </div>
+                <div className="updatedAt">
+                  <span className="toDoDetail-sortation">ToDo 최근 수정</span>
+                  <p> {updatedAt}</p>
+                </div>
+              </div>
             )}
 
-            <button className="cancel" onClick={onClickCancel}>
-              취소
-            </button>
-          </DetailControl>
-        </ToDoDetailContent>
-      </ToDoDetailWrap>
+            <DetailControl isDisabled={isDisabledEditToDo}>
+              {!isEdit && (
+                <button className="update" onClick={() => onClickEdit()}>
+                  수정
+                </button>
+              )}
+              {isEdit && (
+                <button
+                  className="update"
+                  onClick={() => onClickSave()}
+                  disabled={isDisabledEditToDo}
+                >
+                  저장
+                </button>
+              )}
+
+              <button className="cancel" onClick={onClickCancel}>
+                취소
+              </button>
+            </DetailControl>
+          </ToDoDetailContent>
+        </ToDoDetailWrap>
+      )}
     </Container>
   );
 };

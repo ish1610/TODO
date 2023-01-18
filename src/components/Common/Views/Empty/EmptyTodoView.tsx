@@ -1,9 +1,7 @@
-import React from "react";
-
 import styled from "@emotion/styled";
-import { orange } from "../../Common/styles/commonColor";
-import backgroundImg from "../../../assets/images/homeBackground.png";
-import { flexCenter } from "../../Common/styles/FlexCenter";
+import { orange } from "../../styles/commonColor";
+import backgroundImg from "../../../../assets/images/homeBackground.png";
+import { flexCenter } from "../../styles/FlexCenter";
 
 const NoneTodo = styled.div`
   width: 80%;
@@ -37,15 +35,15 @@ const NoneTodoContent = styled.div`
   }
 `;
 
-const NoneTodoView = () => {
+const EmptyTodoView = ({ children }: { children: React.ReactNode }) => {
   return (
     <NoneTodo>
       <BackGroundImg />
       <NoneTodoContent>
-        <h2>작성한 게시글이 없어요 😭</h2>
+        <h2>{children} 😭</h2>
       </NoneTodoContent>
     </NoneTodo>
   );
 };
 
-export default NoneTodoView;
+export default EmptyTodoView;
