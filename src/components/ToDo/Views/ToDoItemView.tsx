@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import todoIconMonky from "../../../assets/images/todoIcon-monky.png";
 
-import { RiDeleteBin5Line, RiPencilFill, RiZoomInLine } from "react-icons/ri";
+import { RiDeleteBin5Line, RiZoomInLine } from "react-icons/ri";
 import {
   boxShadow,
   orange,

@@ -107,7 +107,7 @@ const AddToDoControl = styled.div<{ disabledAddToDo: boolean }>`
 
 const AddToDoModalView = ({
   isShowModal,
-  disabledAddToDo = false,
+  isDisabledAddToDo,
   onClickAddToDo,
   onClickCancel,
   onChangeTitle,
@@ -153,10 +153,10 @@ const AddToDoModalView = ({
             </AddToDoInputWrap>
           </form>
 
-          <AddToDoControl disabledAddToDo={disabledAddToDo}>
+          <AddToDoControl disabledAddToDo={isDisabledAddToDo}>
             <button
               className="add-todo"
-              disabled={disabledAddToDo}
+              disabled={isDisabledAddToDo}
               onClick={onClickAddToDo}
             >
               작성
