@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { lightOrange, orange, yellow } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ITodoDetailProps } from "../types/todos";
-import { TextField } from "@mui/material";
+import { Input, TextField } from "@mui/material";
 
 const Container = styled.div`
   ${flexCenter}
@@ -114,12 +114,15 @@ const DetailControl = styled.div`
 const ToDoDetailView = ({
   toDoDetail,
   isEdit,
+  toDoInput,
   onClickCancel,
   onClickEdit,
   onClickSave,
+  onChangeTitle,
+  onChangeContent,
 }: ITodoDetailProps) => {
   const { content, title, createdAt, updatedAt } = toDoDetail;
-  console.log(isEdit);
+  const { content: prevContent, title: prevTitle } = toDoInput;
   return (
     <Container>
       <ToDoDetailWrap>
@@ -145,16 +148,16 @@ const ToDoDetailView = ({
                 required
                 size="small"
                 color="warning"
-                // onChange={onChangeTitle}
-                margin="normal"
-                value={title}
+                onChange={onChangeTitle}
+                margin="dense"
+                value={prevTitle}
               />
             )}
           </div>
           <div className="content">
             {isEdit && (
               <React.Fragment>
-                <span className="toDoDetail-sortation">ToDo 내용</span>{" "}
+                <span className="toDoDetail-sortation">ToDo 내용</span>
                 <p> {content}</p>
               </React.Fragment>
             )}
@@ -170,8 +173,8 @@ const ToDoDetailView = ({
                 placeholder="작성할 ToDo의 내용을 입력해주세요."
                 required
                 color="warning"
-                value={content}
-                // onChange={onChangeContent}
+                value={prevContent}
+                onChange={onChangeContent}
               />
             )}
           </div>

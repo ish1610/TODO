@@ -39,7 +39,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
-    isDisabledAddToDo,
+    isDisabledAddToDo: isDisabledAddToDo(toDoInput),
     onClickAddToDo: () => onClickAddToDo(toDoInput),
 
     onClickCancel: () => onClickCancel(),

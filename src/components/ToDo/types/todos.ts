@@ -41,9 +41,12 @@ export interface IToDoItemProps {
 export interface ITodoDetailProps {
   toDoDetail: ToDo;
   isEdit: boolean;
+  toDoInput: ToDoInputValue;
   onClickCancel: () => void;
   onClickEdit: () => void;
   onClickSave: () => void;
+  onChangeTitle: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChangeContent: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export type AddToDoBtn = { disabledAddToDo: boolean };

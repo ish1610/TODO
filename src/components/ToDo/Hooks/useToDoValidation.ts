@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ToDoInputValue } from "../types/todos";
 
-const useToDoValidation = () => {
-  const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
+const useToDoValidation = (toDoContent = { title: "", content: "" }) => {
+  const [toDoInput, setToDoInput] = useState(toDoContent);
 
   const handleDisabledToDo = (inputValue: ToDoInputValue) => {
     const inputValues = [inputValue.title, inputValue.content];
@@ -13,7 +13,8 @@ const useToDoValidation = () => {
   return {
     toDoInput,
     setToDoInput,
-    isDisabledToDo: handleDisabledToDo(toDoInput),
+    isDisabledToDo: (inputValue: ToDoInputValue) =>
+      handleDisabledToDo(inputValue),
   };
 };
 
