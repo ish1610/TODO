@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { ToDoAPI } from "../../api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 
-import { IToDoLayoutProps, ToDo } from "../../types/todos";
+import { IToDoLayoutProps, ToDo } from "./types/todos";
 import ToDoLayoutView from "./Views/ToDoLayoutView";
 
 const ToDoLayout = () => {

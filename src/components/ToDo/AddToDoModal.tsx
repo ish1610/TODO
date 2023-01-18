@@ -7,7 +7,7 @@ import {
   IAddToDoModalViewProps,
   ToDo,
   ToDoInputValue,
-} from "../../types/todos";
+} from "./types/todos";
 import AddToDoModalView from "./Views/AddToDoModalView";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {

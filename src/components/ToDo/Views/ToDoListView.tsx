@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import { blue, orange } from "../../../styles/commonColor";
-import { IToDoListProps, ToDo } from "../../../types/todos";
+import { IToDoListProps, ToDo } from "../types/todos";
 import ToDoItem from "../ToDoItem";
 import NoneTodoView from "./NoneTodoView";
 

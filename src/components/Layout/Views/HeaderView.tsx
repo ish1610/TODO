@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import logo from "../../../assets/images/homeBackground.png";
 import { blue } from "../../../styles/commonColor";
 import { flexCenter } from "../../../styles/FlexCenter";
-import HeaderControllView from "./HeaderControllView";
 
 const HeaderWrap = styled.header`
   display: flex;
@@ -33,7 +32,6 @@ const HeaderView = () => {
       <HeaderLogoWrap>
         <img src={logo} alt="ToDo's logo" />
         <h1>ToDo's</h1>
-        <HeaderControllView />
       </HeaderLogoWrap>
     </HeaderWrap>
   );

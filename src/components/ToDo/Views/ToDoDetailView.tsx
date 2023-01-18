@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { lightOrange, orange, yellow } from "../../../styles/commonColor";
 import { flexCenter } from "../../../styles/FlexCenter";
-import { ITodoDetailProps } from "../../../types/todos";
+import { ITodoDetailProps } from "../types/todos";
 import { TextField } from "@mui/material";
 
 const Container = styled.div`

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
-import { ITodoDetailProps } from "../../types/todos";
+import { ITodoDetailProps } from "./types/todos";
 import ToDoDetailView from "./Views/ToDoDetailView";
 
 const ToDoDetail = () => {

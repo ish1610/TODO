@@ -9,7 +9,7 @@ import {
   yellow,
 } from "../../../styles/commonColor";
 
-import { IToDoItemProps, ToDo } from "../../../types/todos";
+import { IToDoItemProps, ToDo } from "../types/todos";
 
 const ToDoItemWrap = styled.li`
   position: relative;

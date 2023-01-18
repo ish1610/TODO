@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import { TextField } from "@mui/material";
-import { IAddToDoModalViewProps } from "../../../types/todos";
+import { IAddToDoModalViewProps } from "../types/todos";
 import { flexCenter } from "../../../styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
 import {

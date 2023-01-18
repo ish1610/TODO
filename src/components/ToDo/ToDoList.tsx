@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { IToDoListProps } from "../../types/todos";
+import { IToDoListProps } from "./types/todos";
 import ToDoListView from "./Views/ToDoListView";
 
 const ToDoList = ({ onShowModal }: IToDoListProps) => {

@@ -1,7 +1,12 @@
 import axios from "axios";
-import { CreateToDoCb, GetToDoCb, ToDo, ToDoInputValue } from "../types/todos";
-import { getDate } from "../util/date";
-import { randomString } from "../util/randomString";
+import {
+  CreateToDoCb,
+  GetToDoCb,
+  ToDo,
+  ToDoInputValue,
+} from "../components/ToDo/types/todos";
+import { randomString } from "../components/Common/Util/randomString";
+import { getDate } from "../components/Common/Util/date";
 
 export const ToDoAPI = {
   createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
