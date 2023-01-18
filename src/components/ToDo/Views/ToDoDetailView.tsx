@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { lightOrange, orange, yellow } from "../../Common/styles/commonColor";
+import {
+  cancel,
+  lightOrange,
+  orange,
+  yellow,
+} from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ITodoDetailProps } from "../types/todos";
-import { Input, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const Container = styled.div`
   ${flexCenter}
@@ -81,7 +86,7 @@ const ToDoDetailContent = styled.section`
   }
 `;
 
-const DetailControl = styled.div`
+const DetailControl = styled.div<{ isDisabled: boolean }>`
   ${flexCenter}
   margin-top: 50px;
 
@@ -91,21 +96,23 @@ const DetailControl = styled.div`
   }
 
   .update {
-    border: 1px solid ${orange};
-    color: ${orange};
+    border: 1px solid ${(props) => (props.isDisabled ? cancel : orange)};
+    cursor: ${(props) => (props.isDisabled ? "not-allowed" : "pointer")};
+    background-color: ${(props) => (props.isDisabled ? cancel : "#fff")};
+    color: ${(props) => (props.isDisabled ? "#fff" : orange)};
     font-family: inherit;
     font-weight: 700;
     transition: 0.2s;
   }
 
   .update:hover {
-    background-color: ${orange};
-    color: #fff;
+    color: ${(props) => (props.isDisabled ? "" : "#fff")};
+    background-color: ${(props) => (props.isDisabled ? cancel : orange)};
   }
 
   .cancel {
-    border: 1px solid #ececec;
-    background-color: #ececec;
+    border: 1px solid ${cancel};
+    background-color: ${cancel};
     color: #555;
     margin-left: 30px;
   }
@@ -115,6 +122,7 @@ const ToDoDetailView = ({
   toDoDetail,
   isEdit,
   toDoInput,
+  isDisabledEditToDo,
   onClickCancel,
   onClickEdit,
   onClickSave,
@@ -123,6 +131,7 @@ const ToDoDetailView = ({
 }: ITodoDetailProps) => {
   const { content, title, createdAt, updatedAt } = toDoDetail;
   const { content: prevContent, title: prevTitle } = toDoInput;
+  console.log(isDisabledEditToDo);
   return (
     <Container>
       <ToDoDetailWrap>
@@ -130,14 +139,14 @@ const ToDoDetailView = ({
 
         <ToDoDetailContent>
           <div className="title">
-            {isEdit && (
+            {!isEdit && (
               <React.Fragment>
                 <span className="toDoDetail-sortation">ToDo 제목</span>
                 <p> {title}</p>
               </React.Fragment>
             )}
 
-            {!isEdit && (
+            {isEdit && (
               <TextField
                 label="Title"
                 name="title"
@@ -155,14 +164,14 @@ const ToDoDetailView = ({
             )}
           </div>
           <div className="content">
-            {isEdit && (
+            {!isEdit && (
               <React.Fragment>
                 <span className="toDoDetail-sortation">ToDo 내용</span>
                 <p> {content}</p>
               </React.Fragment>
             )}
 
-            {!isEdit && (
+            {isEdit && (
               <TextField
                 label="Content"
                 name="content"
@@ -179,7 +188,7 @@ const ToDoDetailView = ({
             )}
           </div>
 
-          {isEdit && (
+          {!isEdit && (
             <div className="todoDateWrap">
               <div className="createdAt">
                 <span className="toDoDetail-sortation">ToDo 작성 시간</span>
@@ -192,14 +201,18 @@ const ToDoDetailView = ({
             </div>
           )}
 
-          <DetailControl>
+          <DetailControl isDisabled={isDisabledEditToDo}>
             {!isEdit && (
               <button className="update" onClick={() => onClickEdit()}>
                 수정
               </button>
             )}
             {isEdit && (
-              <button className="update" onClick={() => onClickSave()}>
+              <button
+                className="update"
+                onClick={() => onClickSave()}
+                disabled={isDisabledEditToDo}
+              >
                 저장
               </button>
             )}

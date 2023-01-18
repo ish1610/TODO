@@ -42,6 +42,7 @@ export interface ITodoDetailProps {
   toDoDetail: ToDo;
   isEdit: boolean;
   toDoInput: ToDoInputValue;
+  isDisabledEditToDo: boolean;
   onClickCancel: () => void;
   onClickEdit: () => void;
   onClickSave: () => void;

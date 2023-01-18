@@ -71,7 +71,7 @@ const AddToDoInputWrap = styled.div`
   }
 `;
 
-const AddToDoControl = styled.div<{ disabledAddToDo: boolean }>`
+const AddToDoControl = styled.div<{ isDisabled: boolean }>`
   ${flexCenter}
   padding-bottom: 20px;
   button {
@@ -84,18 +84,16 @@ const AddToDoControl = styled.div<{ disabledAddToDo: boolean }>`
     color: #fff;
     transition: 0.2s;
 
-    cursor: ${(props) => (props.disabledAddToDo ? "default" : "pointer")};
+    cursor: ${(props) => (props.isDisabled ? "not-allowed" : "pointer")};
 
-    background-color: ${(props) =>
-      props.disabledAddToDo ? cancel : lightOrange};
+    background-color: ${(props) => (props.isDisabled ? cancel : lightOrange)};
 
-    border: 1px solid
-      ${(props) => (props.disabledAddToDo ? cancel : lightOrange)};
+    border: 1px solid ${(props) => (props.isDisabled ? cancel : lightOrange)};
   }
 
   .add-todo:hover {
-    color: ${(props) => (props.disabledAddToDo ? "fff" : lightOrange)};
-    background-color: ${(props) => (props.disabledAddToDo ? cancel : "#fff")};
+    color: ${(props) => (props.isDisabled ? "fff" : lightOrange)};
+    background-color: ${(props) => (props.isDisabled ? cancel : "#fff")};
   }
 
   .cancel-todo {
@@ -153,7 +151,7 @@ const AddToDoModalView = ({
             </AddToDoInputWrap>
           </form>
 
-          <AddToDoControl disabledAddToDo={isDisabledAddToDo}>
+          <AddToDoControl isDisabled={isDisabledAddToDo}>
             <button
               className="add-todo"
               disabled={isDisabledAddToDo}

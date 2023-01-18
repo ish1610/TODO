@@ -8,10 +8,12 @@ import ToDoDetailView from "./Views/ToDoDetailView";
 
 const ToDoDetail = () => {
   const toDoDetail = useSelector((state: any) => state.toDoList.toDoDetail);
-  const { toDoInput, setToDoInput, isDisabledToDo } =
-    useToDoValidation(toDoDetail);
+  const {
+    toDoInput,
+    setToDoInput,
+    isDisabledToDo: isDisabledEditToDo,
+  } = useToDoValidation(toDoDetail);
 
-  console.log(toDoInput);
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,6 +36,7 @@ const ToDoDetail = () => {
     toDoDetail,
     isEdit,
     toDoInput,
+    isDisabledEditToDo: isDisabledEditToDo(toDoInput),
     onClickCancel,
     onClickEdit,
     onClickSave,
