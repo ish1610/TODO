@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 import logo from "../../../assets/images/homeBackground.png";
-import { blue } from "../../../styles/commonColor";
-import { flexCenter } from "../../../styles/FlexCenter";
+import { blue } from "../../Common/styles/commonColor";
+import { flexCenter } from "../../Common/styles/FlexCenter";
 
 const HeaderWrap = styled.header`
   display: flex;

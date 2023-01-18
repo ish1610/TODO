@@ -1,9 +1,9 @@
 import React from "react";
 
 import styled from "@emotion/styled";
-import { orange } from "../../../styles/commonColor";
+import { orange } from "../../Common/styles/commonColor";
 import backgroundImg from "../../../assets/images/homeBackground.png";
-import { flexCenter } from "../../../styles/FlexCenter";
+import { flexCenter } from "../../Common/styles/FlexCenter";
 
 const NoneTodo = styled.div`
   width: 80%;

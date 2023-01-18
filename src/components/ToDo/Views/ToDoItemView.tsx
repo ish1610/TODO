@@ -7,7 +7,7 @@ import {
   orange,
   warning,
   yellow,
-} from "../../../styles/commonColor";
+} from "../../Common/styles/commonColor";
 
 import { IToDoItemProps, ToDo } from "../types/todos";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { lightOrange, orange, yellow } from "../../../styles/commonColor";
-import { flexCenter } from "../../../styles/FlexCenter";
+import { lightOrange, orange, yellow } from "../../Common/styles/commonColor";
+import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ITodoDetailProps } from "../types/todos";
 import { TextField } from "@mui/material";
 

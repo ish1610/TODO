@@ -3,14 +3,14 @@ import styled from "@emotion/styled";
 
 import { TextField } from "@mui/material";
 import { IAddToDoModalViewProps } from "../types/todos";
-import { flexCenter } from "../../../styles/FlexCenter";
+import { flexCenter } from "../../Common/styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
 import {
   boxShadow,
   blue,
   cancel,
   lightOrange,
-} from "../../../styles/commonColor";
+} from "../../Common/styles/commonColor";
 
 import { yellow } from "@mui/material/colors";
 
