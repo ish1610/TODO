@@ -133,7 +133,6 @@ const ToDoDetailView = ({
 }: ITodoDetailProps) => {
   const { content, title, createdAt, updatedAt } = toDoDetail;
   const { content: prevContent, title: prevTitle } = toDoInput;
-  console.log(toDoDetail);
 
   return (
     <Container>

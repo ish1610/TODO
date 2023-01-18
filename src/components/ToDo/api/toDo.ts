@@ -1,20 +1,26 @@
 import axios from "axios";
-import { CreateToDoCb, GetToDoCb, ToDo, ToDoInputValue } from "../types/todos";
+import {
+  CreateToDoCb,
+  DeleteToDoCb,
+  GetToDoCb,
+  ToDo,
+  ToDoInputValue,
+} from "../types/todos";
 import { randomString } from "../../Common/Util/randomString";
 import { getDate } from "../../Common/Util/date";
 
 export const ToDoAPI = {
   createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
     const newToDo = {
-      id: randomString(10),
+      id: randomString(20),
       createdAt: getDate(),
       updatedAt: getDate(),
       ...toDo,
     };
 
     axios
-      .post(
-        "https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json",
+      .patch(
+        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${newToDo.id}.json`,
         newToDo
       )
       .catch((error) => {
@@ -40,7 +46,7 @@ export const ToDoAPI = {
         console.log(`🚨 getToDoAPI : ${error.message}`);
       });
   },
-  deleteToDo: (id: string, deleteToDoCb: any) => {
+  deleteToDo: (id: string, deleteToDoCb: DeleteToDoCb) => {
     axios
       .delete(
         `https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json`,
@@ -55,6 +61,21 @@ export const ToDoAPI = {
           deleteToDoCb(id);
         }
       })
+      .catch((error) => {
+        console.log(`🚨 deleteToDoAPI : ${error.message}`);
+      });
+  },
+  updateToDo: (toDo: ToDoInputValue, toDoId: string) => {
+    axios
+      .patch(
+        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${toDoId}.json`,
+
+        {
+          content: toDo.content,
+          title: toDo.title,
+          updatedAt: getDate(),
+        }
+      )
       .catch((error) => {
         console.log(`🚨 deleteToDoAPI : ${error.message}`);
       });

@@ -1,5 +1,6 @@
 export const randomString = (digit: number) => {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let randomString = "";
   const charactersLength = characters.length;
   for (let i = 0; i < digit; i++) {

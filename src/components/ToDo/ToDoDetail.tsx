@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
+import { ToDoAPI } from "./api/toDo";
 import useToDoValidation from "./Hooks/useToDoValidation";
 import { ITodoDetailProps } from "./types/todos";
 import ToDoDetailView from "./Views/ToDoDetailView";
@@ -20,7 +21,7 @@ const ToDoDetail = () => {
 
   const toDoId = useParams();
 
-  const onClickCancel = () => {
+  const onMoveHome = () => {
     navigate("/");
   };
 
@@ -30,6 +31,8 @@ const ToDoDetail = () => {
 
   const onClickSave = () => {
     setIsEdit(false);
+    onMoveHome();
+    ToDoAPI.updateToDo(toDoInput, toDoDetail.id);
   };
 
   const toDoDetailProps: ITodoDetailProps = {
@@ -37,7 +40,7 @@ const ToDoDetail = () => {
     isEdit,
     toDoInput,
     isDisabledEditToDo: isDisabledEditToDo(toDoInput),
-    onClickCancel,
+    onClickCancel: onMoveHome,
     onClickEdit,
     onClickSave,
     onChangeTitle: (e) => {
