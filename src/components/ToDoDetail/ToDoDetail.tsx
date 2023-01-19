@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
@@ -14,8 +14,6 @@ const ToDoDetail = () => {
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const toDoId = useParams();
 
   const isDisabledEditToDo = toDoValidation(toDoDetail);
 
@@ -45,10 +43,6 @@ const ToDoDetail = () => {
     onChangeContent: (e) =>
       dispatch(toDoAction.changeToDoDetailContent(e.target.value)),
   };
-
-  useEffect(() => {
-    dispatch(toDoAction.detailToDo(toDoId));
-  }, []);
 
   return <ToDoDetailView {...toDoDetailProps} />;
 };
