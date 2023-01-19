@@ -25,6 +25,21 @@ const NoneTodo = styled.div`
     background-size: contain;
     opacity: 0.2;
   }
+
+  @media (max-width: 1000px) {
+    &::after {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  @media (max-width: 750px) {
+    padding: 0 42px;
+    &::after {
+      width: 160px;
+      height: 160px;
+    }
+  }
 `;
 
 const NoneTodoContent = styled.div`
@@ -35,6 +50,18 @@ const NoneTodoContent = styled.div`
   h2 {
     font-weight: 700;
     font-size: 32px;
+  }
+
+  @media (max-width: 1000px) {
+    h2 {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 750px) {
+    h2 {
+      font-size: 22px;
+    }
   }
 `;
 
@@ -57,6 +84,17 @@ const NavigatorBtn = styled.button`
   :hover {
     background-color: #fff;
     color: #333;
+  }
+
+  @media (max-width: 1000px) {
+    height: 40px;
+    width: 200px;
+  }
+
+  @media (max-width: 750px) {
+    height: 40px;
+    width: 180px;
+    font-size: 14px;
   }
 `;
 

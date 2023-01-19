@@ -23,5 +23,5 @@ export default ToDoDetailLayoutView;
 
 const Container = styled.div`
   ${flexCenter}
-  padding-top: 120px;
+  padding: 50px 0 80px;
 `;

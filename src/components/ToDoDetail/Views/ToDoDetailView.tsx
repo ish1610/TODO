@@ -126,7 +126,6 @@ const ToDoDetailView = ({
 export default ToDoDetailView;
 
 const ToDoDetailWrap = styled.div`
-  margin-top: 50px;
   width: 90%;
   max-width: 800px;
 
@@ -139,6 +138,12 @@ const ToDoDetailWrap = styled.div`
     padding: 20px;
     font-weight: 700;
     font-size: 20px;
+  }
+
+  @media (max-width: 820px) {
+    header {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -161,6 +166,7 @@ const ToDoDetailContent = styled.section`
   .updatedAt {
     margin-bottom: 24px;
     color: rgb(180, 180, 180);
+    font-size: 16px;
   }
 
   .titleWrap,
@@ -210,6 +216,23 @@ const ToDoDetailContent = styled.section`
   }
 
   @media (max-width: 750px) {
+    .title,
+    .content {
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .toDoDetail-sortation,
+    .createdAt,
+    .updatedAt {
+      font-size: 14px;
+    }
+
+    .titleWrap.detail .toDoDetail-sortation,
+    .contentWrap.detail .toDoDetail-sortation {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
     .todoDateWrap {
       flex-direction: column;
     }
