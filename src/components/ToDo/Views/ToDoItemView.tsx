@@ -9,7 +9,7 @@ import {
   yellow,
 } from "../../Common/styles/commonColor";
 
-import { IToDoItemProps, ToDo } from "../types/todos";
+import { IToDoItemProps } from "../types/todos";
 
 const ToDoItemWrap = styled.li`
   position: relative;
@@ -36,12 +36,24 @@ const ToDoItemWrap = styled.li`
       opacity: 1;
     }
   }
+
+  @media (max-width: 750px) {
+    width: 80%;
+    flex-direction: column;
+  }
 `;
 
 const ToDoItemIcon = styled.img`
   width: 74px;
   height: 74px;
   margin-right: 50px;
+
+  @media (max-width: 750px) {
+    width: 48px;
+    height: 48px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 `;
 
 const ToDoControl = styled.div`
@@ -63,6 +75,10 @@ const ToDoControl = styled.div`
 
   .delete svg:hover {
     color: ${warning};
+  }
+
+  @media (max-width: 750px) {
+    /* width: 80%; */
   }
 `;
 
@@ -105,7 +121,17 @@ const ToDoItemContent = styled.div`
     right: -24px;
     color: rgb(180, 180, 180);
   }
-  .createTime span {
+
+  @media (max-width: 750px) {
+    width: 400px;
+
+    h3,
+    .todo-content {
+      width: 100%;
+    }
+    .createTime {
+      right: 0;
+    }
   }
 `;
 
