@@ -31,6 +31,7 @@ const AddToDoModalView = ({
           <header>
             <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
           </header>
+
           <form className="addToDo-Content">
             <AddToDoInputWrap>
               <TextField

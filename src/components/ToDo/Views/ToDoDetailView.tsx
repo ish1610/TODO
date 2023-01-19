@@ -26,11 +26,11 @@ const ToDoDetailView = ({
 
   return (
     <Container>
-      {!content && !title && (
+      {!createdAt && (
         <EmptyTodoView>ToDo 정보를 확인 할 수 없습니다.</EmptyTodoView>
       )}
 
-      {content && title && (
+      {createdAt && (
         <ToDoDetailWrap>
           <header>ToDo 상세보기</header>
 
@@ -55,7 +55,7 @@ const ToDoDetailView = ({
                   size="small"
                   color="warning"
                   onChange={onChangeTitle}
-                  margin="dense"
+                  margin="normal"
                   value={title}
                 />
               )}
