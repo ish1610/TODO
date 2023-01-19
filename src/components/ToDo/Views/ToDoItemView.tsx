@@ -133,7 +133,7 @@ const ToDoItemView = ({
         <h3>{title}</h3>
         <p className="todo-content">{content}</p>
         <p className="createTime">
-          <span>작성 시간 : </span>
+          <span>작성일 : </span>
           {createdAt}
         </p>
       </ToDoItemContent>

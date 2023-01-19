@@ -11,6 +11,10 @@ const HeaderWrap = styled.header`
   padding: 22px 20px 22px;
   height: 80px;
   border-bottom: 1px solid ${blue};
+
+  @media (max-width: 750px) {
+    justify-content: center;
+  }
 `;
 
 const HeaderLogoWrap = styled.div`

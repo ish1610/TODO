@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import {
+  blue,
   cancel,
   lightOrange,
   orange,
@@ -24,13 +25,16 @@ const ToDoDetailView = ({
 
   return (
     <ToDoDetailWrap>
-      <header>ToDo 상세보기</header>
+      <header>{!isEdit ? "상세 보기" : "수정 하기"}</header>
 
       <ToDoDetailContent>
         <div className="title">
           {!isEdit && (
             <React.Fragment>
-              <span className="toDoDetail-sortation">ToDo 제목</span>
+              <div className={`${!isEdit ? "titleWrap detail" : "titleWrap"}`}>
+                <span className="toDoDetail-sortation">ToDo 제목</span>
+              </div>
+
               <p>{title}</p>
             </React.Fragment>
           )}
@@ -55,8 +59,12 @@ const ToDoDetailView = ({
         <div className="content">
           {!isEdit && (
             <React.Fragment>
-              <span className="toDoDetail-sortation">ToDo 내용</span>
-              <p> {content}</p>
+              <div
+                className={`${!isEdit ? "contentWrap detail" : "contentWrap"}`}
+              >
+                <span className="toDoDetail-sortation">ToDo 내용</span>{" "}
+              </div>
+              <p>{content}</p>
             </React.Fragment>
           )}
 
@@ -80,11 +88,11 @@ const ToDoDetailView = ({
         {!isEdit && (
           <div className="todoDateWrap">
             <div className="createdAt">
-              <span className="toDoDetail-sortation">ToDo 작성 시간</span>
+              <span className="toDoDetail-sortation">작성일</span>
               <p> {createdAt}</p>
             </div>
             <div className="updatedAt">
-              <span className="toDoDetail-sortation">ToDo 최근 수정</span>
+              <span className="toDoDetail-sortation">최근 수정일</span>
               <p> {updatedAt}</p>
             </div>
           </div>
@@ -126,7 +134,7 @@ const ToDoDetailWrap = styled.div`
     ${flexCenter}
 
     border-radius: 8px 8px 0 0;
-    background-color: ${lightOrange};
+    background-color: ${blue};
     color: #fff;
     padding: 20px;
     font-weight: 700;
@@ -135,7 +143,7 @@ const ToDoDetailWrap = styled.div`
 `;
 
 const ToDoDetailContent = styled.section`
-  border: 3px solid ${yellow};
+  border: 3px solid ${blue};
   border-top: none;
 
   padding: 50px 20px 50px;
@@ -144,33 +152,45 @@ const ToDoDetailContent = styled.section`
   .content,
   .createdAt,
   .updatedAt {
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .createdAt,
+  .updatedAt {
+    margin-bottom: 24px;
+    color: rgb(180, 180, 180);
+  }
+
+  .titleWrap,
+  .contentWrap {
+    align-self: flex-start;
+    padding-top: 14px;
+    min-width: 140px;
   }
 
   .title,
   .content {
     font-family: "Yeon Sung", cursive;
-  }
-
-  .title {
+    font-size: 22px;
+    line-height: 1.6;
+    word-break: break-all;
   }
 
   .toDoDetail-sortation {
     margin-right: 20px;
+    font-size: 16px;
     font-family: "Roboto", "Nanum Gothic", sans-serif;
-    font-weight: 700;
-    background-color: #ccc;
-    color: #fff;
-    border-radius: 50px;
-    padding: 10px 14px;
   }
 
-  .title .toDoDetail-sortation,
-  .content .toDoDetail-sortation {
-    min-width: 120px;
+  .titleWrap.detail .toDoDetail-sortation,
+  .contentWrap.detail .toDoDetail-sortation {
     background-color: ${orange};
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 10px 14px;
   }
 
   .todoDateWrap {
@@ -186,6 +206,13 @@ const ToDoDetailContent = styled.section`
   textarea {
     font-family: "yeon sung";
     outline-color: ${yellow};
+    font-size: 18px;
+  }
+
+  @media (max-width: 750px) {
+    .todoDateWrap {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -205,12 +232,12 @@ const DetailControl = styled.div<{ isDisabled: boolean }>`
     color: ${(props) => (props.isDisabled ? "#fff" : orange)};
     font-family: inherit;
     font-weight: 700;
-    transition: 0.2s;
+    transition: 0.3s;
   }
 
   .update:hover {
     color: ${(props) => (props.isDisabled ? "" : "#fff")};
-    background-color: ${(props) => (props.isDisabled ? cancel : orange)};
+    background-color: ${(props) => (props.isDisabled ? cancel : lightOrange)};
   }
 
   .cancel {
