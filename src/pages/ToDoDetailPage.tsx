@@ -1,8 +1,9 @@
 import React from "react";
-import ToDoDetail from "../components/ToDo/ToDoDetail";
+import ToDoDetail from "../components/ToDoDetail/ToDoDetail";
+import ToDoDetailLayout from "../components/ToDoDetail/ToDoDetailLayout";
 
 const ToDoDetailPage = () => {
-  return <ToDoDetail />;
+  return <ToDoDetailLayout />;
 };
 
 export default ToDoDetailPage;

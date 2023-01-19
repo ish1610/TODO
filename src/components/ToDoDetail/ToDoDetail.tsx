@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
-import { ToDoAPI } from "./api/toDo";
+import { ToDoAPI } from "../ToDo/api/toDo";
 
-import { ITodoDetailProps } from "./types/todos";
-import toDoValidation from "./Utils/toDoValidation";
+import { ITodoDetailProps } from "../ToDo/types/todos";
+import toDoValidation from "../ToDo/Utils/toDoValidation";
 import ToDoDetailView from "./Views/ToDoDetailView";
 
 const ToDoDetail = () => {
