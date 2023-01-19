@@ -4,7 +4,7 @@ import { blue, orange } from "../../Common/styles/commonColor";
 import { IToDoListProps, ToDo } from "../types/todos";
 import ToDoItem from "../ToDoItem";
 
-import EmptyTodo from "../../Common/EmptyTodo";
+import EmptyTodo from "../../Common/Empty/EmptyTodo";
 
 const Container = styled.ul`
   width: 100%;

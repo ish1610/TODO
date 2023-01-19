@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import EmptyTodo from "../../Common/EmptyTodo";
+import EmptyTodo from "../../Common/Empty/EmptyTodo";
 
 import { flexCenter } from "../../Common/styles/FlexCenter";
 
