@@ -90,11 +90,10 @@ const ToDoItemContent = styled.div`
   }
 
   .todo-content {
-    flex-grow: 1;
+    width: 420px;
     font-size: 18px;
     word-break: break-all;
     line-height: 1.6;
-
     padding-bottom: 20px;
   }
 

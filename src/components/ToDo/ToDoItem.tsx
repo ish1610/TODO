@@ -4,6 +4,7 @@ import { ToDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { IToDoItemProps, ToDo } from "./types/todos";
 import ToDoItemView from "./Views/ToDoItemView";
+import truncate from "./Utils/truncateString";
 
 const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
   const dispatch = useDispatch();
@@ -24,7 +25,11 @@ const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
   const ToDoItemProps: IToDoItemProps = {
     onClickDelete: (id) => onClickDelete(id),
     onClickDetail: (id) => onClickDetail(id),
-    toDo,
+    toDo: {
+      ...toDo,
+      title: truncate(toDo.title, 30),
+      content: truncate(toDo.content, 80),
+    },
   };
 
   return <ToDoItemView {...ToDoItemProps} />;
