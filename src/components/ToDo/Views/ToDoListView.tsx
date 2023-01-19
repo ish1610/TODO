@@ -13,7 +13,7 @@ const Container = styled.ul`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 100px;
+  padding: 100px 0 80px;
 `;
 
 const AddToDoBtn = styled.button`

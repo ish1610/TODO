@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { playScroll, stopScroll } from "../Common/Util/scroll";
 
 import { IToDoLayoutProps } from "./types/todos";
 import ToDoLayoutView from "./Views/ToDoLayoutView";
@@ -8,11 +9,17 @@ const ToDoLayout = () => {
 
   const onCloseModal = () => {
     setIsShowModal(false);
+    playScroll();
+  };
+
+  const onShowModal = () => {
+    setIsShowModal(true);
+    stopScroll();
   };
 
   const ToDoLayouyProps: IToDoLayoutProps = {
     onCloseModal: () => onCloseModal(),
-    onShowModal: () => setIsShowModal(true),
+    onShowModal: () => onShowModal(),
     isShowModal,
   };
 

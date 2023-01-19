@@ -4,6 +4,12 @@ import reset from "emotion-reset";
 const styles = css`
   @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto&family=Yeon+Sung&display=swap");
 
+  html.fixed {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+  }
+
   ${reset}
   * {
     box-sizing: border-box;

@@ -125,6 +125,12 @@ const AddToModal = styled.div`
     flex-direction: column;
     padding-top: 42px;
   }
+  @media (max-width: 750px) {
+    top: 30%;
+    header {
+      font-size: 18px;
+    }
+  }
 `;
 
 const AddToDoInputWrap = styled.div`
@@ -137,6 +143,10 @@ const AddToDoInputWrap = styled.div`
   textarea {
     font-family: "yeon sung";
     outline-color: ${yellow};
+  }
+
+  p {
+    margin-bottom: 20px;
   }
 `;
 
