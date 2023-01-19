@@ -9,14 +9,10 @@ import {
   ToDoInputValue,
 } from "./types/todos";
 import AddToDoModalView from "./Views/AddToDoModalView";
-import useToDoValidation from "./Hooks/useToDoValidation";
+import toDoValidation from "./Utils/toDoValidation";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
-  const {
-    toDoInput,
-    setToDoInput,
-    isDisabledToDo: isDisabledAddToDo,
-  } = useToDoValidation();
+  const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
 
   const dispatch = useDispatch();
 
@@ -39,9 +35,8 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
-    isDisabledAddToDo: isDisabledAddToDo(toDoInput),
+    isDisabledAddToDo: toDoValidation(toDoInput),
     onClickAddToDo: () => onClickAddToDo(toDoInput),
-
     onClickCancel: () => onClickCancel(),
     onChangeTitle: (e) =>
       setToDoInput((prev) => {

@@ -3,23 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { ToDoAPI } from "./api/toDo";
-import useToDoValidation from "./Hooks/useToDoValidation";
+
 import { ITodoDetailProps } from "./types/todos";
+import toDoValidation from "./Utils/toDoValidation";
 import ToDoDetailView from "./Views/ToDoDetailView";
 
 const ToDoDetail = () => {
   const toDoDetail = useSelector((state: any) => state.toDoList.toDoDetail);
-  const {
-    toDoInput,
-    setToDoInput,
-    isDisabledToDo: isDisabledEditToDo,
-  } = useToDoValidation(toDoDetail);
 
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toDoId = useParams();
+
+  const isDisabledEditToDo = toDoValidation(toDoDetail);
 
   const onMoveHome = () => {
     navigate("/");
@@ -32,31 +30,24 @@ const ToDoDetail = () => {
   const onClickSave = () => {
     setIsEdit(false);
     onMoveHome();
-    ToDoAPI.updateToDo(toDoInput, toDoDetail.id);
+    ToDoAPI.updateToDo(toDoDetail);
   };
 
   const toDoDetailProps: ITodoDetailProps = {
     toDoDetail,
     isEdit,
-    toDoInput,
-    isDisabledEditToDo: isDisabledEditToDo(toDoInput),
+    isDisabledEditToDo,
     onClickCancel: onMoveHome,
     onClickEdit,
     onClickSave,
-    onChangeTitle: (e) => {
-      setToDoInput((prev) => {
-        return { ...prev, title: e.target.value };
-      });
-    },
-    onChangeContent: (e) => {
-      setToDoInput((prev) => {
-        return { ...prev, content: e.target.value };
-      });
-    },
+    onChangeTitle: (e) =>
+      dispatch(toDoAction.changeToDoDetailTitle(e.target.value)),
+    onChangeContent: (e) =>
+      dispatch(toDoAction.changeToDoDetailContent(e.target.value)),
   };
 
   useEffect(() => {
-    dispatch(toDoAction.DetailToDo(toDoId));
+    dispatch(toDoAction.detailToDo(toDoId));
   }, []);
 
   return <ToDoDetailView {...toDoDetailProps} />;

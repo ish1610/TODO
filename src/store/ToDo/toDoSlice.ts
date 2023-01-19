@@ -24,7 +24,7 @@ const toDoSlice = createSlice({
 
       state.toDoList = filtedToDo;
     },
-    DetailToDo: (state, action) => {
+    detailToDo: (state, action) => {
       const toDoDetail = state.toDoList.find(
         (todo) => todo.id === action.payload.id
       );
@@ -32,6 +32,12 @@ const toDoSlice = createSlice({
       if (toDoDetail) {
         state.toDoDetail = toDoDetail;
       }
+    },
+    changeToDoDetailTitle: (state, action) => {
+      state.toDoDetail.title = action.payload;
+    },
+    changeToDoDetailContent: (state, action) => {
+      state.toDoDetail.content = action.payload;
     },
   },
 });

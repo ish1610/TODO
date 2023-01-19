@@ -41,7 +41,7 @@ export interface IToDoItemProps {
 export interface ITodoDetailProps {
   toDoDetail: ToDo;
   isEdit: boolean;
-  toDoInput: ToDoInputValue;
+  // toDoInput: ToDoInputValue;
   isDisabledEditToDo: boolean;
   onClickCancel: () => void;
   onClickEdit: () => void;

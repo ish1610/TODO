@@ -16,7 +16,7 @@ const ToDoList = ({ onShowModal }: IToDoListProps) => {
   };
 
   useEffect(() => {
-    ToDoAPI.getToDo((toDoList: ToDo[]) =>
+    ToDoAPI.getToDo(async (toDoList: ToDo[]) =>
       dispatch(toDoAction.getToDoList(toDoList))
     );
   }, []);

@@ -23,11 +23,13 @@ export const ToDoAPI = {
         `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${newToDo.id}.json`,
         newToDo
       )
+
       .catch((error) => {
         console.log(`🚨 CreateToDoAPI : ${error.message}`);
+      })
+      .then(() => {
+        createToDoCb(newToDo);
       });
-
-    createToDoCb(newToDo);
   },
   getToDo: (setTodoListCb: GetToDoCb) => {
     axios
@@ -65,10 +67,10 @@ export const ToDoAPI = {
         console.log(`🚨 deleteToDoAPI : ${error.message}`);
       });
   },
-  updateToDo: (toDo: ToDoInputValue, toDoId: string) => {
+  updateToDo: (toDo: ToDo) => {
     axios
       .patch(
-        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${toDoId}.json`,
+        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${toDo.id}.json`,
 
         {
           content: toDo.content,

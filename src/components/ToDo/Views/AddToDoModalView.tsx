@@ -14,6 +14,74 @@ import {
 
 import { yellow } from "@mui/material/colors";
 
+const AddToDoModalView = ({
+  isShowModal,
+  isDisabledAddToDo,
+  onClickAddToDo,
+  onClickCancel,
+  onChangeTitle,
+  onChangeContent,
+}: IAddToDoModalViewProps) => {
+  return (
+    <React.Fragment>
+      {isShowModal && <BackDrop onClick={onClickCancel} />}
+
+      {isShowModal && (
+        <AddToModal>
+          <header>
+            <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
+          </header>
+          <form className="addToDo-Content">
+            <AddToDoInputWrap>
+              <TextField
+                label="Title"
+                name="title"
+                fullWidth={true}
+                autoFocus={true}
+                helperText="제목은 최소 5글자 작성해주세요!"
+                placeholder="작성할 ToDo의 제목을 입력해주세요."
+                required
+                size="small"
+                color="warning"
+                onChange={onChangeTitle}
+                margin="normal"
+              />
+
+              <TextField
+                label="Content"
+                name="content"
+                fullWidth={true}
+                minRows={5}
+                multiline
+                helperText="내용은 최소 5글자 작성해주세요!"
+                placeholder="작성할 ToDo의 내용을 입력해주세요."
+                required
+                color="warning"
+                onChange={onChangeContent}
+              />
+            </AddToDoInputWrap>
+          </form>
+
+          <AddToDoControl isDisabled={isDisabledAddToDo}>
+            <button
+              className="add-todo"
+              disabled={isDisabledAddToDo}
+              onClick={onClickAddToDo}
+            >
+              작성
+            </button>
+            <button className="cancel-todo" onClick={onClickCancel}>
+              닫기
+            </button>
+          </AddToDoControl>
+        </AddToModal>
+      )}
+    </React.Fragment>
+  );
+};
+
+export default AddToDoModalView;
+
 const BackDrop = styled.div`
   width: 100%;
   height: 100vh;
@@ -102,71 +170,3 @@ const AddToDoControl = styled.div<{ isDisabled: boolean }>`
     border: 1px solid ${cancel};
   }
 `;
-
-const AddToDoModalView = ({
-  isShowModal,
-  isDisabledAddToDo,
-  onClickAddToDo,
-  onClickCancel,
-  onChangeTitle,
-  onChangeContent,
-}: IAddToDoModalViewProps) => {
-  return (
-    <React.Fragment>
-      {isShowModal && <BackDrop onClick={onClickCancel} />}
-
-      {isShowModal && (
-        <AddToModal>
-          <header>
-            <img src={headerImg} alt="헤더 로고" /> CREATE ToDo!
-          </header>
-          <form className="addToDo-Content">
-            <AddToDoInputWrap>
-              <TextField
-                label="Title"
-                name="title"
-                fullWidth={true}
-                autoFocus={true}
-                helperText="제목은 최소 5글자 작성해주세요!"
-                placeholder="작성할 ToDo의 제목을 입력해주세요."
-                required
-                size="small"
-                color="warning"
-                onChange={onChangeTitle}
-                margin="normal"
-              />
-
-              <TextField
-                label="Content"
-                name="content"
-                fullWidth={true}
-                minRows={5}
-                multiline
-                helperText="내용은 최소 5글자 작성해주세요!"
-                placeholder="작성할 ToDo의 내용을 입력해주세요."
-                required
-                color="warning"
-                onChange={onChangeContent}
-              />
-            </AddToDoInputWrap>
-          </form>
-
-          <AddToDoControl isDisabled={isDisabledAddToDo}>
-            <button
-              className="add-todo"
-              disabled={isDisabledAddToDo}
-              onClick={onClickAddToDo}
-            >
-              작성
-            </button>
-            <button className="cancel-todo" onClick={onClickCancel}>
-              닫기
-            </button>
-          </AddToDoControl>
-        </AddToModal>
-      )}
-    </React.Fragment>
-  );
-};
-
-export default AddToDoModalView;
