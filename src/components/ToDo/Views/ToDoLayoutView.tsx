@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
+import LoadingView from "../../Common/Loading/Views/LoadingView";
 import AddToDoModal from "../AddToDoModal";
-import ToDoList from "../ToDoList";
 import { IToDoLayoutProps } from "../types/todos";
 
 const ToDoLayoutView = ({
@@ -8,9 +8,13 @@ const ToDoLayoutView = ({
   onShowModal,
   isShowModal,
 }: IToDoLayoutProps) => {
+  const ToDoList = React.lazy(() => import("../ToDoList"));
   return (
     <React.Fragment>
-      <ToDoList onShowModal={onShowModal} />
+      <Suspense fallback={<LoadingView />}>
+        <ToDoList onShowModal={onShowModal} />
+      </Suspense>
+
       <AddToDoModal isShowModal={isShowModal} onCloseModal={onCloseModal} />
     </React.Fragment>
   );
