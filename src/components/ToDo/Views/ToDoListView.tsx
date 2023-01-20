@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { blue, orange } from "../../Common/styles/commonColor";
 import { IToDoListProps, ToDo } from "../types/todos";
 import ToDoItem from "../ToDoItem";
+import EmptyTodo from "../../Common/Empty/EmptyTodo";
 
 const Container = styled.ul`
   width: 100%;
@@ -34,7 +35,7 @@ const ToDoListView = ({ onShowModal, toDoList }: IToDoListProps) => {
   return (
     <Container>
       <AddToDoBtn onClick={onShowModal}>ToDo 작성</AddToDoBtn>
-
+      {!toDoList?.length && <EmptyTodo>작성한 ToDo가 없어요</EmptyTodo>}
       {toDoList?.map((toDo: ToDo) => (
         <ToDoItem key={toDo.id} toDo={toDo} />
       ))}
