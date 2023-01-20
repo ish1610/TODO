@@ -11,6 +11,7 @@ import {
 } from "../../Common/styles/commonColor";
 
 import { IToDoItemProps } from "../types/todos";
+import EmptyTodo from "../../Common/Empty/EmptyTodo";
 
 const ToDoItemWrap = styled.li`
   position: relative;
@@ -144,6 +145,8 @@ const ToDoItemView = ({
 
   return (
     <ToDoItemWrap>
+      {!createdAt && <EmptyTodo>확인할 게시글이 없어요</EmptyTodo>}
+
       <ToDoItemIcon src={todoIconMonky} />
       <ToDoControl>
         <button className="detail" onClick={() => onClickDetail(id)}>

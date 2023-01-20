@@ -33,11 +33,12 @@ const AddToDoBtn = styled.button`
 `;
 
 const ToDoListView = ({ onShowModal, toDoList }: IToDoListProps) => {
+  console.log(toDoList);
   return (
     <Container>
       <AddToDoBtn onClick={onShowModal}>ToDo 작성</AddToDoBtn>
 
-      {!toDoList?.length && <EmptyTodo>확인할 게시글이 없어요</EmptyTodo>}
+      {/* {!toDoList?.length && <EmptyTodo>확인할 게시글이 없어요</EmptyTodo>} */}
 
       {toDoList?.map((toDo: ToDo) => (
         <ToDoItem key={toDo.id} toDo={toDo} />
