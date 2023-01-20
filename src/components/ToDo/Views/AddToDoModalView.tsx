@@ -94,7 +94,7 @@ const BackDrop = styled.div`
 `;
 
 const AddToModal = styled.div`
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -126,7 +126,6 @@ const AddToModal = styled.div`
     padding-top: 42px;
   }
   @media (max-width: 750px) {
-    top: 30%;
     header {
       font-size: 18px;
     }
