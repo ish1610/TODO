@@ -4,6 +4,7 @@ import todoIconMonky from "../../../assets/images/todoIcon-monky.png";
 import { RiDeleteBin5Line, RiZoomInLine } from "react-icons/ri";
 import {
   boxShadow,
+  cancel,
   orange,
   warning,
   yellow,
@@ -68,6 +69,9 @@ const ToDoControl = styled.div`
     margin-right: 10px;
     transition: 0.3s;
   }
+  .delete svg {
+    color: ${cancel};
+  }
 
   .detail svg:hover {
     color: ${orange};
@@ -75,10 +79,6 @@ const ToDoControl = styled.div`
 
   .delete svg:hover {
     color: ${warning};
-  }
-
-  @media (max-width: 750px) {
-    /* width: 80%; */
   }
 `;
 
