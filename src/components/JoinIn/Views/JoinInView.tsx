@@ -15,7 +15,7 @@ const JoinInWrap = styled.div`
 
 const JoinIn = styled.div`
   width: 100%;
-  height: 568px;
+  height: 668px;
 
   display: flex;
   flex-direction: column;
@@ -69,17 +69,22 @@ const JoinIn = styled.div`
 `;
 
 const JoinInView = ({
+  isEmailVaild,
+  isPasswordVaild,
+  isPasswordConfirmVaild,
   joinInputValues,
   onChangeEmailValue,
   onChangePassworeValue,
   onChangepasswordConfirmValue,
+  onSubmitJoin,
+  isDisabledJoinIn,
 }: IJoinInProps) => {
   const { email, password, passwordConfirm } = joinInputValues;
   return (
     <JoinInWrap>
       <JoinIn>
         <header>회원가입</header>
-        <form>
+        <form onSubmit={onSubmitJoin}>
           <div className="inputWrap">
             <TextField
               label="Email"
@@ -91,6 +96,12 @@ const JoinInView = ({
               color="warning"
               value={email}
               onChange={onChangeEmailValue}
+              error={!isEmailVaild}
+              helperText={`${
+                !isEmailVaild
+                  ? "이메일은 @ 형식의 8자리 이상을 입렵해주세요."
+                  : ""
+              } `}
             />
           </div>
 
@@ -105,6 +116,12 @@ const JoinInView = ({
               value={password}
               onChange={onChangePassworeValue}
               type="password"
+              error={!isPasswordVaild}
+              helperText={`${
+                !isPasswordVaild
+                  ? "비밀번호는 영문, 특수문자, 숫자 조합의 8~20자리를 입력해주세요."
+                  : ""
+              } `}
             />
           </div>
 
@@ -119,14 +136,21 @@ const JoinInView = ({
               value={passwordConfirm}
               onChange={onChangepasswordConfirmValue}
               type="password"
-              //   error={true}
+              error={!isPasswordConfirmVaild}
+              helperText={`${
+                !isPasswordConfirmVaild ? "비밀번호가 일치하지 않습니다." : ""
+              } `}
             />
           </div>
-        </form>
 
-        <button type="submit" onClick={() => console.log(123)}>
-          회원가입
-        </button>
+          <button
+            type="submit"
+            onClick={() => console.log(123)}
+            disabled={isDisabledJoinIn}
+          >
+            회원가입
+          </button>
+        </form>
       </JoinIn>
     </JoinInWrap>
   );
