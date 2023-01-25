@@ -15,7 +15,7 @@ export interface ISignUpProps {
   onChangepasswordConfirmValue: (
     e: React.ChangeEvent<HTMLInputElement>
   ) => void;
-  onSubmitJoin: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSubmitSignUp: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export type signUpInfoValues = Pick<signUpInputValues, "email" | "password">;

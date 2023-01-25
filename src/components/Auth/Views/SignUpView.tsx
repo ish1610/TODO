@@ -76,7 +76,7 @@ const SignUpView = ({
   onChangeEmailValue,
   onChangePassworeValue,
   onChangepasswordConfirmValue,
-  onSubmitJoin,
+  onSubmitSignUp,
   isDisabledJoinIn,
 }: ISignUpProps) => {
   const { email, password, passwordConfirm } = signUpInputValues;
@@ -84,7 +84,7 @@ const SignUpView = ({
     <SignUpWrap>
       <SignUp>
         <header>회원가입</header>
-        <form onSubmit={onSubmitJoin}>
+        <form onSubmit={onSubmitSignUp}>
           <div className="inputWrap">
             <TextField
               label="Email"

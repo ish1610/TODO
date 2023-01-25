@@ -22,7 +22,7 @@ const SignUp = () => {
     isPasswordConfirmVaild,
   ].every((boolean) => !!boolean);
 
-  const handleSubmitJoin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signUpAPI.signUp(signUpInputValues);
   };
@@ -33,7 +33,7 @@ const SignUp = () => {
     isPasswordConfirmVaild,
     isDisabledJoinIn: !isDisabledJoinIn,
     signUpInputValues,
-    onSubmitJoin: (e) => handleSubmitJoin(e),
+    onSubmitSignUp: (e) => handleSubmitSignUp(e),
     onChangeEmailValue: (e) =>
       setSignUpInputValues((prev) => {
         return { ...prev, email: e.target.value };
