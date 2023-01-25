@@ -2,7 +2,7 @@ export const emailValidator = (value: string) => {
   if (value.length < 8) {
     return false;
   }
-  const emailExp = /[\w+]@[\w+].[a-zA-Z+]/;
+  const emailExp = /[\w]+@[\w]+\.[a-zA-Z]+/;
 
   return emailExp.test(value);
 };
