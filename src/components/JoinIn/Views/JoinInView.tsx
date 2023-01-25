@@ -91,7 +91,7 @@ const JoinInView = ({
               variant="standard"
               autoFocus
               fullWidth={true}
-              placeholder="이메일을 입력해주세요"
+              placeholder="example@example.com"
               margin="dense"
               color="warning"
               value={email}
