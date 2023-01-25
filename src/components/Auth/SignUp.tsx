@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { signUpAPI } from "./api/signUp";
 
@@ -6,6 +7,7 @@ import { ISignUpProps } from "./types/signUp";
 import SignUpView from "./Views/SignUpView";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [signUpInputValues, setSignUpInputValues] = useState({
     email: "",
     password: "",
@@ -24,7 +26,7 @@ const SignUp = () => {
 
   const handleSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUpAPI.signUp(signUpInputValues);
+    signUpAPI.signUp(signUpInputValues, navigate);
   };
 
   const signUpProps: ISignUpProps = {

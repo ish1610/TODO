@@ -143,11 +143,7 @@ const SignUpView = ({
             />
           </div>
 
-          <button
-            type="submit"
-            onClick={() => console.log(123)}
-            disabled={isDisabledJoinIn}
-          >
+          <button type="submit" disabled={isDisabledJoinIn}>
             회원가입
           </button>
         </form>

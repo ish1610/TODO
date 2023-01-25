@@ -19,3 +19,4 @@ export interface ISignUpProps {
 }
 
 export type signUpInfoValues = Pick<signUpInputValues, "email" | "password">;
+export type moveHomeCb = (route: string) => void;
