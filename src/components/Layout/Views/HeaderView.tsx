@@ -21,6 +21,7 @@ const HeaderWrap = styled.header`
 const HeaderLogoWrap = styled.div`
   ${flexCenter}
   flex-direction: column;
+  cursor: pointer;
 
   img {
     width: 40px;
@@ -33,10 +34,10 @@ const HeaderLogoWrap = styled.div`
 
 const NavController = styled.nav``;
 
-const HeaderView = ({ handleMoveRegist }: IHeaderProps) => {
+const HeaderView = ({ onMoveRegist, onMoveHome }: IHeaderProps) => {
   return (
     <HeaderWrap>
-      <HeaderLogoWrap>
+      <HeaderLogoWrap onClick={onMoveHome}>
         <img src={logo} alt="ToDo's logo" />
         <h1>ToDo's</h1>
       </HeaderLogoWrap>
@@ -44,7 +45,7 @@ const HeaderView = ({ handleMoveRegist }: IHeaderProps) => {
       <NavController>
         <button>로그인</button>
         <button>로그아웃</button>
-        <button onClick={handleMoveRegist}>회원가입</button>
+        <button onClick={onMoveRegist}>회원가입</button>
       </NavController>
     </HeaderWrap>
   );

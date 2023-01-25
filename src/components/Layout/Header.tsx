@@ -9,8 +9,13 @@ const Header = () => {
     navigate("/joinIn");
   };
 
+  const handleMoveHome = () => {
+    navigate("/");
+  };
+
   const headerProps = {
-    handleMoveRegist: () => handleMoveRegist(),
+    onMoveRegist: () => handleMoveRegist(),
+    onMoveHome: () => handleMoveHome(),
   };
   return <HeaderView {...headerProps} />;
 };

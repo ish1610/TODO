@@ -1,3 +1,4 @@
 export interface IHeaderProps {
-  handleMoveRegist: () => void;
+  onMoveRegist: () => void;
+  onMoveHome: () => void;
 }
