@@ -1,4 +1,4 @@
-import JoinInLayoutView from "./Views/JoinInLayoutView";
+import JoinInLayoutView from "./Views/SignUpLayoutView";
 
 const JoinInLayout = () => {
   return <JoinInLayoutView />;

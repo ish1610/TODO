@@ -1,4 +1,4 @@
-import JoinInLayout from "../components/JoinIn/JoinInLayout";
+import JoinInLayout from "../components/Auth/SignUpLayout";
 
 const JoinInPage = () => {
   return <JoinInLayout />;

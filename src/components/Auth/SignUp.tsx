@@ -2,7 +2,7 @@ import { useState } from "react";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 
 import { IJoinInProps } from "./types/join";
-import JoinInView from "./Views/JoinInView";
+import JoinInView from "./Views/SignUpView";
 
 const JoinIn = () => {
   const [joinInputValues, setJoinInputValues] = useState({
