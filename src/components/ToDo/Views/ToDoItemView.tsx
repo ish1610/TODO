@@ -123,14 +123,22 @@ const ToDoItemContent = styled.div`
   }
 
   @media (max-width: 750px) {
-    width: 400px;
+    width: 350px;
 
     h3,
     .todo-content {
       width: 100%;
     }
+
+    h3 {
+      font-size: 20px;
+    }
+    .todo-content {
+      font-size: 16px;
+    }
     .createTime {
       right: 0;
+      font-size: 10px;
     }
   }
 `;
