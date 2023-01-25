@@ -2,9 +2,9 @@ import { useState } from "react";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 
 import { IJoinInProps } from "./types/join";
-import JoinInView from "./Views/SignUpView";
+import SignUpView from "./Views/SignUpView";
 
-const JoinIn = () => {
+const SignUp = () => {
   const [joinInputValues, setJoinInputValues] = useState({
     email: "",
     password: "",
@@ -47,7 +47,7 @@ const JoinIn = () => {
         return { ...prev, passwordConfirm: e.target.value };
       }),
   };
-  return <JoinInView {...joinInProps} />;
+  return <SignUpView {...joinInProps} />;
 };
 
-export default JoinIn;
+export default SignUp;

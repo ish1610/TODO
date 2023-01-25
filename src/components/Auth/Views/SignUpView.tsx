@@ -4,7 +4,7 @@ import { blue, lightOrange } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { IJoinInProps } from "../types/join";
 
-const JoinInWrap = styled.div`
+const SignUpWrap = styled.div`
   padding: 120px 36px 180px;
   background-color: RGBA(41, 97, 113, 0.2);
   display: flex;
@@ -13,7 +13,7 @@ const JoinInWrap = styled.div`
   justify-content: center;
 `;
 
-const JoinIn = styled.div`
+const SignUp = styled.div`
   width: 100%;
   height: 668px;
 
@@ -68,7 +68,7 @@ const JoinIn = styled.div`
   }
 `;
 
-const JoinInView = ({
+const SignUpView = ({
   isEmailVaild,
   isPasswordVaild,
   isPasswordConfirmVaild,
@@ -81,8 +81,8 @@ const JoinInView = ({
 }: IJoinInProps) => {
   const { email, password, passwordConfirm } = joinInputValues;
   return (
-    <JoinInWrap>
-      <JoinIn>
+    <SignUpWrap>
+      <SignUp>
         <header>회원가입</header>
         <form onSubmit={onSubmitJoin}>
           <div className="inputWrap">
@@ -151,9 +151,9 @@ const JoinInView = ({
             회원가입
           </button>
         </form>
-      </JoinIn>
-    </JoinInWrap>
+      </SignUp>
+    </SignUpWrap>
   );
 };
 
-export default JoinInView;
+export default SignUpView;

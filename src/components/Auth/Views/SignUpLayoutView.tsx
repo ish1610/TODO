@@ -1,7 +1,7 @@
-import JoinIn from "../SignUp";
+import SignUp from "../SignUp";
 
-const JoinInLayoutView = () => {
-  return <JoinIn />;
+const SignUpLayoutView = () => {
+  return <SignUp />;
 };
 
-export default JoinInLayoutView;
+export default SignUpLayoutView;
