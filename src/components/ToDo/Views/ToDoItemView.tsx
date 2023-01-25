@@ -80,6 +80,12 @@ const ToDoControl = styled.div`
   .delete svg:hover {
     color: ${warning};
   }
+
+  @media (max-width: 750px) {
+    svg {
+      width: 20px;
+    }
+  }
 `;
 
 const ToDoItemContent = styled.div`
@@ -123,7 +129,7 @@ const ToDoItemContent = styled.div`
   }
 
   @media (max-width: 750px) {
-    width: 350px;
+    max-width: 350px;
 
     h3,
     .todo-content {
