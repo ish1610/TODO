@@ -34,7 +34,11 @@ const HeaderLogoWrap = styled.div`
 
 const NavController = styled.nav``;
 
-const HeaderView = ({ onMoveRegist, onMoveHome }: IHeaderProps) => {
+const HeaderView = ({
+  onMoveRegist,
+  onMoveHome,
+  handleLogin,
+}: IHeaderProps) => {
   return (
     <HeaderWrap>
       <HeaderLogoWrap onClick={onMoveHome}>
@@ -43,7 +47,7 @@ const HeaderView = ({ onMoveRegist, onMoveHome }: IHeaderProps) => {
       </HeaderLogoWrap>
 
       <NavController>
-        <button>로그인</button>
+        <button onClick={handleLogin}>로그인</button>
         <button>로그아웃</button>
         <button onClick={onMoveRegist}>회원가입</button>
       </NavController>

@@ -1,7 +1,7 @@
 import JoinInLayout from "../components/Auth/SignUpLayout";
 
-const JoinInPage = () => {
+const SignUpPage = () => {
   return <JoinInLayout />;
 };
 
-export default JoinInPage;
+export default SignUpPage;

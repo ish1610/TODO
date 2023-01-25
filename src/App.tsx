@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import HomePage from "./pages/HomePage";
-import JoinInPage from "./pages/JoinInPage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import ToDoDetailPage from "./pages/ToDoDetailPage";
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="toDoDetail/:id" element={<ToDoDetailPage />} />
-        <Route path="joinIn" element={<JoinInPage />} />
+        <Route path="signUp" element={<SignUpPage />} />
+        <Route path="login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
