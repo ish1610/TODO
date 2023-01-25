@@ -1,53 +1,53 @@
 import { useState } from "react";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
+import { signUpAPI } from "./api/signUp";
 
-import { IJoinInProps } from "./types/join";
+import { ISignUpProps } from "./types/signUp";
 import SignUpView from "./Views/SignUpView";
 
 const SignUp = () => {
-  const [joinInputValues, setJoinInputValues] = useState({
+  const [signUpInputValues, setSignUpInputValues] = useState({
     email: "",
     password: "",
     passwordConfirm: "",
   });
 
-  const isEmailVaild = emailValidator(joinInputValues.email);
-  const isPasswordVaild = passwordValidator(joinInputValues.password);
+  const isEmailVaild = emailValidator(signUpInputValues.email);
+  const isPasswordVaild = passwordValidator(signUpInputValues.password);
   const isPasswordConfirmVaild =
-    joinInputValues.password === joinInputValues.passwordConfirm;
+    signUpInputValues.password === signUpInputValues.passwordConfirm;
   const isDisabledJoinIn = [
     isEmailVaild,
     isPasswordVaild,
     isPasswordConfirmVaild,
   ].every((boolean) => !!boolean);
 
-  //
   const handleSubmitJoin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("회원가입");
+    signUpAPI.signUp(signUpInputValues);
   };
 
-  const joinInProps: IJoinInProps = {
+  const signUpProps: ISignUpProps = {
     isEmailVaild,
     isPasswordVaild,
     isPasswordConfirmVaild,
     isDisabledJoinIn: !isDisabledJoinIn,
-    joinInputValues,
+    signUpInputValues,
     onSubmitJoin: (e) => handleSubmitJoin(e),
     onChangeEmailValue: (e) =>
-      setJoinInputValues((prev) => {
+      setSignUpInputValues((prev) => {
         return { ...prev, email: e.target.value };
       }),
     onChangePassworeValue: (e) =>
-      setJoinInputValues((prev) => {
+      setSignUpInputValues((prev) => {
         return { ...prev, password: e.target.value };
       }),
     onChangepasswordConfirmValue: (e) =>
-      setJoinInputValues((prev) => {
+      setSignUpInputValues((prev) => {
         return { ...prev, passwordConfirm: e.target.value };
       }),
   };
-  return <SignUpView {...joinInProps} />;
+  return <SignUpView {...signUpProps} />;
 };
 
 export default SignUp;

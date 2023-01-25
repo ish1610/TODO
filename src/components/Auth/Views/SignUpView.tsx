@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 import { blue, lightOrange } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
-import { IJoinInProps } from "../types/join";
+import { ISignUpProps } from "../types/signUp";
 
 const SignUpWrap = styled.div`
   padding: 120px 36px 180px;
@@ -72,14 +72,14 @@ const SignUpView = ({
   isEmailVaild,
   isPasswordVaild,
   isPasswordConfirmVaild,
-  joinInputValues,
+  signUpInputValues,
   onChangeEmailValue,
   onChangePassworeValue,
   onChangepasswordConfirmValue,
   onSubmitJoin,
   isDisabledJoinIn,
-}: IJoinInProps) => {
-  const { email, password, passwordConfirm } = joinInputValues;
+}: ISignUpProps) => {
+  const { email, password, passwordConfirm } = signUpInputValues;
   return (
     <SignUpWrap>
       <SignUp>
