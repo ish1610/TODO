@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginAction } from "../../store/Auth/loginSlice";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import useLogin from "./Hooks/useLogin";
 import { ILoginProps } from "./types/login";
@@ -6,6 +8,7 @@ import LoginView from "./Views/LoginView";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     value: emailValue,
@@ -30,6 +33,7 @@ const Login = () => {
 
     if (isEmailValid && isPasswordValid) {
       handleMoveHome();
+      dispatch(loginAction.login());
     }
 
     resetEmailInputState();

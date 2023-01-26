@@ -17,3 +17,7 @@ export type ThemeFeedback = {
   isFeedbackEmail: boolean;
   isFeedbackPassword: boolean;
 };
+
+export type LoginState = {
+  isLogin: boolean;
+};

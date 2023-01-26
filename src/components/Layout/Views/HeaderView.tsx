@@ -38,6 +38,7 @@ const HeaderView = ({
   onMoveRegist,
   onMoveHome,
   handleLogin,
+  isLogin,
 }: IHeaderProps) => {
   return (
     <HeaderWrap>
@@ -47,8 +48,12 @@ const HeaderView = ({
       </HeaderLogoWrap>
 
       <NavController>
-        <button onClick={handleLogin}>로그인</button>
-        <button>로그아웃</button>
+        {isLogin ? (
+          <button>로그아웃</button>
+        ) : (
+          <button onClick={handleLogin}>로그인</button>
+        )}
+
         <button onClick={onMoveRegist}>회원가입</button>
       </NavController>
     </HeaderWrap>

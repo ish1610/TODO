@@ -63,6 +63,10 @@ export type ToDoListState = {
   toDoDetail: ToDo;
 };
 
+export type ToDoModalState = {
+  isShowDeleteModal: boolean;
+};
+
 export type GetToDoCb = (toDoList: ToDo[]) => void;
 export type CreateToDoCb = (toDo: ToDo) => void;
 export type DeleteToDoCb = (toDoId: string) => void;
