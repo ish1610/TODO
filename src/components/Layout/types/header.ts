@@ -3,4 +3,10 @@ export interface IHeaderProps {
   onMoveHome: () => void;
   handleLogin: () => void;
   isLogin: boolean;
+  isShowControl: boolean;
+  onToggleSlide: () => void;
 }
+
+export type ThemeShowControl = {
+  isShowControl: boolean;
+};
