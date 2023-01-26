@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../../store/types/store";
+import { IHeaderProps } from "./types/header";
 import HeaderView from "./Views/HeaderView";
 
 const Header = () => {
@@ -21,17 +22,20 @@ const Header = () => {
     navigate("/login");
   };
 
-  const handleToggleSlide = () => {
+  const handleToggleSlide = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     setIsShowControl((prev) => !prev);
   };
 
-  const headerProps = {
+  window.addEventListener("click", () => setIsShowControl(false));
+
+  const headerProps: IHeaderProps = {
     onMoveRegist: () => handleMoveRegist(),
     onMoveHome: () => handleMoveHome(),
     handleLogin: () => handleLogin(),
     isLogin,
     isShowControl,
-    onToggleSlide: () => handleToggleSlide(),
+    onToggleSlide: (e) => handleToggleSlide(e),
   };
   return <HeaderView {...headerProps} />;
 };

@@ -4,7 +4,7 @@ export interface IHeaderProps {
   handleLogin: () => void;
   isLogin: boolean;
   isShowControl: boolean;
-  onToggleSlide: () => void;
+  onToggleSlide: (e: any) => void;
 }
 
 export type ThemeShowControl = {
