@@ -7,8 +7,8 @@
 ## 실행 환경
 
 ```bash
-$ npm i 
-$ npm start
+> npm i 
+> npm start
 ```
 <br/><br/>
 
