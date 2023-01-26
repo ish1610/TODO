@@ -8,14 +8,19 @@ const SignUpWrap = styled.div`
   padding: 120px 36px 180px;
   background-color: RGBA(41, 97, 113, 0.2);
   height: calc(100vh - 80px);
-  min-height: 800px;
-  min-width: 500px;
+  min-height: 608px;
+  min-width: 450px;
   ${flexCenter}
+
+  @media (max-width: 750px) {
+    padding: 60px 20px 60px;
+  }
 `;
 
 const SignUp = styled.div`
   width: 100%;
-  height: 668px;
+  height: 608px;
+  margin-top: 20px;
 
   display: flex;
   flex-direction: column;
@@ -65,6 +70,15 @@ const SignUp = styled.div`
   button:hover {
     background-color: #fff;
     color: ${lightOrange};
+  }
+
+  @media (max-width: 750px) {
+    width: 90%;
+    padding: 30px 0px 60px;
+    header {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
   }
 `;
 
