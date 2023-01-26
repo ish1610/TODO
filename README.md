@@ -20,6 +20,7 @@ redux
 redux-tookit
 @emotion-react
 @emotion-styled
+jsonwebtoken
 ```
 
 # 클라이언트 구현 과제
