@@ -14,6 +14,7 @@ const Container = styled.ul`
   align-items: center;
   position: relative;
   padding: 100px 0 80px;
+  min-width: 500px;
 `;
 
 const AddToDoBtn = styled.button`

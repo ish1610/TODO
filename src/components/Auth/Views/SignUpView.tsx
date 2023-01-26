@@ -7,10 +7,10 @@ import { ISignUpProps } from "../types/signUp";
 const SignUpWrap = styled.div`
   padding: 120px 36px 180px;
   background-color: RGBA(41, 97, 113, 0.2);
-  display: flex;
   height: calc(100vh - 80px);
   min-height: 800px;
-  justify-content: center;
+  min-width: 500px;
+  ${flexCenter}
 `;
 
 const SignUp = styled.div`
