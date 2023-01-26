@@ -58,11 +58,11 @@ redux-tookit
 - [updateToDo](#updateTodo)
 - [deleteToDo](#deleteTodo)
 
-## [JoinIn](#joinin)
+## [SignUp](#SignUp)
 
-- [JoinIn](#JoinIn)
+- [signUp](#signUp)
 
-## [login](#login)
+## [Login](#Login)
 
 - [login](#login)
 
