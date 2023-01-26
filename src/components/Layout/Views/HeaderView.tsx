@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import React from "react";
 
 import logo from "../../../assets/images/homeBackground.png";
 import { blue } from "../../Common/styles/commonColor";
@@ -48,13 +49,14 @@ const HeaderView = ({
       </HeaderLogoWrap>
 
       <NavController>
-        {isLogin ? (
-          <button>로그아웃</button>
-        ) : (
-          <button onClick={handleLogin}>로그인</button>
-        )}
+        {isLogin && <button>로그아웃</button>}
 
-        <button onClick={onMoveRegist}>회원가입</button>
+        {!isLogin && (
+          <React.Fragment>
+            <button onClick={handleLogin}>로그인</button>
+            <button onClick={onMoveRegist}>회원가입</button>
+          </React.Fragment>
+        )}
       </NavController>
     </HeaderWrap>
   );
