@@ -26,9 +26,12 @@ const Header = () => {
     navigate("/login");
   };
 
-  const handleLogout = () => {
+  const dispatchLogout = () => {
     dispatch(loginAction.logout());
-    loginAPI.logout();
+  };
+
+  const handleLogout = () => {
+    loginAPI.logout(dispatchLogout);
   };
 
   const handleToggleSlide = (event: React.MouseEvent<HTMLButtonElement>) => {

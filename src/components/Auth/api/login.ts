@@ -10,9 +10,10 @@ export const loginAPI = {
     onMoveHomeCb: () => void,
     dispatchNotFoundEmailCb: () => void,
     dispatchInvalidPasswordCb: () => void,
-    dispatchLoginCb: () => void,
     resetEmailInputStateCb: () => void,
-    resetPasswordInputStateCb: () => void
+    resetPasswordInputStateCb: () => void,
+    dispatchLoginCb: () => void,
+    dispatchLogoutCb: () => void
   ) => {
     let token: string;
     let expirationTime: string;
@@ -44,15 +45,18 @@ export const loginAPI = {
     localStorage.setItem("token", token);
     localStorage.setItem("expirationTime", expirationTime);
     // 만료 시간 지나면 자동 로그아웃
-    logoutTimer = setTimeout(loginAPI.logout, remainingTime);
+    logoutTimer = setTimeout(() => {
+      loginAPI.logout(dispatchLogoutCb);
+    }, remainingTime);
     dispatchLoginCb();
     onMoveHomeCb();
     resetEmailInputStateCb();
     resetPasswordInputStateCb();
   },
-  logout: () => {
+  logout: (dispatchLogoutCb: () => void) => {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
+    dispatchLogoutCb();
 
     if (logoutTimer) {
       clearTimeout(logoutTimer);
