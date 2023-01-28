@@ -19,7 +19,9 @@ function App() {
         {isLogin && (
           <Route path="toDoDetail/:id" element={<ToDoDetailPage />} />
         )}
-        <Route path="signUp" element={<SignUpPage />} />
+
+        {!isLogin && <Route path="signUp" element={<SignUpPage />} />}
+
         <Route path="login" element={<LoginPage />} />
         <Route path="*" element={<Navigate to="login" />} />
       </Routes>
