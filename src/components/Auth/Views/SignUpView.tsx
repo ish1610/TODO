@@ -1,18 +1,31 @@
 import styled from "@emotion/styled";
+import backdrop from "../../../assets/images/homeBackground.png";
 import { TextField } from "@mui/material";
 import { blue, lightOrange, warning } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ISignUpProps } from "../types/signUp";
 
 const SignUpWrap = styled.div`
-  padding: 120px 36px 180px;
-  background-color: RGBA(41, 97, 113, 0.2);
+  position: relative;
   height: calc(100vh - 80px);
-  min-height: 800px;
+  min-height: 750px;
+  padding: 50px 36px 180px;
   min-width: 450px;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  ::before {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+
+    background-image: url(${backdrop});
+    background-size: 50px;
+    opacity: 0.05;
+    content: "";
+  }
 
   @media (max-width: 750px) {
     padding: 60px 20px 60px;
@@ -20,6 +33,7 @@ const SignUpWrap = styled.div`
 `;
 
 const SignUp = styled.div`
+  position: relative;
   width: 100%;
   height: 608px;
   margin-top: 20px;
@@ -99,6 +113,7 @@ const Login = styled.div`
   .login {
     width: 100%;
     color: #777;
+    font-size: 16px;
   }
 
   .login:hover {
@@ -193,7 +208,7 @@ const SignUpView = ({
 
       <Login>
         <button className="login" onClick={onMoveLogin}>
-          로그인을 할래요!
+          로그인하러 할래요!
         </button>
       </Login>
     </SignUpWrap>

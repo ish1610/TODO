@@ -157,6 +157,7 @@ const SignUp = styled.div`
   .signUp {
     width: 100%;
     color: #777;
+    font-size: 16px;
   }
 
   .signUp:hover {
@@ -227,7 +228,7 @@ const LoginView = ({
 
       <SignUp>
         <button className="signUp" onClick={onMoveSignUp}>
-          회원가입을 할래요!
+          회원가입하러 갈래요!
         </button>
       </SignUp>
     </LoginWrap>
