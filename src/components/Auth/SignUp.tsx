@@ -32,9 +32,26 @@ const SignUp = () => {
     isPasswordConfirmVaild,
   ].every((boolean) => !!boolean);
 
+  const handleMoveHome = () => {
+    navigate("/", { replace: true });
+  };
+
+  const dispatchResetFeedback = () => {
+    dispatch(signUpAction.reset());
+  };
+
+  const dispatchExistEmail = () => {
+    dispatch(signUpAction.existEmail());
+  };
+
   const handleSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUpAPI.signUp(signUpInputValues, navigate, dispatch);
+    signUpAPI.signUp(
+      signUpInputValues,
+      handleMoveHome,
+      dispatchResetFeedback,
+      dispatchExistEmail
+    );
   };
 
   const signUpProps: ISignUpProps = {
@@ -60,7 +77,7 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    dispatch(signUpAction.reset());
+    dispatchResetFeedback();
   }, []);
   return <SignUpView {...signUpProps} />;
 };
