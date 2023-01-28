@@ -1,20 +1,27 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ToDoDetailPage from "./pages/ToDoDetailPage";
+import { Store } from "./store/types/store";
 
 function App() {
+  const isLogin = useSelector((state: Store) => state.login.isLogin);
+
   return (
     <BrowserRouter>
       <Header />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="toDoDetail/:id" element={<ToDoDetailPage />} />
+        {isLogin && <Route path="/" element={<HomePage />} />}
+        {isLogin && (
+          <Route path="toDoDetail/:id" element={<ToDoDetailPage />} />
+        )}
         <Route path="signUp" element={<SignUpPage />} />
         <Route path="login" element={<LoginPage />} />
+        <Route path="*" element={<Navigate to="login" />} />
       </Routes>
     </BrowserRouter>
   );
