@@ -23,9 +23,11 @@ export const loginAPI = {
 
       token = response.data.idToken;
     } catch (error: any) {
-      console.log(error.response.data.error);
-      if (error.response.data.error === "EMAIL_NOT_FOUND") {
-      } else if (error.response.data.error === "INVALID_PASSWORD") {
+      console.log(error.response.data.error.message);
+      if (error.response.data.error.message === "EMAIL_NOT_FOUND") {
+        dispatchNotFoundEmailCb();
+      } else if (error.response.data.error.message === "INVALID_PASSWORD") {
+        dispatchInvalidPasswordCb();
       }
 
       return;
@@ -33,8 +35,6 @@ export const loginAPI = {
 
     localStorage.setItem("token", token);
     onMoveHomeCb();
-    dispatchNotFoundEmailCb();
-    dispatchInvalidPasswordCb();
     resetEmailInputStateCb();
     resetPasswordInputStateCb();
   },

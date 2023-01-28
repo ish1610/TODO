@@ -11,6 +11,7 @@ export interface ILoginProps {
   passwordValue: string;
   isFeedbackEmail: boolean;
   isFeedbackPassword: boolean;
+  feedbackMessage: string;
 }
 
 export type ThemeFeedback = {
@@ -20,4 +21,5 @@ export type ThemeFeedback = {
 
 export type LoginState = {
   isLogin: boolean;
+  feedbackMessage: string;
 };

@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../store/Auth/loginSlice";
+import { Store } from "../../store/types/store";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { loginAPI } from "./api/login";
 import useLogin from "./Hooks/useLogin";
@@ -10,6 +11,9 @@ import LoginView from "./Views/LoginView";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const feedbackMessage = useSelector(
+    (state: Store) => state.login.feedbackMessage
+  );
 
   const {
     value: emailValue,
@@ -29,22 +33,6 @@ const Login = () => {
     resetInputState: resetPasswordInputState,
   } = useLogin(passwordValidator);
 
-  const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (isEmailValid && isPasswordValid) {
-      // 🚨 api에서 호출
-      // handleMoveHome();
-      // 🚨 로컬 스토리지에 토큰있는지 없는지 확인으로 변경하기
-      dispatch(loginAction.login());
-
-      loginAPI.login(emailValue, passwordValue , handleMoveHome,dispatchNotFoundEmail,dispatchInvalidPassword,  resetEmailInputState, resetPasswordInputState );
-    }
-
-    // resetEmailInputState();
-    // resetPasswordInputState();
-  };
-
   const handleMoveSignUp = () => {
     navigate("/signup");
   };
@@ -56,7 +44,24 @@ const Login = () => {
   const dispatchNotFoundEmail = () => dispatch(loginAction.notFoundEmail());
   const dispatchInvalidPassword = () => dispatch(loginAction.invalidPassword());
 
+  const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (isEmailValid && isPasswordValid) {
+      loginAPI.login(
+        emailValue,
+        passwordValue,
+        handleMoveHome,
+        dispatchNotFoundEmail,
+        dispatchInvalidPassword,
+        resetEmailInputState,
+        resetPasswordInputState
+      );
+    }
+  };
+
   const loginProps: ILoginProps = {
+    feedbackMessage,
     emailValue,
     passwordValue,
     isFeedbackEmail,

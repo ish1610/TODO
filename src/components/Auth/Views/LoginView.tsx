@@ -11,8 +11,8 @@ import { ILoginProps, ThemeFeedback } from "../types/login";
 const LoginWrap = styled.div`
   position: relative;
   height: calc(100vh - 80px);
-  min-height: 700px;
-  padding: 120px 36px 180px;
+  min-height: 750px;
+  padding: 50px 36px 180px;
   min-width: 450px;
   ${flexCenter}
   flex-direction: column;
@@ -40,11 +40,12 @@ const Login = styled.div<ThemeFeedback>`
   flex-direction: column;
   width: 80%;
   max-width: 800px;
-  height: 450px;
+
+  min-height: 500px;
   background-color: #fff;
   border: 1px solid ${blue};
   border-radius: 8px;
-  padding: 30px 50px 60px;
+  padding: 50px 50px 60px;
   margin-bottom: 24px;
   margin-top: 20px;
 
@@ -61,7 +62,7 @@ const Login = styled.div<ThemeFeedback>`
   .inputWrap {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   label {
@@ -111,7 +112,14 @@ const Login = styled.div<ThemeFeedback>`
   .loginControlWrap {
     ${flexCenter}
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 20px;
+  }
+
+  .submitFeedbackMessage {
+    display: flex;
+    justify-content: center;
+    color: ${warning};
+    font-size: 14px;
   }
 
   .login {
@@ -154,6 +162,7 @@ const SignUp = styled.div`
 `;
 
 const LoginView = ({
+  feedbackMessage,
   emailValue,
   passwordValue,
   isFeedbackEmail,
@@ -202,6 +211,8 @@ const LoginView = ({
               비밀번호는 영문, 특수문자, 숫자 조합의 8~20자리를 입력해주세요.
             </p>
           </div>
+
+          <p className="submitFeedbackMessage">{feedbackMessage}</p>
 
           <div className="loginControlWrap">
             <button className="login" type="submit">
