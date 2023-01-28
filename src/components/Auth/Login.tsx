@@ -41,7 +41,7 @@ const Login = () => {
   const handleMoveHome = () => {
     navigate("/", { replace: true });
   };
-
+  const dispatchLogin = () => dispatch(loginAction.login());
   const dispatchNotFoundEmail = () => dispatch(loginAction.notFoundEmail());
   const dispatchInvalidPassword = () => dispatch(loginAction.invalidPassword());
 
@@ -56,7 +56,8 @@ const Login = () => {
         dispatchNotFoundEmail,
         dispatchInvalidPassword,
         resetEmailInputState,
-        resetPasswordInputState
+        resetPasswordInputState,
+        dispatchLogin
       );
     }
   };

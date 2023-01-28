@@ -22,4 +22,5 @@ export type ThemeFeedback = {
 export type LoginState = {
   isLogin: boolean;
   feedbackMessage: string;
+  tokenData: { token: string; duration: string } | null;
 };

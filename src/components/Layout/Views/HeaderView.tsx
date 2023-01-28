@@ -127,7 +127,8 @@ const NavControlerSlide = styled.div<ThemeShowControl>`
 const HeaderView = ({
   onMoveRegist,
   onMoveHome,
-  handleLogin,
+  onLogin,
+  onLogout,
   isLogin,
   isShowControl,
   onToggleSlide,
@@ -140,11 +141,11 @@ const HeaderView = ({
       </HeaderLogoWrap>
 
       <NavControler>
-        {isLogin && <button>로그아웃</button>}
+        {isLogin && <button onClick={onLogout}>로그아웃</button>}
 
         {!isLogin && (
           <React.Fragment>
-            <button onClick={handleLogin}>로그인</button>
+            <button onClick={onLogin}>로그인</button>
             <button onClick={onMoveRegist}>회원가입</button>
           </React.Fragment>
         )}
@@ -160,13 +161,13 @@ const HeaderView = ({
           <ul>
             {!isLogin && (
               <li>
-                <button onClick={handleLogin}>로그인</button>
+                <button onClick={onLogin}>로그인</button>
                 <button onClick={onMoveRegist}>회원가입</button>
               </li>
             )}
             {isLogin && (
               <li>
-                <button>로그아웃</button>
+                <button onClick={onLogout}>로그아웃</button>
               </li>
             )}
           </ul>

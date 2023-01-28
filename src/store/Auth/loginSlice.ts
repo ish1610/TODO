@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { retrieveStoredToken } from "../../components/Auth/utils/token";
 
 const initialLoginState = {
   isLogin: false,
   feedbackMessage: "",
+  tokenData: {
+    token: "",
+    duration: 0,
+  },
 };
 
 const loginSlice = createSlice({
@@ -10,7 +15,11 @@ const loginSlice = createSlice({
   initialState: initialLoginState,
   reducers: {
     login: (state) => {
+      const storedtoken = retrieveStoredToken();
       state.isLogin = true;
+      // if (storedtoken?.token && storedtoken?.duration) {
+      //   state.tokenData = storedtoken;
+      // }
     },
     logout: (state) => {
       state.isLogin = false;
