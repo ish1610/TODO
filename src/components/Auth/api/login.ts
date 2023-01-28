@@ -51,7 +51,6 @@ export const loginAPI = {
     resetPasswordInputStateCb();
   },
   logout: () => {
-    console.log(123);
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
 
