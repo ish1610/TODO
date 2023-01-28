@@ -6,12 +6,11 @@ import { IEmptyProps } from "../../types/empty";
 
 const NoneTodo = styled.div`
   width: 80%;
-  height: 400px;
   border: 3px solid ${blue};
   border-radius: 8px;
   position: relative;
 
-  &::after {
+  ::after {
     content: "";
     position: absolute;
     width: 220px;
@@ -27,7 +26,7 @@ const NoneTodo = styled.div`
   }
 
   @media (max-width: 1000px) {
-    &::after {
+    ::after {
       width: 180px;
       height: 180px;
     }
@@ -35,7 +34,7 @@ const NoneTodo = styled.div`
 
   @media (max-width: 750px) {
     padding: 0 42px;
-    &::after {
+    ::after {
       width: 160px;
       height: 160px;
     }
@@ -43,7 +42,7 @@ const NoneTodo = styled.div`
 `;
 
 const NoneTodoContent = styled.div`
-  height: 100%;
+  height: 400px;
   ${flexCenter}
   flex-direction: column;
 

@@ -1,5 +1,4 @@
 import axios from "axios";
-import dotenv from "dotenv";
 import {
   CreateToDoCb,
   DeleteToDoCb,
@@ -49,12 +48,11 @@ export const ToDoAPI = {
       });
   },
   deleteToDo: (id: string, deleteToDoCb: DeleteToDoCb) => {
+    console.log(id);
     axios
-      .delete(`${DB_URL}/todos.json`, {
-        data: {
-          id: id,
-        },
-      })
+      .delete(
+        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${id}.json`
+      )
       .then((response) => {
         if (response.status === 200) {
           deleteToDoCb(id);
