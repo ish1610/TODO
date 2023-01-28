@@ -10,7 +10,9 @@ const SignUpWrap = styled.div`
   height: calc(100vh - 80px);
   min-height: 800px;
   min-width: 450px;
-  ${flexCenter}
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
   @media (max-width: 750px) {
     padding: 60px 20px 60px;

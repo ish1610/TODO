@@ -14,7 +14,8 @@ const LoginWrap = styled.div`
   min-height: 750px;
   padding: 50px 36px 180px;
   min-width: 450px;
-  ${flexCenter}
+  display: flex;
+  align-items: center;
   flex-direction: column;
 
   ::before {

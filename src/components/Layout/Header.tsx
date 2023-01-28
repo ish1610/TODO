@@ -42,7 +42,9 @@ const Header = () => {
     const tokenData = retrieveStoredToken();
 
     if (tokenData) {
-      setTimeout(handleLogout, tokenData.duration);
+      setTimeout(() => {
+        handleLogout();
+      }, tokenData.duration);
     }
   }, [handleLogout]);
 
