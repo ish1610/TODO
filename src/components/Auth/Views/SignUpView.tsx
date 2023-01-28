@@ -59,6 +59,10 @@ const SignUp = styled.div`
   .feedbackMessage {
     font-size: 14px;
     color: ${warning};
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 16px;
   }
 
   button {

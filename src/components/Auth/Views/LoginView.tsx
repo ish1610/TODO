@@ -120,6 +120,8 @@ const Login = styled.div<ThemeFeedback>`
     justify-content: center;
     color: ${warning};
     font-size: 14px;
+    width: 100%;
+    height: 16px;
   }
 
   .login {
