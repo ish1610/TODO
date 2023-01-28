@@ -1,4 +1,5 @@
 import axios from "axios";
+import dotenv from "dotenv";
 import {
   CreateToDoCb,
   DeleteToDoCb,
@@ -8,6 +9,8 @@ import {
 } from "../types/todos";
 import { randomString } from "../../Common/Util/randomString";
 import { getDate } from "../../Common/Util/date";
+
+const DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
 
 export const ToDoAPI = {
   createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
@@ -19,10 +22,7 @@ export const ToDoAPI = {
     };
 
     axios
-      .patch(
-        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${newToDo.id}.json`,
-        newToDo
-      )
+      .patch(`${DB_URL}/todos/${newToDo.id}.json`, newToDo)
 
       .catch((error) => {
         console.log(`🚨 CreateToDoAPI : ${error.message}`);
@@ -33,7 +33,7 @@ export const ToDoAPI = {
   },
   getToDo: (setTodoListCb: GetToDoCb) => {
     axios
-      .get("https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json")
+      .get(`${DB_URL}/todos.json`)
       .then((response) => {
         const loadedToDos: ToDo[] = [];
         const { data: toDos } = response;
@@ -50,14 +50,11 @@ export const ToDoAPI = {
   },
   deleteToDo: (id: string, deleteToDoCb: DeleteToDoCb) => {
     axios
-      .delete(
-        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos.json`,
-        {
-          data: {
-            id: id,
-          },
-        }
-      )
+      .delete(`${DB_URL}/todos.json`, {
+        data: {
+          id: id,
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           deleteToDoCb(id);
@@ -70,7 +67,7 @@ export const ToDoAPI = {
   updateToDo: (toDo: ToDo) => {
     axios
       .patch(
-        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${toDo.id}.json`,
+        `${DB_URL}/todos/${toDo.id}.json`,
 
         {
           content: toDo.content,
