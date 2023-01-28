@@ -1,7 +1,13 @@
-import Login from "../Login";
+import React, { Suspense } from "react";
+import LoadingView from "../../Common/Loading/Views/LoadingView";
 
 const LoginLayoutView = () => {
-  return <Login />;
+  const Login = React.lazy(() => import("../Login"));
+  return (
+    <Suspense fallback={<LoadingView />}>
+      <Login />;
+    </Suspense>
+  );
 };
 
 export default LoginLayoutView;
