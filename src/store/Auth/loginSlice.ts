@@ -21,6 +21,9 @@ const loginSlice = createSlice({
     invalidPassword: (state) => {
       state.feedbackMessage = "유효하지 않은 비밀번호입니다.";
     },
+    resetFeedback: (state) => {
+      state.feedbackMessage = "";
+    },
   },
 });
 

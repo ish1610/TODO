@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../store/Auth/loginSlice";
@@ -38,7 +39,7 @@ const Login = () => {
   };
 
   const handleMoveHome = () => {
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   const dispatchNotFoundEmail = () => dispatch(loginAction.notFoundEmail());
@@ -59,6 +60,10 @@ const Login = () => {
       );
     }
   };
+
+  useEffect(() => {
+    dispatch(loginAction.resetFeedback());
+  }, []);
 
   const loginProps: ILoginProps = {
     feedbackMessage,
