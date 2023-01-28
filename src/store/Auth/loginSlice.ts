@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialLoginState = {
   isLogin: false,
+  feedbackMessage: "",
 };
 
 const loginSlice = createSlice({
@@ -13,6 +14,12 @@ const loginSlice = createSlice({
     },
     logout: (state) => {
       state.isLogin = false;
+    },
+    notFoundEmail: (state) => {
+      state.feedbackMessage = "존재하지 않는 이메일입니다.";
+    },
+    invalidPassword: (state) => {
+      state.feedbackMessage = "유효하지 않은 비밀번호입니다.";
     },
   },
 });

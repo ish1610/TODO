@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../store/Auth/loginSlice";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
+import { loginAPI } from "./api/login";
 import useLogin from "./Hooks/useLogin";
 import { ILoginProps } from "./types/login";
 import LoginView from "./Views/LoginView";
@@ -32,12 +33,16 @@ const Login = () => {
     e.preventDefault();
 
     if (isEmailValid && isPasswordValid) {
-      handleMoveHome();
+      // 🚨 api에서 호출
+      // handleMoveHome();
+      // 🚨 로컬 스토리지에 토큰있는지 없는지 확인으로 변경하기
       dispatch(loginAction.login());
+
+      loginAPI.login(emailValue, passwordValue , handleMoveHome,dispatchNotFoundEmail,dispatchInvalidPassword,  resetEmailInputState, resetPasswordInputState );
     }
 
-    resetEmailInputState();
-    resetPasswordInputState();
+    // resetEmailInputState();
+    // resetPasswordInputState();
   };
 
   const handleMoveSignUp = () => {
@@ -47,6 +52,9 @@ const Login = () => {
   const handleMoveHome = () => {
     navigate("/");
   };
+
+  const dispatchNotFoundEmail = () => dispatch(loginAction.notFoundEmail());
+  const dispatchInvalidPassword = () => dispatch(loginAction.invalidPassword());
 
   const loginProps: ILoginProps = {
     emailValue,
