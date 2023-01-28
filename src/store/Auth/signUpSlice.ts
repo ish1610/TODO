@@ -8,9 +8,12 @@ const signUpSlice = createSlice({
   name: "signUp",
   initialState: initialSignUpState,
   reducers: {
-    EMAIL_EXISTS: (state) => {
+    existEmail: (state) => {
       state.feedbackMessage =
         "이미 존재하는 이메일 입니다. 새로운 이메일을 입력해주세요.";
+    },
+    reset(state) {
+      state.feedbackMessage = "";
     },
   },
 });

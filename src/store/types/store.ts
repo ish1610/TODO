@@ -1,4 +1,5 @@
 import { LoginState } from "../../components/Auth/types/login";
+import { SignUpState } from "../../components/Auth/types/signUp";
 import {
   ToDoListState,
   ToDoModalState,
@@ -8,4 +9,5 @@ export type Store = {
   toDoList: ToDoListState;
   toDoModal: ToDoModalState;
   login: LoginState;
+  signUp: SignUpState;
 };

@@ -1,11 +1,15 @@
+import { AnyAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Dispatch } from "react";
 import { NavigateFunction } from "react-router-dom";
-import { signUpInfoValues } from "../types/signUp";
+import { signUpAction } from "../../../store/Auth/signUpSlice";
+import { SignUpInfoValues } from "../types/signUp";
 
 export const signUpAPI = {
   signUp: async (
-    signUpInfo: signUpInfoValues,
-    moveHomeCb: NavigateFunction
+    signUpInfo: SignUpInfoValues,
+    moveHomeCb: NavigateFunction,
+    disfatchCb: Dispatch<AnyAction>
   ) => {
     const { email, password } = signUpInfo;
 
@@ -19,11 +23,13 @@ export const signUpAPI = {
         }
       );
     } catch (error: any) {
-      console.log(error.response.data.error.message);
-
+      if (error.response.data.error.message === "EMAIL_EXISTS") {
+        disfatchCb(signUpAction.existEmail());
+      }
       return;
     }
     window.alert("회원가입을 축하합니다 🎉");
     moveHomeCb("/");
+    disfatchCb(signUpAction.reset());
   },
 };

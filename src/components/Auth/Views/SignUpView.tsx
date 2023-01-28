@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
-import { blue, lightOrange } from "../../Common/styles/commonColor";
+import { blue, lightOrange, warning } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ISignUpProps } from "../types/signUp";
 
@@ -8,7 +8,7 @@ const SignUpWrap = styled.div`
   padding: 120px 36px 180px;
   background-color: RGBA(41, 97, 113, 0.2);
   height: calc(100vh - 80px);
-  min-height: 608px;
+  min-height: 800px;
   min-width: 450px;
   ${flexCenter}
 
@@ -56,6 +56,11 @@ const SignUp = styled.div`
     font-family: inherit;
   }
 
+  .feedbackMessage {
+    font-size: 14px;
+    color: ${warning};
+  }
+
   button {
     margin-top: 40px;
     background-color: ${lightOrange};
@@ -83,6 +88,7 @@ const SignUp = styled.div`
 `;
 
 const SignUpView = ({
+  signUpFeedbackMessage,
   isEmailVaild,
   isPasswordVaild,
   isPasswordConfirmVaild,
@@ -156,6 +162,8 @@ const SignUpView = ({
               } `}
             />
           </div>
+
+          <p className="feedbackMessage">{signUpFeedbackMessage}</p>
 
           <button type="submit" disabled={isDisabledJoinIn}>
             회원가입

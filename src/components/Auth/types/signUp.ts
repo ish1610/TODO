@@ -5,6 +5,7 @@ export type signUpInputValues = {
 };
 
 export interface ISignUpProps {
+  signUpFeedbackMessage: string;
   isEmailVaild: boolean;
   isPasswordVaild: boolean;
   isPasswordConfirmVaild: boolean;
@@ -18,5 +19,9 @@ export interface ISignUpProps {
   onSubmitSignUp: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export type signUpInfoValues = Pick<signUpInputValues, "email" | "password">;
-export type moveHomeCb = (route: string) => void;
+export type SignUpInfoValues = Pick<signUpInputValues, "email" | "password">;
+export type MoveHomeCb = (route: string) => void;
+
+export type SignUpState = {
+  feedbackMessage: string;
+};

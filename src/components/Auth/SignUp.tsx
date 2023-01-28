@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { signUpAction } from "../../store/Auth/signUpSlice";
+import { Store } from "../../store/types/store";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { signUpAPI } from "./api/signUp";
 
@@ -8,6 +11,11 @@ import SignUpView from "./Views/SignUpView";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const signUpFeedbackMessage = useSelector(
+    (state: Store) => state.signUp.feedbackMessage
+  );
+
   const [signUpInputValues, setSignUpInputValues] = useState({
     email: "",
     password: "",
@@ -26,10 +34,11 @@ const SignUp = () => {
 
   const handleSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUpAPI.signUp(signUpInputValues, navigate);
+    signUpAPI.signUp(signUpInputValues, navigate, dispatch);
   };
 
   const signUpProps: ISignUpProps = {
+    signUpFeedbackMessage,
     isEmailVaild,
     isPasswordVaild,
     isPasswordConfirmVaild,
@@ -49,6 +58,10 @@ const SignUp = () => {
         return { ...prev, passwordConfirm: e.target.value };
       }),
   };
+
+  useEffect(() => {
+    dispatch(signUpAction.reset());
+  }, []);
   return <SignUpView {...signUpProps} />;
 };
 
