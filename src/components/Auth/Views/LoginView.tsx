@@ -227,7 +227,7 @@ const LoginView = ({
 
       <SignUp>
         <button className="signUp" onClick={onMoveSignUp}>
-          회원가입
+          회원가입을 할래요!
         </button>
       </SignUp>
     </LoginWrap>

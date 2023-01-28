@@ -23,6 +23,7 @@ const SignUp = styled.div`
   width: 100%;
   height: 608px;
   margin-top: 20px;
+  margin-bottom: 24px;
 
   display: flex;
   flex-direction: column;
@@ -93,6 +94,18 @@ const SignUp = styled.div`
   }
 `;
 
+const Login = styled.div`
+  position: relative;
+  .login {
+    width: 100%;
+    color: #777;
+  }
+
+  .login:hover {
+    color: #333;
+  }
+`;
+
 const SignUpView = ({
   signUpFeedbackMessage,
   isEmailVaild,
@@ -104,6 +117,7 @@ const SignUpView = ({
   onChangepasswordConfirmValue,
   onSubmitSignUp,
   isDisabledJoinIn,
+  onMoveLogin,
 }: ISignUpProps) => {
   const { email, password, passwordConfirm } = signUpInputValues;
   return (
@@ -176,6 +190,12 @@ const SignUpView = ({
           </button>
         </form>
       </SignUp>
+
+      <Login>
+        <button className="login" onClick={onMoveLogin}>
+          로그인을 할래요!
+        </button>
+      </Login>
     </SignUpWrap>
   );
 };

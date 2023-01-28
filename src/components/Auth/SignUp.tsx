@@ -36,6 +36,10 @@ const SignUp = () => {
     navigate("/", { replace: true });
   };
 
+  const handleMoveLogin = () => {
+    navigate("/login", { replace: true });
+  };
+
   const dispatchResetFeedback = () => {
     dispatch(signUpAction.reset());
   };
@@ -74,6 +78,7 @@ const SignUp = () => {
       setSignUpInputValues((prev) => {
         return { ...prev, passwordConfirm: e.target.value };
       }),
+    onMoveLogin: () => handleMoveLogin(),
   };
 
   useEffect(() => {
