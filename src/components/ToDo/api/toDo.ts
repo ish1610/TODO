@@ -48,7 +48,6 @@ export const ToDoAPI = {
       });
   },
   deleteToDo: (id: string, deleteToDoCb: DeleteToDoCb) => {
-    console.log(id);
     axios
       .delete(
         `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${id}.json`

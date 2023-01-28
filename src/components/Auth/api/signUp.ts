@@ -3,23 +3,27 @@ import { NavigateFunction } from "react-router-dom";
 import { signUpInfoValues } from "../types/signUp";
 
 export const signUpAPI = {
-  signUp: (signUpInfo: signUpInfoValues, moveHomeCb: NavigateFunction) => {
-    const newSignUpInfo = {
-      email: signUpInfo.email,
-      password: signUpInfo.password,
-    };
+  signUp: async (
+    signUpInfo: signUpInfoValues,
+    moveHomeCb: NavigateFunction
+  ) => {
+    const { email, password } = signUpInfo;
 
-    axios
-      .patch(
-        `https://preonboardingtodo-default-rtdb.firebaseio.com/user.json`,
-        newSignUpInfo
-      )
-      .then(() => {
-        window.alert("회원가입을 축하합니다 🎉");
-        moveHomeCb("/");
-      })
-      .catch((error) => {
-        console.log(`🚨 SignUpAPI : ${error.message}`);
-      });
+    try {
+      await axios.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_AUTH_API_KEY}`,
+        {
+          email,
+          password,
+          returnSecureToken: true,
+        }
+      );
+    } catch (error: any) {
+      console.log(error.response.data.error.message);
+
+      return;
+    }
+    window.alert("회원가입을 축하합니다 🎉");
+    moveHomeCb("/");
   },
 };
