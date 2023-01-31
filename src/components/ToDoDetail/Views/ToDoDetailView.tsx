@@ -4,20 +4,18 @@ import {
   blue,
   cancel,
   lightOrange,
-  orange,
   yellow,
 } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
-import { ITodoDetailProps } from "../../ToDo/types/todos";
+
 import { TextField } from "@mui/material";
+import { ITodoDetailProps } from "../types/toDoDetail";
 
 const ToDoDetailView = ({
+  children,
   toDoDetail,
   isEdit,
-  isDisabledEditToDo,
   onClickCancel,
-  onClickEdit,
-  onClickSave,
   onChangeTitle,
   onChangeContent,
 }: ITodoDetailProps) => {
@@ -98,25 +96,14 @@ const ToDoDetailView = ({
           </div>
         )}
 
-        <DetailControl isDisabled={isDisabledEditToDo}>
-          {!isEdit && (
-            <button className="update" onClick={() => onClickEdit()}>
-              수정
-            </button>
-          )}
-          {isEdit && (
-            <button
-              className="update"
-              onClick={() => onClickSave()}
-              disabled={isDisabledEditToDo}
-            >
-              저장
-            </button>
-          )}
+        <DetailControl>
+          {children}
 
-          <button className="cancel" onClick={onClickCancel}>
-            취소
-          </button>
+          <div className="cancelWrap">
+            <button className="cancel" onClick={onClickCancel}>
+              취소
+            </button>
+          </div>
         </DetailControl>
       </ToDoDetailContent>
     </ToDoDetailWrap>
@@ -126,18 +113,18 @@ const ToDoDetailView = ({
 export default ToDoDetailView;
 
 const ToDoDetailWrap = styled.div`
+  border: 2px solid ${blue};
+  border-radius: 8px;
   width: 90%;
   max-width: 800px;
+  padding: 50px;
 
   header {
     ${flexCenter}
-
-    border-radius: 8px 8px 0 0;
-    background-color: ${blue};
-    color: #fff;
-    padding: 20px;
+    color: #333;
     font-weight: 700;
     font-size: 20px;
+    margin-bottom: 50px;
   }
 
   @media (max-width: 820px) {
@@ -148,32 +135,20 @@ const ToDoDetailWrap = styled.div`
 `;
 
 const ToDoDetailContent = styled.section`
-  border: 3px solid ${blue};
-  border-top: none;
-
-  padding: 50px 20px 50px;
-
   .title,
-  .content,
   .createdAt,
   .updatedAt {
-    display: flex;
-    align-items: center;
     margin-bottom: 50px;
   }
+  .content {
+    margin-bottom: 80px;
+  }
 
   .createdAt,
   .updatedAt {
-    margin-bottom: 24px;
     color: rgb(180, 180, 180);
     font-size: 16px;
-  }
-
-  .titleWrap,
-  .contentWrap {
-    align-self: flex-start;
-    padding-top: 14px;
-    min-width: 140px;
+    display: flex;
   }
 
   .title,
@@ -192,16 +167,17 @@ const ToDoDetailContent = styled.section`
 
   .titleWrap.detail .toDoDetail-sortation,
   .contentWrap.detail .toDoDetail-sortation {
-    background-color: ${orange};
-    color: #fff;
+    display: block;
     font-weight: 700;
-    border-radius: 50px;
-    padding: 10px 14px;
+    color: #222;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid ${lightOrange};
+    font-size: 18px;
   }
 
   .todoDateWrap {
     display: flex;
-    margin-top: 50px;
   }
 
   .todoDateWrap .createdAt {
@@ -222,45 +198,33 @@ const ToDoDetailContent = styled.section`
       display: flex;
       flex-direction: column;
     }
-    .toDoDetail-sortation,
+
+    .titleWrap.detail .toDoDetail-sortation,
+    .contentWrap.detail .toDoDetail-sortation {
+      font-size: 16px;
+    }
+
     .createdAt,
     .updatedAt {
       font-size: 14px;
     }
 
-    .titleWrap.detail .toDoDetail-sortation,
-    .contentWrap.detail .toDoDetail-sortation {
-      display: inline-block;
-      margin-bottom: 20px;
-    }
     .todoDateWrap {
       flex-direction: column;
+    }
+
+    .todoDateWrap .createdAt {
+      margin-right: 0px;
     }
   }
 `;
 
-const DetailControl = styled.div<{ isDisabled: boolean }>`
+const DetailControl = styled.div`
   ${flexCenter}
   margin-top: 50px;
 
-  button {
-    padding: 12px 40px;
-    border-radius: 5px;
-  }
-
-  .update {
-    border: 1px solid ${(props) => (props.isDisabled ? cancel : orange)};
-    cursor: ${(props) => (props.isDisabled ? "not-allowed" : "pointer")};
-    background-color: ${(props) => (props.isDisabled ? cancel : "#fff")};
-    color: ${(props) => (props.isDisabled ? "#fff" : orange)};
-    font-family: inherit;
-    font-weight: 700;
-    transition: 0.3s;
-  }
-
-  .update:hover {
-    color: ${(props) => (props.isDisabled ? "" : "#fff")};
-    background-color: ${(props) => (props.isDisabled ? cancel : lightOrange)};
+  .cancelWrap {
+    margin-top: 20px;
   }
 
   .cancel {
@@ -268,5 +232,7 @@ const DetailControl = styled.div<{ isDisabled: boolean }>`
     background-color: ${cancel};
     color: #555;
     margin-left: 30px;
+    padding: 10px 42px;
+    border-radius: 6px;
   }
 `;
