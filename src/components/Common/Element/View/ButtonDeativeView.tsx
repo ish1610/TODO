@@ -13,7 +13,7 @@ const ButtonWrap = styled.div<ThemeButtonDeative>`
     border-radius: 4px;
     transition: 0.2s;
     width: 100%;
-    padding: 8px 0;
+    padding: 10px 42px;
     color: ${(props) => props.color};
     background-color: ${(props) =>
       props.isDeactivation ? `${cancel}` : props.backgroundColor};
