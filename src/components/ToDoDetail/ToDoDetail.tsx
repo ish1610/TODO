@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { Store } from "../../store/types/store";
 import ButtonDeative from "../Common/Element/ButtonDeative";
