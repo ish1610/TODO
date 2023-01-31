@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
-import { blue, lightOrange, warning } from "../../Common/styles/commonColor";
+import { blue, warning } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ISignUpProps } from "../types/signUp";
 
