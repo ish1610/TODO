@@ -11,6 +11,7 @@ export const calculateRemainingTime = (expirationTime: string): number => {
 export const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem("token");
   const storedExpirationTime = localStorage.getItem("expirationTime");
+  const storedUId = localStorage.getItem("uId");
 
   if (storedExpirationTime) {
     const remainingTime = calculateRemainingTime(storedExpirationTime);
@@ -25,6 +26,7 @@ export const retrieveStoredToken = () => {
     return {
       token: storedToken,
       duration: remainingTime,
+      uId: storedUId,
     };
   }
 };
