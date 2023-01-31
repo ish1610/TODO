@@ -12,8 +12,10 @@ const HeaderWrap = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 22px 20px 22px;
-  height: 80px;
+  height: 100px;
   border-bottom: 1px solid ${blue};
+  z-index: 10;
+  background-color: ${blue};
 
   @media (max-width: 750px) {
     justify-content: center;
@@ -28,13 +30,18 @@ const HeaderLogoWrap = styled.div`
   img {
     width: 40px;
     height: 40px;
+    margin-bottom: 10px;
   }
   h1 {
     font-size: 16px;
+    color: #fff;
   }
 `;
 
 const NavControler = styled.nav`
+  button {
+    color: #fff;
+  }
   @media (max-width: 750px) {
     display: none;
   }
@@ -49,8 +56,8 @@ const NavControlerSlide = styled.div<ThemeShowControl>`
   z-index: 5;
 
   .slideDown-btn {
-    color: ${blue};
-    font-size: 24px;
+    color: #fff;
+    font-size: 28px;
     transition: 0.2s;
   }
   .slideDown-btn:hover {

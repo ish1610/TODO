@@ -3,6 +3,13 @@ import LoadingView from "../../Common/Loading/Views/LoadingView";
 import AddToDoModal from "../AddToDoModal";
 import { IToDoLayoutProps } from "../types/todos";
 
+import styled from "@emotion/styled";
+
+const Container = styled.div`
+  width: 100%;
+  position: absolute;
+  inset: 0;
+`;
 const ToDoLayoutView = ({
   onCloseModal,
   onShowModal,
@@ -10,13 +17,13 @@ const ToDoLayoutView = ({
 }: IToDoLayoutProps) => {
   const ToDoList = React.lazy(() => import("../ToDoList"));
   return (
-    <React.Fragment>
+    <Container>
       <Suspense fallback={<LoadingView />}>
         <ToDoList onShowModal={onShowModal} />
       </Suspense>
 
       <AddToDoModal isShowModal={isShowModal} onCloseModal={onCloseModal} />
-    </React.Fragment>
+    </Container>
   );
 };
 

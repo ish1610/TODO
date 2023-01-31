@@ -84,10 +84,11 @@ const BackDrop = styled.div`
 `;
 
 const AddToModal = styled.div`
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 250px;
   z-index: 2;
   width: 80%;
   border: 1px solid ${blue};

@@ -6,13 +6,13 @@ import ToDoItem from "../ToDoItem";
 import EmptyTodo from "../../Common/Empty/EmptyTodo";
 
 const Container = styled.ul`
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 100px 0 80px;
+  padding: 180px 0 80px;
   min-width: 500px;
 `;
 
@@ -20,16 +20,16 @@ const AddToDoBtn = styled.button`
   border: 1px solid ${orange};
   border-radius: 8px;
   padding: 8px 18px;
-  color: #333;
-  background-color: #fff;
+  color: #fff;
+  background-color: ${orange};
   position: absolute;
-  top: 20px;
+  top: 120px;
   right: 20px;
   transition: 0.3s;
 
   :hover {
-    background-color: ${orange};
-    color: #fff;
+    background-color: #fff;
+    color: #333;
   }
 `;
 
