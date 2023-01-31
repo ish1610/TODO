@@ -1,12 +1,12 @@
 import axios from "axios";
-import { SignUpInfoValues } from "../types/signUp";
+import { SignUpAPI } from "../types/signUp";
 
-export const signUpAPI = {
+export const signUpAPI: SignUpAPI = {
   signUp: async (
-    signUpInfo: SignUpInfoValues,
-    moveHomeCb: () => void,
-    disfatchResetFeedbackCb: () => void,
-    dispatchExistEmail: () => void
+    signUpInfo,
+    moveHomeCb,
+    disfatchResetFeedbackCb,
+    dispatchExistEmail
   ) => {
     const { email, password } = signUpInfo;
 

@@ -27,3 +27,12 @@ export type MoveHomeCb = (route: string) => void;
 export type SignUpState = {
   feedbackMessage: string;
 };
+
+export type SignUpAPI = {
+  signUp: (
+    signUpInfo: SignUpInfoValues,
+    moveHomeCb: () => void,
+    disfatchResetFeedbackCb: () => void,
+    dispatchExistEmail: () => void
+  ) => void;
+};
