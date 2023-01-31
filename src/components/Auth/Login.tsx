@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../store/Auth/loginSlice";
 import { Store } from "../../store/types/store";
+import AuthContainer from "../Common/Auth/AuthContainer";
+import { IAuthContainerProps } from "../Common/Auth/types/auth";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { loginAPI } from "./api/login";
 import useLogin from "./Hooks/useLogin";
@@ -86,10 +88,18 @@ const Login = () => {
     onChangedEmail: handleChangedEmail,
     onChangedPassword: handleChangedPassword,
     onSubmitLogin: (e) => handleSubmitLogin(e),
-    onMoveSignUp: () => handleMoveSignUp(),
   };
 
-  return <LoginView {...loginProps} />;
+  const authContainerProps = {
+    onMove: () => handleMoveSignUp(),
+    moveText: "회원가입하러 갈래요!",
+  };
+
+  return (
+    <AuthContainer {...authContainerProps}>
+      <LoginView {...loginProps} />
+    </AuthContainer>
+  );
 };
 
 export default Login;

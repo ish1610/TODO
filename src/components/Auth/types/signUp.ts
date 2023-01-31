@@ -17,7 +17,6 @@ export interface ISignUpProps {
     e: React.ChangeEvent<HTMLInputElement>
   ) => void;
   onSubmitSignUp: (e: React.FormEvent<HTMLFormElement>) => void;
-  onMoveLogin: () => void;
 }
 
 export type SignUpInfoValues = Pick<signUpInputValues, "email" | "password">;

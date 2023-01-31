@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import { TextField } from "@mui/material";
-import AuthContainer from "../../Common/Auth/View/AuthContainer";
+
 import { blue, lightOrange, warning } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ISignUpProps } from "../types/signUp";
@@ -82,19 +82,6 @@ const SignUp = styled.div`
   }
 `;
 
-const Login = styled.div`
-  position: relative;
-  .login {
-    width: 100%;
-    color: #777;
-    font-size: 16px;
-  }
-
-  .login:hover {
-    color: #333;
-  }
-`;
-
 const SignUpView = ({
   signUpFeedbackMessage,
   isEmailVaild,
@@ -106,86 +93,77 @@ const SignUpView = ({
   onChangepasswordConfirmValue,
   onSubmitSignUp,
   isDisabledJoinIn,
-  onMoveLogin,
 }: ISignUpProps) => {
   const { email, password, passwordConfirm } = signUpInputValues;
   return (
-    <AuthContainer>
-      <SignUp>
-        <header>회원가입</header>
-        <form onSubmit={onSubmitSignUp}>
-          <div className="inputWrap">
-            <TextField
-              label="Email"
-              variant="standard"
-              autoFocus
-              fullWidth={true}
-              placeholder="example@example.com"
-              margin="dense"
-              color="warning"
-              value={email}
-              onChange={onChangeEmailValue}
-              error={!isEmailVaild}
-              helperText={`${
-                !isEmailVaild
-                  ? "이메일은 @ 형식의 8자리 이상을 입렵해주세요."
-                  : ""
-              } `}
-            />
-          </div>
+    <SignUp>
+      <header>회원가입</header>
+      <form onSubmit={onSubmitSignUp}>
+        <div className="inputWrap">
+          <TextField
+            label="Email"
+            variant="standard"
+            autoFocus
+            fullWidth={true}
+            placeholder="example@example.com"
+            margin="dense"
+            color="warning"
+            value={email}
+            onChange={onChangeEmailValue}
+            error={!isEmailVaild}
+            helperText={`${
+              !isEmailVaild
+                ? "이메일은 @ 형식의 8자리 이상을 입렵해주세요."
+                : ""
+            } `}
+          />
+        </div>
 
-          <div className="inputWrap">
-            <TextField
-              label="Password"
-              variant="standard"
-              fullWidth={true}
-              placeholder="비밀번호를 입력해주세요"
-              margin="dense"
-              color="warning"
-              value={password}
-              onChange={onChangePassworeValue}
-              type="password"
-              error={!isPasswordVaild}
-              helperText={`${
-                !isPasswordVaild
-                  ? "비밀번호는 영문, 특수문자, 숫자 조합의 8~20자리를 입력해주세요."
-                  : ""
-              } `}
-            />
-          </div>
+        <div className="inputWrap">
+          <TextField
+            label="Password"
+            variant="standard"
+            fullWidth={true}
+            placeholder="비밀번호를 입력해주세요"
+            margin="dense"
+            color="warning"
+            value={password}
+            onChange={onChangePassworeValue}
+            type="password"
+            error={!isPasswordVaild}
+            helperText={`${
+              !isPasswordVaild
+                ? "비밀번호는 영문, 특수문자, 숫자 조합의 8~20자리를 입력해주세요."
+                : ""
+            } `}
+          />
+        </div>
 
-          <div className="inputWrap">
-            <TextField
-              label="PasswordConFirm"
-              variant="standard"
-              fullWidth={true}
-              placeholder="비밀번호를 한번 더 입력해주세요"
-              margin="dense"
-              color="warning"
-              value={passwordConfirm}
-              onChange={onChangepasswordConfirmValue}
-              type="password"
-              error={!isPasswordConfirmVaild}
-              helperText={`${
-                !isPasswordConfirmVaild ? "비밀번호가 일치하지 않습니다." : ""
-              } `}
-            />
-          </div>
+        <div className="inputWrap">
+          <TextField
+            label="PasswordConFirm"
+            variant="standard"
+            fullWidth={true}
+            placeholder="비밀번호를 한번 더 입력해주세요"
+            margin="dense"
+            color="warning"
+            value={passwordConfirm}
+            onChange={onChangepasswordConfirmValue}
+            type="password"
+            error={!isPasswordConfirmVaild}
+            helperText={`${
+              !isPasswordConfirmVaild ? "비밀번호가 일치하지 않습니다." : ""
+            } `}
+          />
+        </div>
 
-          <p className="feedbackMessage">{signUpFeedbackMessage}</p>
+        <p className="feedbackMessage">{signUpFeedbackMessage}</p>
 
-          <button type="submit" disabled={isDisabledJoinIn}>
-            회원가입
-          </button>
-        </form>
-      </SignUp>
-
-      <Login>
-        <button className="login" onClick={onMoveLogin}>
-          로그인하러 할래요!
+        <button type="submit" disabled={isDisabledJoinIn}>
+          회원가입
         </button>
-      </Login>
-    </AuthContainer>
+      </form>
+    </SignUp>
   );
 };
 

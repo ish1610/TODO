@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signUpAction } from "../../store/Auth/signUpSlice";
 import { Store } from "../../store/types/store";
+import AuthContainer from "../Common/Auth/AuthContainer";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { signUpAPI } from "./api/signUp";
 
@@ -78,13 +79,21 @@ const SignUp = () => {
       setSignUpInputValues((prev) => {
         return { ...prev, passwordConfirm: e.target.value };
       }),
-    onMoveLogin: () => handleMoveLogin(),
   };
 
   useEffect(() => {
     dispatchResetFeedback();
   }, []);
-  return <SignUpView {...signUpProps} />;
+
+  const authContainerProps = {
+    onMove: () => handleMoveLogin(),
+    moveText: "로그인하러 갈래요!",
+  };
+  return (
+    <AuthContainer {...authContainerProps}>
+      <SignUpView {...signUpProps} />
+    </AuthContainer>
+  );
 };
 
 export default SignUp;

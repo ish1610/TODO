@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import backdrop from "../../../../assets/images/homeBackground.png";
+import { IAuthContainerProps } from "../types/auth";
 
 const Container = styled.div`
   position: relative;
@@ -28,8 +29,35 @@ const Container = styled.div`
   }
 `;
 
-const AuthContainer = ({ children }: { children: React.ReactNode }) => {
-  return <Container>{children}</Container>;
+const AuthMoveControll = styled.div`
+  position: relative;
+  .move {
+    width: 100%;
+    color: #777;
+    font-size: 16px;
+  }
+
+  .move:hover {
+    color: #333;
+  }
+`;
+
+const AuthContainerView = ({
+  children,
+  onMove,
+  moveText,
+}: IAuthContainerProps) => {
+  return (
+    <Container>
+      {children}
+
+      <AuthMoveControll>
+        <button className="move" onClick={onMove}>
+          {moveText}
+        </button>
+      </AuthMoveControll>
+    </Container>
+  );
 };
 
-export default AuthContainer;
+export default AuthContainerView;

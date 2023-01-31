@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { IEmptyProps } from "../types/empty";
+import { IEmptyProps } from "./types/empty";
 import EmptyTodoView from "./Views/EmptyTodoView";
 
 const EmptyTodo = ({

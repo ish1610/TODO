@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { blue, orange } from "../../styles/commonColor";
 import backgroundImg from "../../../../assets/images/homeBackground.png";
 import { flexCenter } from "../../styles/FlexCenter";
-import { IEmptyProps } from "../../types/empty";
+import { IEmptyProps } from "../types/empty";
 
 const NoneTodo = styled.div`
   width: 80%;

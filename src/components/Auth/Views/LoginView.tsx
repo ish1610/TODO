@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import AuthContainer from "../../Common/Auth/View/AuthContainer";
 
 import {
   blue,
@@ -126,19 +125,6 @@ const Login = styled.div<ThemeFeedback>`
   }
 `;
 
-const SignUp = styled.div`
-  position: relative;
-  .signUp {
-    width: 100%;
-    color: #777;
-    font-size: 16px;
-  }
-
-  .signUp:hover {
-    color: #333;
-  }
-`;
-
 const LoginView = ({
   feedbackMessage,
   emailValue,
@@ -150,62 +136,53 @@ const LoginView = ({
   onChangedEmail,
   onChangedPassword,
   onSubmitLogin,
-  onMoveSignUp,
 }: ILoginProps) => {
   return (
-    <AuthContainer>
-      <Login
-        isFeedbackEmail={isFeedbackEmail}
-        isFeedbackPassword={isFeedbackPassword}
-      >
-        <header>로그인</header>
-        <form onSubmit={onSubmitLogin}>
-          <div className="inputWrap">
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              placeholder="example@email.com"
-              value={emailValue}
-              onChange={onChangedEmail}
-              onBlur={onBluredEmail}
-            />
-            <p className="feedbackMsg emailFeedbackMsg">
-              이메일은 @과 . 이 포함된 8자리 이상을 입렵해주세요.
-            </p>
-          </div>
+    <Login
+      isFeedbackEmail={isFeedbackEmail}
+      isFeedbackPassword={isFeedbackPassword}
+    >
+      <header>로그인</header>
+      <form onSubmit={onSubmitLogin}>
+        <div className="inputWrap">
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            placeholder="example@email.com"
+            value={emailValue}
+            onChange={onChangedEmail}
+            onBlur={onBluredEmail}
+          />
+          <p className="feedbackMsg emailFeedbackMsg">
+            이메일은 @과 . 이 포함된 8자리 이상을 입렵해주세요.
+          </p>
+        </div>
 
-          <div className="inputWrap">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="비밀번호"
-              value={passwordValue}
-              onChange={onChangedPassword}
-              onBlur={onBluredPassword}
-            />
+        <div className="inputWrap">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            value={passwordValue}
+            onChange={onChangedPassword}
+            onBlur={onBluredPassword}
+          />
 
-            <p className="feedbackMsg passwordFeedbackMsg">
-              비밀번호는 영문, 특수문자, 숫자 조합의 8~20자리를 입력해주세요.
-            </p>
-          </div>
+          <p className="feedbackMsg passwordFeedbackMsg">
+            비밀번호는 영문, 특수문자, 숫자 조합의 8~20자리를 입력해주세요.
+          </p>
+        </div>
 
-          <p className="submitFeedbackMessage">{feedbackMessage}</p>
+        <p className="submitFeedbackMessage">{feedbackMessage}</p>
 
-          <div className="loginControlWrap">
-            <button className="login" type="submit">
-              로그인
-            </button>
-          </div>
-        </form>
-      </Login>
-
-      <SignUp>
-        <button className="signUp" onClick={onMoveSignUp}>
-          회원가입하러 갈래요!
-        </button>
-      </SignUp>
-    </AuthContainer>
+        <div className="loginControlWrap">
+          <button className="login" type="submit">
+            로그인
+          </button>
+        </div>
+      </form>
+    </Login>
   );
 };
 
