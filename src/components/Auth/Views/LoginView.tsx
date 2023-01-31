@@ -21,7 +21,6 @@ const Login = styled.div<ThemeFeedback>`
   border-radius: 8px;
   padding: 50px 50px 60px;
   margin-bottom: 24px;
-  margin-top: 20px;
 
   header {
     font-size: 24px;

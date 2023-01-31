@@ -9,7 +9,6 @@ const SignUp = styled.div`
   position: relative;
   width: 100%;
   height: 608px;
-  margin-top: 20px;
   margin-bottom: 24px;
 
   display: flex;
@@ -30,17 +29,14 @@ const SignUp = styled.div`
 
   form {
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .inputWrap {
     width: 100%;
     margin-bottom: 40px;
-  }
-
-  input,
-  textarea {
-    padding: 8px;
-    font-family: inherit;
   }
 
   .feedbackMessage {
@@ -62,6 +58,11 @@ const SignUp = styled.div`
 
     form {
       width: 100%;
+    }
+
+    .inputWrap {
+      display: flex;
+      width: 80%;
     }
   }
 `;

@@ -23,10 +23,6 @@ const Container = styled.div`
     opacity: 0.05;
     content: "";
   }
-
-  @media (max-width: 750px) {
-    padding: 120px 10px 180px;
-  }
 `;
 
 const AuthMoveControll = styled.div`
