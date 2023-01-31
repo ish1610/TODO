@@ -20,12 +20,6 @@ export type ThemeFeedback = {
   isDeactivation: boolean;
 };
 
-export type LoginState = {
-  isLogin: boolean;
-  feedbackMessage: string;
-  tokenData: { token: string; duration: number };
-};
-
 export type LoginAPI = {
   login: (
     email: string,

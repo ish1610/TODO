@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { SignUpState } from "../types/store";
 
-const initialSignUpState = {
+const initialSignUpState: SignUpState = {
   feedbackMessage: "",
 };
 

@@ -24,10 +24,6 @@ export interface ISignUpProps {
 export type SignUpInfoValues = Pick<signUpInputValues, "email" | "password">;
 export type MoveHomeCb = (route: string) => void;
 
-export type SignUpState = {
-  feedbackMessage: string;
-};
-
 export type SignUpAPI = {
   signUp: (
     signUpInfo: SignUpInfoValues,
