@@ -25,3 +25,18 @@ export type LoginState = {
   feedbackMessage: string;
   tokenData: { token: string; duration: number };
 };
+
+export type LoginAPI = {
+  login: (
+    email: string,
+    password: string,
+    onMoveHomeCb: () => void,
+    dispatchNotFoundEmailCb: () => void,
+    dispatchInvalidPasswordCb: () => void,
+    resetEmailInputStateCb: () => void,
+    resetPasswordInputStateCb: () => void,
+    dispatchLoginCb: () => void,
+    dispatchLogoutCb: () => void
+  ) => void;
+  logout: (dispatchLogoutCb: () => void) => void;
+};

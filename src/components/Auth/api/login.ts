@@ -1,19 +1,20 @@
 import axios from "axios";
+import { LoginAPI } from "../types/login";
 import { calculateRemainingTime } from "../utils/token";
 
 let logoutTimer: NodeJS.Timeout;
 
-export const loginAPI = {
+export const loginAPI: LoginAPI = {
   login: async (
-    email: string,
-    password: string,
-    onMoveHomeCb: () => void,
-    dispatchNotFoundEmailCb: () => void,
-    dispatchInvalidPasswordCb: () => void,
-    resetEmailInputStateCb: () => void,
-    resetPasswordInputStateCb: () => void,
-    dispatchLoginCb: (email: string) => void,
-    dispatchLogoutCb: () => void
+    email,
+    password,
+    onMoveHomeCb,
+    dispatchNotFoundEmailCb,
+    dispatchInvalidPasswordCb,
+    resetEmailInputStateCb,
+    resetPasswordInputStateCb,
+    dispatchLoginCb,
+    dispatchLogoutCb
   ) => {
     let token: string;
     let expirationTime: string;
@@ -51,12 +52,12 @@ export const loginAPI = {
     logoutTimer = setTimeout(() => {
       loginAPI.logout(dispatchLogoutCb);
     }, remainingTime);
-    dispatchLoginCb(email);
+    dispatchLoginCb();
     onMoveHomeCb();
     resetEmailInputStateCb();
     resetPasswordInputStateCb();
   },
-  logout: (dispatchLogoutCb: () => void) => {
+  logout: (dispatchLogoutCb) => {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
     dispatchLogoutCb();
