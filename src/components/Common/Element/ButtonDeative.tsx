@@ -1,4 +1,3 @@
-import React from "react";
 import { IButtonDeativeProps } from "./types/element";
 import ButtonDeativeView from "./View/ButtonDeativeView";
 
