@@ -12,7 +12,6 @@ import { yellow } from "@mui/material/colors";
 const AddToDoModalView = ({
   children,
   isShowModal,
-  onClickAddToDo,
   onClickCancel,
   onChangeTitle,
   onChangeContent,

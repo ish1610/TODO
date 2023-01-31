@@ -3,6 +3,7 @@ import { retrieveStoredToken } from "../../components/Auth/utils/token";
 
 const initialLoginState = {
   isLogin: !!retrieveStoredToken(),
+  email: "",
   feedbackMessage: "",
   tokenData: {
     token: "",
@@ -14,11 +15,13 @@ const loginSlice = createSlice({
   name: "login",
   initialState: initialLoginState,
   reducers: {
-    login: (state) => {
+    login: (state, action) => {
       state.isLogin = true;
+      state.email = action.payload;
     },
     logout: (state) => {
       state.isLogin = false;
+      state.email = "";
     },
     notFoundEmail: (state) => {
       state.feedbackMessage = "존재하지 않는 이메일입니다.";

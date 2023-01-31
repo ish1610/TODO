@@ -4,7 +4,14 @@ import { ToDoListState } from "../../components/ToDo/types/todos";
 
 const initialToDoState: ToDoListState = {
   toDoList: [],
-  toDoDetail: { content: "", createdAt: "", id: "", title: "", updatedAt: "" },
+  toDoDetail: {
+    content: "",
+    createdAt: "",
+    id: "",
+    title: "",
+    updatedAt: "",
+    email: "",
+  },
 };
 
 const toDoSlice = createSlice({

@@ -34,6 +34,7 @@ const ButtonDeativeView = ({
   color,
   hoverColor,
   backgroundColor,
+  onButtonAcitve,
 }: IButtonDeativeProps) => {
   return (
     <ButtonWrap
@@ -42,7 +43,7 @@ const ButtonDeativeView = ({
       hoverColor={hoverColor}
       backgroundColor={backgroundColor}
     >
-      <button>{children}</button>
+      <button onClick={onButtonAcitve}>{children}</button>
     </ButtonWrap>
   );
 };

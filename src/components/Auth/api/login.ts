@@ -12,7 +12,7 @@ export const loginAPI = {
     dispatchInvalidPasswordCb: () => void,
     resetEmailInputStateCb: () => void,
     resetPasswordInputStateCb: () => void,
-    dispatchLoginCb: () => void,
+    dispatchLoginCb: (email: string) => void,
     dispatchLogoutCb: () => void
   ) => {
     let token: string;
@@ -48,7 +48,7 @@ export const loginAPI = {
     logoutTimer = setTimeout(() => {
       loginAPI.logout(dispatchLogoutCb);
     }, remainingTime);
-    dispatchLoginCb();
+    dispatchLoginCb(email);
     onMoveHomeCb();
     resetEmailInputStateCb();
     resetPasswordInputStateCb();

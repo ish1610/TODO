@@ -6,6 +6,7 @@ export type ToDo = {
   id: string;
   title: string;
   updatedAt: string;
+  email: string;
 };
 
 export type ToDoInputValue = Pick<ToDo, "title" | "content">;

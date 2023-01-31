@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import {
@@ -12,10 +12,11 @@ import AddToDoModalView from "./Views/AddToDoModalView";
 import toDoValidation from "./Utils/toDoValidation";
 import ButtonDeative from "../Common/Element/ButtonDeative";
 import { lightOrange } from "../Common/styles/commonColor";
+import { Store } from "../../store/types/store";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
-
+  const loggedInEmail = useSelector((state: Store) => state.login.email);
   const dispatch = useDispatch();
 
   const resetToDoInput = () => {
@@ -28,7 +29,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   };
 
   const onClickAddToDo = (todo: ToDoInputValue) => {
-    ToDoAPI.createToDo(todo, (toDoContent: ToDo) =>
+    ToDoAPI.createToDo(todo, loggedInEmail, (toDoContent: ToDo) =>
       dispatch(toDoAction.createToDo(toDoContent))
     );
     resetToDoInput();
@@ -51,6 +52,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const buttonDeativeProps = {
     isDeactivation: toDoValidation(toDoInput),
+    onButtonAcitve: () => onClickAddToDo(toDoInput),
     color: "#333",
     hoverColor: lightOrange,
     backgroundColor: "#fff",

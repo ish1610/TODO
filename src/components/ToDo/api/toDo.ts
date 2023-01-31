@@ -12,11 +12,16 @@ import { getDate } from "../../Common/Util/date";
 const DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
 
 export const ToDoAPI = {
-  createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
+  createToDo: (
+    toDo: ToDoInputValue,
+    email: string,
+    createToDoCb: CreateToDoCb
+  ) => {
     const newToDo = {
       id: randomString(20),
       createdAt: getDate(),
       updatedAt: getDate(),
+      email,
       ...toDo,
     };
 
@@ -30,7 +35,7 @@ export const ToDoAPI = {
         createToDoCb(newToDo);
       });
   },
-  getToDo: (setTodoListCb: GetToDoCb) => {
+  getToDo: (loginedEmail: string, disPatchGetToDoList: GetToDoCb) => {
     axios
       .get(`${DB_URL}/todos.json`)
       .then((response) => {
@@ -41,7 +46,11 @@ export const ToDoAPI = {
           loadedToDos.push(toDos[key]);
         }
 
-        setTodoListCb(loadedToDos);
+        const filtedToDo = loadedToDos.filter(
+          (todo) => todo.email === loginedEmail
+        );
+
+        disPatchGetToDoList(filtedToDo);
       })
       .catch((error) => {
         console.log(`🚨 getToDoAPI : ${error.message}`);
