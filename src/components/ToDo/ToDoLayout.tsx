@@ -1,5 +1,5 @@
-import { Suspense, useState } from "react";
-import LoadingView from "../Common/Loading/Views/LoadingView";
+import { useState } from "react";
+
 import { playScroll, stopScroll } from "../Common/Util/scroll";
 
 import { IToDoLayoutProps } from "./types/todos";
