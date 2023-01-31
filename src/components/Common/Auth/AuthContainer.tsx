@@ -1,4 +1,3 @@
-import React from "react";
 import { IAuthContainerProps } from "./types/auth";
 import AuthContainerView from "./View/AuthContainerView";
 
