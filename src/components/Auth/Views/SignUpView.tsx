@@ -1,36 +1,10 @@
 import styled from "@emotion/styled";
-import backdrop from "../../../assets/images/homeBackground.png";
+
 import { TextField } from "@mui/material";
+import AuthContainer from "../../Common/Auth/View/AuthContainer";
 import { blue, lightOrange, warning } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ISignUpProps } from "../types/signUp";
-
-const SignUpWrap = styled.div`
-  position: relative;
-  height: calc(100vh - 80px);
-  min-height: 750px;
-  padding: 50px 36px 180px;
-  min-width: 450px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  ::before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-
-    background-image: url(${backdrop});
-    background-size: 50px;
-    opacity: 0.05;
-    content: "";
-  }
-
-  @media (max-width: 750px) {
-    padding: 60px 20px 60px;
-  }
-`;
 
 const SignUp = styled.div`
   position: relative;
@@ -136,7 +110,7 @@ const SignUpView = ({
 }: ISignUpProps) => {
   const { email, password, passwordConfirm } = signUpInputValues;
   return (
-    <SignUpWrap>
+    <AuthContainer>
       <SignUp>
         <header>회원가입</header>
         <form onSubmit={onSubmitSignUp}>
@@ -211,7 +185,7 @@ const SignUpView = ({
           로그인하러 할래요!
         </button>
       </Login>
-    </SignUpWrap>
+    </AuthContainer>
   );
 };
 

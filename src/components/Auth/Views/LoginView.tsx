@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import backdrop from "../../../assets/images/homeBackground.png";
+import AuthContainer from "../../Common/Auth/View/AuthContainer";
+
 import {
   blue,
   warning,
@@ -7,33 +8,6 @@ import {
 } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ILoginProps, ThemeFeedback } from "../types/login";
-
-const LoginWrap = styled.div`
-  position: relative;
-  height: calc(100vh - 80px);
-  min-height: 750px;
-  padding: 50px 36px 180px;
-  min-width: 450px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  ::before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-
-    background-image: url(${backdrop});
-    background-size: 50px;
-    opacity: 0.05;
-    content: "";
-  }
-
-  @media (max-width: 750px) {
-    padding: 120px 10px 180px;
-  }
-`;
 
 const Login = styled.div<ThemeFeedback>`
   position: relative;
@@ -179,7 +153,7 @@ const LoginView = ({
   onMoveSignUp,
 }: ILoginProps) => {
   return (
-    <LoginWrap>
+    <AuthContainer>
       <Login
         isFeedbackEmail={isFeedbackEmail}
         isFeedbackPassword={isFeedbackPassword}
@@ -231,7 +205,7 @@ const LoginView = ({
           회원가입하러 갈래요!
         </button>
       </SignUp>
-    </LoginWrap>
+    </AuthContainer>
   );
 };
 
