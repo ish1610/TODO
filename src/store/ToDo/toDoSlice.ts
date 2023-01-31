@@ -10,7 +10,7 @@ const initialToDoState: ToDoListState = {
     id: "",
     title: "",
     updatedAt: "",
-    email: "",
+    uId: "",
   },
 };
 

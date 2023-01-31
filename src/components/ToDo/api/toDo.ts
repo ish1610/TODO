@@ -12,18 +12,25 @@ import { getDate } from "../../Common/Util/date";
 const DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
 
 export const ToDoAPI = {
-  createToDo: (
-    toDo: ToDoInputValue,
-    email: string,
-    createToDoCb: CreateToDoCb
-  ) => {
-    const newToDo = {
+  createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
+    const uId = localStorage.getItem("uId");
+    let newToDo = {
       id: randomString(20),
       createdAt: getDate(),
       updatedAt: getDate(),
-      email,
       ...toDo,
+      uId: "",
     };
+
+    if (uId) {
+      newToDo = {
+        id: randomString(20),
+        createdAt: getDate(),
+        updatedAt: getDate(),
+        uId,
+        ...toDo,
+      };
+    }
 
     axios
       .patch(`${DB_URL}/todos/${newToDo.id}.json`, newToDo)
@@ -35,7 +42,9 @@ export const ToDoAPI = {
         createToDoCb(newToDo);
       });
   },
-  getToDo: (loginedEmail: string, disPatchGetToDoList: GetToDoCb) => {
+  getToDo: (disPatchGetToDoList: GetToDoCb) => {
+    const uId = localStorage.getItem("uId");
+
     axios
       .get(`${DB_URL}/todos.json`)
       .then((response) => {
@@ -46,9 +55,7 @@ export const ToDoAPI = {
           loadedToDos.push(toDos[key]);
         }
 
-        const filtedToDo = loadedToDos.filter(
-          (todo) => todo.email === loginedEmail
-        );
+        const filtedToDo = loadedToDos.filter((todo) => todo.uId === uId);
 
         disPatchGetToDoList(filtedToDo);
       })

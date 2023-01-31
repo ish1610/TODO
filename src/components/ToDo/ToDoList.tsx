@@ -10,7 +10,6 @@ import ToDoListView from "./Views/ToDoListView";
 const ToDoList = ({ onShowModal }: IToDoListProps) => {
   const dispatch = useDispatch();
   const toDoList = useSelector((state: Store) => state.toDoList.toDoList);
-  const loggedInEmail = useSelector((state: Store) => state.login.email);
 
   const toDoListProps = {
     onShowModal,
@@ -22,9 +21,7 @@ const ToDoList = ({ onShowModal }: IToDoListProps) => {
   };
 
   useEffect(() => {
-    ToDoAPI.getToDo(loggedInEmail, async (toDoList: ToDo[]) =>
-      disPatchGetToDoList(toDoList)
-    );
+    ToDoAPI.getToDo(async (toDoList: ToDo[]) => disPatchGetToDoList(toDoList));
   }, []);
 
   return <ToDoListView {...toDoListProps} />;

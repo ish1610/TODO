@@ -46,7 +46,7 @@ const Login = () => {
     navigate("/", { replace: true });
   };
   const dispatchLogout = () => dispatch(loginAction.logout());
-  const dispatchLogin = (email: string) => dispatch(loginAction.login(email));
+  const dispatchLogin = () => dispatch(loginAction.login());
   const dispatchNotFoundEmail = () => dispatch(loginAction.notFoundEmail());
   const dispatchInvalidPassword = () => dispatch(loginAction.invalidPassword());
 

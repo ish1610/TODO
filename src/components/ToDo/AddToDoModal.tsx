@@ -29,7 +29,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   };
 
   const onClickAddToDo = (todo: ToDoInputValue) => {
-    ToDoAPI.createToDo(todo, loggedInEmail, (toDoContent: ToDo) =>
+    ToDoAPI.createToDo(todo, (toDoContent: ToDo) =>
       dispatch(toDoAction.createToDo(toDoContent))
     );
     resetToDoInput();
