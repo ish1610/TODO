@@ -12,7 +12,7 @@ import { getDate } from "../../Common/Util/date";
 const DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
 
 export const ToDoAPI = {
-  createToDo: (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
+  createToDo: async (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
     const uId = localStorage.getItem("uId");
     let newToDo = {
       id: randomString(20),
@@ -32,54 +32,50 @@ export const ToDoAPI = {
       };
     }
 
-    axios
-      .patch(`${DB_URL}/todos/${newToDo.id}.json`, newToDo)
-
-      .catch((error) => {
-        console.log(`🚨 CreateToDoAPI : ${error.message}`);
-      })
-      .then(() => {
+    try {
+      const { status } = await axios.patch(
+        `${DB_URL}/todos/${newToDo.id}.json`,
+        newToDo
+      );
+      if (status >= 200 && status < 300) {
         createToDoCb(newToDo);
-      });
+      }
+    } catch (error: any) {
+      console.log(`🚨 CreateToDoAPI : ${error.message}`);
+    }
   },
-  getToDo: (disPatchGetToDoList: GetToDoCb) => {
+  getToDo: async (disPatchGetToDoList: GetToDoCb) => {
     const uId = localStorage.getItem("uId");
+    const loadedToDos: ToDo[] = [];
 
-    axios
-      .get(`${DB_URL}/todos.json`)
-      .then((response) => {
-        const loadedToDos: ToDo[] = [];
-        const { data: toDos } = response;
+    try {
+      const { data: toDos } = await axios.get(`${DB_URL}/todos.json`);
 
-        for (const key in toDos) {
-          loadedToDos.push(toDos[key]);
-        }
+      for (const key in toDos) {
+        loadedToDos.push(toDos[key]);
+      }
 
-        const filtedToDo = loadedToDos.filter((todo) => todo.uId === uId);
+      const filtedToDo = loadedToDos.filter((todo) => todo.uId === uId);
 
-        disPatchGetToDoList(filtedToDo);
-      })
-      .catch((error) => {
-        console.log(`🚨 getToDoAPI : ${error.message}`);
-      });
+      disPatchGetToDoList(filtedToDo);
+    } catch (error: any) {
+      console.log(`🚨 getToDoAPI : ${error.message}`);
+    }
   },
-  deleteToDo: (id: string, deleteToDoCb: DeleteToDoCb) => {
-    axios
-      .delete(
-        `https://preonboardingtodo-default-rtdb.firebaseio.com/todos/${id}.json`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          deleteToDoCb(id);
-        }
-      })
-      .catch((error) => {
-        console.log(`🚨 deleteToDoAPI : ${error.message}`);
-      });
+  deleteToDo: async (id: string, deleteToDoCb: DeleteToDoCb) => {
+    try {
+      const { status } = await axios.delete(`${DB_URL}/todos/${id}.json`);
+
+      if (status >= 200 && status < 300) {
+        deleteToDoCb(id);
+      }
+    } catch (error: any) {
+      console.log(`🚨 deleteToDoAPI : ${error.message}`);
+    }
   },
-  updateToDo: (toDo: ToDo) => {
-    axios
-      .patch(
+  updateToDo: async (toDo: ToDo) => {
+    try {
+      await axios.patch(
         `${DB_URL}/todos/${toDo.id}.json`,
 
         {
@@ -87,9 +83,9 @@ export const ToDoAPI = {
           title: toDo.title,
           updatedAt: getDate(),
         }
-      )
-      .catch((error) => {
-        console.log(`🚨 deleteToDoAPI : ${error.message}`);
-      });
+      );
+    } catch (error: any) {
+      console.log(`🚨 deleteToDoAPI : ${error.message}`);
+    }
   },
 };
