@@ -1,3 +1,5 @@
+import React from "react";
+
 export type ToDo = {
   content: string;
   createdAt: string;
@@ -25,7 +27,7 @@ export interface IAddToDoModalProps {
 }
 export interface IAddToDoModalViewProps {
   isShowModal: boolean;
-  isDisabledAddToDo: boolean;
+  children?: React.ReactNode;
   onClickAddToDo: () => void;
   onClickCancel: () => void;
   onChangeTitle: (e: any) => void;

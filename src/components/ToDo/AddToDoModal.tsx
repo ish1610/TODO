@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ToDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
@@ -10,6 +10,8 @@ import {
 } from "./types/todos";
 import AddToDoModalView from "./Views/AddToDoModalView";
 import toDoValidation from "./Utils/toDoValidation";
+import ButtonDeative from "../Common/Element/ButtonDeative";
+import { lightOrange } from "../Common/styles/commonColor";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
@@ -35,7 +37,6 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
-    isDisabledAddToDo: toDoValidation(toDoInput),
     onClickAddToDo: () => onClickAddToDo(toDoInput),
     onClickCancel: () => onClickCancel(),
     onChangeTitle: (e) =>
@@ -48,7 +49,18 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
       }),
   };
 
-  return <AddToDoModalView {...addToDoProps} />;
+  const buttonDeativeProps = {
+    isDeactivation: toDoValidation(toDoInput),
+    color: "#333",
+    hoverColor: lightOrange,
+    backgroundColor: "#fff",
+  };
+
+  return (
+    <AddToDoModalView {...addToDoProps}>
+      <ButtonDeative {...buttonDeativeProps}>작성</ButtonDeative>
+    </AddToDoModalView>
+  );
 };
 
 export default AddToDoModal;

@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
-
 import { TextField } from "@mui/material";
-
 import { blue, lightOrange, warning } from "../../Common/styles/commonColor";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import { ISignUpProps } from "../types/signUp";
 
 const SignUp = styled.div`
+  ${flexCenter}
   position: relative;
   width: 100%;
   height: 608px;
@@ -30,14 +29,11 @@ const SignUp = styled.div`
   }
 
   form {
-    width: 100%;
-
-    ${flexCenter}
-    flex-direction: column;
+    width: 80%;
   }
 
   .inputWrap {
-    width: 80%;
+    width: 100%;
     margin-bottom: 40px;
   }
 
@@ -56,28 +52,16 @@ const SignUp = styled.div`
     height: 16px;
   }
 
-  button {
-    margin-top: 40px;
-    background-color: ${lightOrange};
-    border: 1px solid ${lightOrange};
-    border-radius: 8px;
-    color: #fff;
-    padding: 10px 40px;
-    width: 80%;
-    transition: 0.3s;
-  }
-
-  button:hover {
-    background-color: #fff;
-    color: ${lightOrange};
-  }
-
   @media (max-width: 750px) {
     width: 90%;
     padding: 30px 0px 60px;
     header {
       font-size: 20px;
       margin-bottom: 20px;
+    }
+
+    form {
+      width: 100%;
     }
   }
 `;
@@ -92,7 +76,7 @@ const SignUpView = ({
   onChangePassworeValue,
   onChangepasswordConfirmValue,
   onSubmitSignUp,
-  isDisabledJoinIn,
+  children,
 }: ISignUpProps) => {
   const { email, password, passwordConfirm } = signUpInputValues;
   return (
@@ -158,10 +142,7 @@ const SignUpView = ({
         </div>
 
         <p className="feedbackMessage">{signUpFeedbackMessage}</p>
-
-        <button type="submit" disabled={isDisabledJoinIn}>
-          회원가입
-        </button>
+        {children}
       </form>
     </SignUp>
   );

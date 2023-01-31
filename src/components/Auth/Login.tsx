@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../store/Auth/loginSlice";
 import { Store } from "../../store/types/store";
 import AuthContainer from "../Common/Auth/AuthContainer";
-import { IAuthContainerProps } from "../Common/Auth/types/auth";
+import ButtonDeative from "../Common/Element/ButtonDeative";
+import { blue } from "../Common/styles/commonColor";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { loginAPI } from "./api/login";
 import useLogin from "./Hooks/useLogin";
@@ -67,6 +68,10 @@ const Login = () => {
     }
   };
 
+  const isDeactiveLogin = [isEmailValid, isPasswordValid].every(
+    (boolean) => !!boolean
+  );
+
   useEffect(() => {
     dispatch(loginAction.resetFeedback());
 
@@ -95,9 +100,18 @@ const Login = () => {
     moveText: "회원가입하러 갈래요!",
   };
 
+  const buttonDeativeProps = {
+    isDeactivation: !isDeactiveLogin,
+    color: "#333",
+    hoverColor: blue,
+    backgroundColor: "#fff",
+  };
+
   return (
     <AuthContainer {...authContainerProps}>
-      <LoginView {...loginProps} />
+      <LoginView {...loginProps}>
+        <ButtonDeative {...buttonDeativeProps}>로그인</ButtonDeative>
+      </LoginView>
     </AuthContainer>
   );
 };

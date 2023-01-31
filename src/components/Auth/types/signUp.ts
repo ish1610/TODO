@@ -1,3 +1,5 @@
+import React from "react";
+
 export type signUpInputValues = {
   email: string;
   password: string;
@@ -10,7 +12,7 @@ export interface ISignUpProps {
   isPasswordVaild: boolean;
   isPasswordConfirmVaild: boolean;
   signUpInputValues: signUpInputValues;
-  isDisabledJoinIn: boolean;
+  children?: React.ReactNode;
   onChangeEmailValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangePassworeValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangepasswordConfirmValue: (

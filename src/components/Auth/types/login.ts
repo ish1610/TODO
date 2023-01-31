@@ -11,11 +11,13 @@ export interface ILoginProps {
   isFeedbackEmail: boolean;
   isFeedbackPassword: boolean;
   feedbackMessage: string;
+  children?: React.ReactNode;
 }
 
 export type ThemeFeedback = {
   isFeedbackEmail: boolean;
   isFeedbackPassword: boolean;
+  isDeactivation: boolean;
 };
 
 export type LoginState = {

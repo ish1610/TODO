@@ -83,12 +83,6 @@ const Login = styled.div<ThemeFeedback>`
     visibility: ${(props) => (props.isFeedbackPassword ? "visible" : "hidden")};
   }
 
-  .loginControlWrap {
-    ${flexCenter}
-    flex-direction: column;
-    margin-top: 20px;
-  }
-
   .submitFeedbackMessage {
     display: flex;
     justify-content: center;
@@ -96,20 +90,6 @@ const Login = styled.div<ThemeFeedback>`
     font-size: 14px;
     width: 100%;
     height: 16px;
-  }
-
-  .login {
-    border: 1px solid ${blue};
-    border-radius: 4px;
-    background-color: #fff;
-    transition: 0.2s;
-    width: 100%;
-    padding: 8px 0;
-    color: #333;
-  }
-  .login:hover {
-    background-color: ${blue};
-    color: #fff;
   }
 
   @media (max-width: 750px) {
@@ -126,6 +106,7 @@ const Login = styled.div<ThemeFeedback>`
 `;
 
 const LoginView = ({
+  children,
   feedbackMessage,
   emailValue,
   passwordValue,
@@ -141,6 +122,7 @@ const LoginView = ({
     <Login
       isFeedbackEmail={isFeedbackEmail}
       isFeedbackPassword={isFeedbackPassword}
+      isDeactivation={isFeedbackEmail || isFeedbackPassword}
     >
       <header>로그인</header>
       <form onSubmit={onSubmitLogin}>
@@ -175,12 +157,7 @@ const LoginView = ({
         </div>
 
         <p className="submitFeedbackMessage">{feedbackMessage}</p>
-
-        <div className="loginControlWrap">
-          <button className="login" type="submit">
-            로그인
-          </button>
-        </div>
+        {children}
       </form>
     </Login>
   );

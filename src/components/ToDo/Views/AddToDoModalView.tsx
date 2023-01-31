@@ -5,18 +5,13 @@ import { TextField } from "@mui/material";
 import { IAddToDoModalViewProps } from "../types/todos";
 import { flexCenter } from "../../Common/styles/FlexCenter";
 import headerImg from "../../../assets/images/homeBackground.png";
-import {
-  boxShadow,
-  blue,
-  cancel,
-  lightOrange,
-} from "../../Common/styles/commonColor";
+import { boxShadow, blue, cancel } from "../../Common/styles/commonColor";
 
 import { yellow } from "@mui/material/colors";
 
 const AddToDoModalView = ({
+  children,
   isShowModal,
-  isDisabledAddToDo,
   onClickAddToDo,
   onClickCancel,
   onChangeTitle,
@@ -63,17 +58,13 @@ const AddToDoModalView = ({
             </AddToDoInputWrap>
           </form>
 
-          <AddToDoControl isDisabled={isDisabledAddToDo}>
-            <button
-              className="add-todo"
-              disabled={isDisabledAddToDo}
-              onClick={onClickAddToDo}
-            >
-              작성
-            </button>
-            <button className="cancel-todo" onClick={onClickCancel}>
-              닫기
-            </button>
+          <AddToDoControl>
+            {children}
+            <div>
+              <button className="cancel-todo" onClick={onClickCancel}>
+                닫기
+              </button>
+            </div>
           </AddToDoControl>
         </AddToModal>
       )}
@@ -149,29 +140,23 @@ const AddToDoInputWrap = styled.div`
   }
 `;
 
-const AddToDoControl = styled.div<{ isDisabled: boolean }>`
+const AddToDoControl = styled.div`
   ${flexCenter}
-  padding-bottom: 20px;
+  padding-bottom: 50px;
+
+  div {
+    ${flexCenter}
+    margin-top: 20px;
+    margin-right: 50px;
+  }
+
+  div:last-of-type {
+    margin-right: 0;
+  }
+
   button {
     padding: 10px 42px;
     border-radius: 6px;
-  }
-
-  .add-todo {
-    margin-right: 14px;
-    color: #fff;
-    transition: 0.2s;
-
-    cursor: ${(props) => (props.isDisabled ? "not-allowed" : "pointer")};
-
-    background-color: ${(props) => (props.isDisabled ? cancel : lightOrange)};
-
-    border: 1px solid ${(props) => (props.isDisabled ? cancel : lightOrange)};
-  }
-
-  .add-todo:hover {
-    color: ${(props) => (props.isDisabled ? "fff" : lightOrange)};
-    background-color: ${(props) => (props.isDisabled ? cancel : "#fff")};
   }
 
   .cancel-todo {

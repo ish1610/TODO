@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { signUpAction } from "../../store/Auth/signUpSlice";
 import { Store } from "../../store/types/store";
 import AuthContainer from "../Common/Auth/AuthContainer";
+import ButtonDeative from "../Common/Element/ButtonDeative";
+import { lightOrange } from "../Common/styles/commonColor";
 import { emailValidator, passwordValidator } from "../Common/Util/validation";
 import { signUpAPI } from "./api/signUp";
 
@@ -27,7 +29,7 @@ const SignUp = () => {
   const isPasswordVaild = passwordValidator(signUpInputValues.password);
   const isPasswordConfirmVaild =
     signUpInputValues.password === signUpInputValues.passwordConfirm;
-  const isDisabledJoinIn = [
+  const isDeactiveSignUp = [
     isEmailVaild,
     isPasswordVaild,
     isPasswordConfirmVaild,
@@ -64,7 +66,6 @@ const SignUp = () => {
     isEmailVaild,
     isPasswordVaild,
     isPasswordConfirmVaild,
-    isDisabledJoinIn: !isDisabledJoinIn,
     signUpInputValues,
     onSubmitSignUp: (e) => handleSubmitSignUp(e),
     onChangeEmailValue: (e) =>
@@ -89,9 +90,18 @@ const SignUp = () => {
     onMove: () => handleMoveLogin(),
     moveText: "로그인하러 갈래요!",
   };
+
+  const buttonDeativeProps = {
+    isDeactivation: !isDeactiveSignUp,
+    color: "#333",
+    hoverColor: lightOrange,
+    backgroundColor: "#fff",
+  };
   return (
     <AuthContainer {...authContainerProps}>
-      <SignUpView {...signUpProps} />
+      <SignUpView {...signUpProps}>
+        <ButtonDeative {...buttonDeativeProps}>회원가입</ButtonDeative>
+      </SignUpView>
     </AuthContainer>
   );
 };

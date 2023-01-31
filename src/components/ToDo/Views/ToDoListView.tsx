@@ -4,7 +4,6 @@ import { blue, orange } from "../../Common/styles/commonColor";
 import { IToDoListProps, ToDo } from "../types/todos";
 import ToDoItem from "../ToDoItem";
 import EmptyTodo from "../../Common/Empty/EmptyTodo";
-import { Suspense } from "react";
 
 const Container = styled.ul`
   width: 100%;
@@ -18,11 +17,11 @@ const Container = styled.ul`
 `;
 
 const AddToDoBtn = styled.button`
-  border: 1px solid ${blue};
+  border: 1px solid ${orange};
   border-radius: 8px;
   padding: 8px 18px;
-  color: #fff;
-  background-color: ${blue};
+  color: #333;
+  background-color: #fff;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -30,6 +29,7 @@ const AddToDoBtn = styled.button`
 
   :hover {
     background-color: ${orange};
+    color: #fff;
   }
 `;
 
