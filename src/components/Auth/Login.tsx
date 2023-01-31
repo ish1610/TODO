@@ -105,6 +105,7 @@ const Login = () => {
     color: "#333",
     hoverColor: blue,
     backgroundColor: "#fff",
+    isSubmit: true,
   };
 
   return (

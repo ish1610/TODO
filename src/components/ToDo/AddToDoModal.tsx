@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ToDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import {
@@ -12,11 +12,9 @@ import AddToDoModalView from "./Views/AddToDoModalView";
 import toDoValidation from "./Utils/toDoValidation";
 import ButtonDeative from "../Common/Element/ButtonDeative";
 import { lightOrange } from "../Common/styles/commonColor";
-import { Store } from "../../store/types/store";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
-  const loggedInEmail = useSelector((state: Store) => state.login.email);
   const dispatch = useDispatch();
 
   const resetToDoInput = () => {
@@ -38,7 +36,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
-    onClickAddToDo: () => onClickAddToDo(toDoInput),
+    // onClickAddToDo: () => onClickAddToDo(toDoInput),
     onClickCancel: () => onClickCancel(),
     onChangeTitle: (e) =>
       setToDoInput((prev) => {

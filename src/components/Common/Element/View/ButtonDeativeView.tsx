@@ -35,6 +35,7 @@ const ButtonDeativeView = ({
   hoverColor,
   backgroundColor,
   onButtonAcitve,
+  isSubmit = false,
 }: IButtonDeativeProps) => {
   return (
     <ButtonWrap
@@ -43,7 +44,13 @@ const ButtonDeativeView = ({
       hoverColor={hoverColor}
       backgroundColor={backgroundColor}
     >
-      <button onClick={onButtonAcitve}>{children}</button>
+      <button
+        onClick={onButtonAcitve}
+        type={isSubmit ? "submit" : "button"}
+        disabled={isDeactivation}
+      >
+        {children}
+      </button>
     </ButtonWrap>
   );
 };

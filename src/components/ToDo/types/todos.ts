@@ -29,7 +29,6 @@ export interface IAddToDoModalProps {
 export interface IAddToDoModalViewProps {
   isShowModal: boolean;
   children?: React.ReactNode;
-  onClickAddToDo: () => void;
   onClickCancel: () => void;
   onChangeTitle: (e: any) => void;
   onChangeContent: (e: any) => void;

@@ -4,6 +4,7 @@ export interface IButtonDeativeProps {
   color: string;
   hoverColor: string;
   backgroundColor: string;
+  isSubmit?: boolean;
   onButtonAcitve?: () => void;
 }
 

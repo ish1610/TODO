@@ -96,6 +96,7 @@ const SignUp = () => {
     color: "#333",
     hoverColor: lightOrange,
     backgroundColor: "#fff",
+    isSubmit: true,
   };
   return (
     <AuthContainer {...authContainerProps}>
