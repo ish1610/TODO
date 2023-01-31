@@ -27,7 +27,7 @@ const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
     onClickDetail: (id) => onClickDetail(id),
     toDo: {
       ...toDo,
-      title: truncate(toDo.title, 30),
+      title: truncate(toDo.title, 18),
       content: truncate(toDo.content, 80),
     },
   };
