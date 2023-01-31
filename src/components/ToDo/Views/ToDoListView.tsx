@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { blue, orange } from "../../Common/styles/commonColor";
+import { orange } from "../../Common/styles/commonColor";
 import { IToDoListProps, ToDo } from "../types/todos";
 import ToDoItem from "../ToDoItem";
 import EmptyTodo from "../../Common/Empty/EmptyTodo";
