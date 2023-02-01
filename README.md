@@ -89,7 +89,7 @@ FireBase의 Authentication을 사용하여 회원가입 / 로그인 기능을 �
 ![화면 기록 2023-02-01 오후 2 29 15 mov](https://user-images.githubusercontent.com/85052351/215962842-ccf7e3bd-cb1b-4db8-8612-57251b3f0c64.gif)<br/>
 
 - todo 작성 시 제목과 내용 최소 5글자 입력 시 저장이 가능합니다.
-- 저장한 todo 데이터는 FireBase에 아래의 양식으로 저장됩니다. 
+- 저장한 todo 데이터는 createToDo API를 호출하여 FireBase에 아래의 양식으로 저장합니다. 
 ```planinText
 jeqDmZ8GP59wyJ62vVgq
 ㄴcontent : "투두리스트 투두리스트!!!!"
@@ -98,7 +98,20 @@ jeqDmZ8GP59wyJ62vVgq
 ㄴtitle : "재미있는 투두리스트 작성"
 ㄴuId : "Yuq9U9uqyiREUe4tCjvAHXpoAf73"
 ㄴupdatedAt : "2월 1일 수요일 14 : 49"
-:
 ```
 
+### todo 상세보기 / 수정하기
+
+![화면 기록 2023-02-01 오후 3 03 21 mov](https://user-images.githubusercontent.com/85052351/215964494-6cbc2c72-62bd-44ea-962a-cfc27dbf7ed5.gif) <br/>
+
+- todo 상세 보기의 경우 별도의 API 호출 없이 Store에 저장된 데이터를 사용합니다.
+- todo 수정 시 updateToDo API를 호출하여 FireBase의 데이터를 수정합니다.
+- 수정 유효성의 경우 작성 유효성과 동일합니다.
+
+### todo 삭제하기
+
+![화면 기록 2023-02-01 오후 3 10 12 mov](https://user-images.githubusercontent.com/85052351/215965375-538ee759-7489-4d09-812c-47b51cff6844.gif)
+
+- todo 삭제 시 deleteToDo API를 호출합니다.
+- 삭제 후 todoList 페이지로 이동 후 getToDo API를 호출하여 최신의 todo 데이터를 유지합니다.
 
