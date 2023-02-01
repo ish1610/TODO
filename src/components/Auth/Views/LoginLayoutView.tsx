@@ -5,7 +5,7 @@ const LoginLayoutView = () => {
   const Login = React.lazy(() => import("../Login"));
   return (
     <Suspense fallback={<LoadingView />}>
-      <Login />;
+      <Login />
     </Suspense>
   );
 };

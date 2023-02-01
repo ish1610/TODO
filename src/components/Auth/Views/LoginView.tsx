@@ -15,7 +15,7 @@ const Login = styled.div<ThemeFeedback>`
   width: 80%;
   max-width: 800px;
 
-  min-height: 500px;
+  min-height: 450px;
   background-color: #fff;
   border: 1px solid ${blue};
   border-radius: 8px;
