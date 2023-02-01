@@ -165,5 +165,121 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 로그아웃의 경우 작은 화면 일때 실수로 클릭하는 일을 방지하고자 사용자의 클릭이 있을 경우만 로그아웃 버튼 사용이 가능하도록 구현하였습니다.
 
 
+# 📂 폴더 구조
 
-ㅁㄴㅇㅁ
+```planinText
+├── App.tsx
+├── 📁 assets 
+│   └── images
+├── 📁 components
+│   ├── Auth
+│   │   ├── 📁 Hooks
+│   │   │   └── useLogin.tsx
+│   │   ├── Login.tsx
+│   │   ├── LoginLayout.tsx
+│   │   ├── SignUp.tsx
+│   │   ├── SignUpLayout.tsx
+│   │   ├── 📁 Views
+│   │   │   ├── LoginLayoutView.tsx
+│   │   │   ├── LoginView.tsx
+│   │   │   ├── SignUpLayoutView.tsx
+│   │   │   └── SignUpView.tsx
+│   │   ├── api
+│   │   │   ├── login.ts
+│   │   │   └── signUp.ts
+│   │   ├── types
+│   │   │   ├── login.ts
+│   │   │   └── signUp.ts
+│   │   └── 📁 utils
+│   │       └── token.ts
+│   ├── 📁 Common
+│   │   ├── 📁 Auth
+│   │   │   ├── AuthContainer.tsx
+│   │   │   ├── View
+│   │   │   │   └── AuthContainerView.tsx
+│   │   │   └── types
+│   │   │       └── auth.ts
+│   │   ├── 📁 Element
+│   │   │   ├── ButtonDeative.tsx
+│   │   │   ├── View
+│   │   │   │   └── ButtonDeativeView.tsx
+│   │   │   └── types
+│   │   │       └── element.ts
+│   │   ├── 📁 Empty
+│   │   │   ├── EmptyTodo.tsx
+│   │   │   ├── Views
+│   │   │   │   └── EmptyTodoView.tsx
+│   │   │   └── types
+│   │   │       └── empty.ts
+│   │   ├── 📁 Loading
+│   │   │   └── Views
+│   │   │       └── LoadingView.tsx
+│   │   ├── 📁 Util
+│   │   │   ├── date.ts
+│   │   │   ├── randomString.ts
+│   │   │   ├── scroll.ts
+│   │   │   └── validation.ts
+│   │   ├── 📁 styles
+│   │   │   ├── FlexCenter.ts
+│   │   │   ├── GlobalStyle.tsx
+│   │   │   └── commonColor.ts
+│   │   └── 📁 types
+│   │       ├── image.d.ts
+│   │       └── validation.ts
+│   ├── 📁 Layout
+│   │   ├── Header.tsx
+│   │   ├── 📁 Views
+│   │   │   └── HeaderView.tsx
+│   │   └── 📁 types
+│   │       └── header.ts
+│   ├── 📁 Routes
+│   │   └── AppRoute.tsx
+│   ├── 📁 ToDo
+│   │   ├── AddToDoModal.tsx
+│   │   ├── ToDoItem.tsx
+│   │   ├── ToDoLayout.tsx
+│   │   ├── ToDoList.tsx
+│   │   ├── 📁 Utils
+│   │   │   ├── toDoValidation.ts
+│   │   │   └── truncateString.ts
+│   │   ├── 📁 Views
+│   │   │   ├── AddToDoModalView.tsx
+│   │   │   ├── ToDoItemView.tsx
+│   │   │   ├── ToDoLayoutView.tsx
+│   │   │   └── ToDoListView.tsx
+│   │   ├── 📁 api
+│   │   │   └── toDo.ts
+│   │   └── 📁 types
+│   │       └── todos.ts
+│   └── 📁 ToDoDetail
+│       ├── ToDoDetail.tsx
+│       ├── ToDoDetailLayout.tsx
+│       ├── 📁 Views
+│       │   ├── ToDoDetailLayoutView.tsx
+│       │   └── ToDoDetailView.tsx
+│       └── 📁 types
+│           └── toDoDetail.ts
+├── index.tsx
+├── 📁 pages
+│   ├── HomePage.tsx
+│   ├── LoginPage.tsx
+│   ├── SignUpPage.tsx
+│   └── ToDoDetailPage.tsx
+├── react-app-env.d.ts
+└── 📁 store
+    ├── Auth
+    │   ├── loginSlice.ts
+    │   └── signUpSlice.ts
+    ├── ToDo
+    │   ├── toDoModalSlice.ts
+    │   └── toDoSlice.ts
+    ├── index.ts
+    └── types
+        └── store.ts
+```
+가장 많이 고민하고 수정이 많았던 부분입니다. 폴더 구조에 대해 고민한 부분은 아래와 같습니다.
+- 기존 types(애플리케이션 모든 타입 관리), api(애플리케이션에 모든 커스텀 api 관리), utils(애플리케이션 모든 util 함수 관리) <br/>
+  ➡️ 각 라우트 별로 사용하는 types, api, utils, hooks를 각각의 라우트 폴더에서 관리하는 것으로 수정하여 응집도를 높이고자 하였습니다.
+- 기존 하나의 파일에서 View 로직, View 렌더링 로직, 비지니스 로직을 모두 관리 <br/> 
+  ➡️ HTML, CSS 로직 관리는 View 폴더, View 렌더링 로직 관리는 상위 컴포넌트에서 관리하여 추상화된 Props Object로 전달, 비지니스 로직는 API 폴더에서 관리로 수정하여 비지니스 로직, View 렌더링 로직, View 로직 분리해주어 [관심사를 분리](https://nicehyun12.tistory.com/132)하고자 하였습니다.
+
