@@ -7,9 +7,13 @@
 
 - [로컬 실행 환경](#localEnvironment)
 - [사용 라이브러리](#library)
-- [createTodo](#createTodo)
-- [updateTodo](#updateTodo)
-- [deleteTodo](#deleteTodo)
+- [사용 데이터베이스](#database)
+- [클라이언트 구현 과제](#assignment)
+- [ToDoList 기능](#function)
+- [디자인 / 기능 주안점](#design)
+- [폴더 구조](#folder)
+- [라우트](#route)
+- [과제 진행 ](#emphasis)
 
 
 ## <span id="localEnvironment">로컬 실행 환경</span>
@@ -41,14 +45,14 @@ redux-tookit
 ```
 <br/><br/>
 
-## 사용 데이터베이스
+## <span id="database">사용 데이터베이스</span>
 
 ```plaintext
 FireBase Authentication (사용자 관리 DB)
 FireBase Realtime DataBase (ToDo 데이터 관리)
 ```
 
-# 💁🏻‍♂️ 클라이언트 구현 과제
+# 💁🏻‍♂️ <span id="assignment">클라이언트 구현 과제</span>
 
 ## Assignment 1 - Login / SignUp
 
@@ -80,7 +84,7 @@ FireBase Realtime DataBase (ToDo 데이터 관리)
 - 타입스크립트 첫 프로젝트 적용한 todoList
 <br/><br/>
 
-# 🖥️ ToDoList 기능
+# 🖥️ <span id="function">ToDoList 기능</span>
 
 ## 🗝️ Auth
 
@@ -151,7 +155,7 @@ jeqDmZ8GP59wyJ62vVgq
 - 삭제 후 todoList 페이지로 이동 후 getToDo API를 호출하여 최신의 todo 데이터를 유지합니다.
 <br/><br/>
 
-# 💄 디자인 / 기능 주안점
+# 💄 <span id="design">디자인 / 기능 주안점</span>
 
 ### 피드백 전달
 <br/>
@@ -182,7 +186,7 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 로그아웃의 경우 작은 화면 일때 실수로 클릭하는 일을 방지하고자 사용자의 클릭이 있을 경우만 로그아웃 버튼 사용이 가능하도록 구현하였습니다.
 
 
-# 📂 폴더 구조
+# <span id="folder">📂 폴더 구조</span>
 
 ```planinText
 ├── App.tsx
@@ -304,7 +308,7 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 - Common 폴더에서는 util 함수, View, style 등 공통으로 사용되는 로직을 분리하여 관리하도록 하였습니다.
 <br/><br/>
 
-# 🧭 라우트 관리
+# <span id="route">🧭 라우트 관리</span>
 ```javascript
 const AppRoute = () => {
   const isLogin = useSelector((state: Store) => state.login.isLogin);
@@ -325,7 +329,7 @@ const AppRoute = () => {
 라우트 가드를 사용하여 로그인이 되어있을 경우만 todo관련 페이지 이용이 가능하도록 하였으며, 404의 경우 login 페이지로 리다이렉트 되도록 했습니다.
 <br/><br/>
 
-# 🤔 과제 진행 주안점
+# <span id="emphasis">🤔 과제 진행 주안점</span>
 - 타입스크립트 타입 단언, any 타입 사용하지 않기
 타입스크립트를 배운지 얼마되지 않아 챌린지를 진행했기 때문에 타입 단언과 any 타입을 최대한 사용하지 않기 위해 타입스크립트에 대해 지속적으로 공부하며 타입을 적용했습니다.<br/>
 - [VAC 패턴](https://nicehyun12.tistory.com/132) 적용하기
