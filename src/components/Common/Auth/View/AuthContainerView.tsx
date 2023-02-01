@@ -5,8 +5,8 @@ import { IAuthContainerProps } from "../types/auth";
 const Container = styled.div`
   position: relative;
   height: calc(100vh - 120px);
-  min-height: 750px;
-  padding: 120px 36px 180px;
+  min-height: 700px;
+  padding: 80px 36px 180px;
   min-width: 450px;
   display: flex;
   align-items: center;
