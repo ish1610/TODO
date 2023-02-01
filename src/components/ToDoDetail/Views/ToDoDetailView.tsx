@@ -117,6 +117,7 @@ const ToDoDetailWrap = styled.div`
   border-radius: 8px;
   width: 90%;
   max-width: 800px;
+  min-width: 400px;
   padding: 50px;
 
   header {
