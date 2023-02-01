@@ -53,8 +53,10 @@ jsonwebtoken
 # 🗒️ 프로젝트 개요
 - [원티드 프리온보딩 FE 챌린지](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api)의 과제 수행
 - 타입스크립트 첫 프로젝트 적용한 todoList
+<br/><br/>
 
 # 🖥️ ToDoList 기능
+<br/>
 
 ## 🗝️ Auth
 
@@ -62,6 +64,7 @@ FireBase의 Authentication을 사용하여 회원가입 / 로그인 기능을 �
 >
 
 - 각각의 입력 유효성 양식을 통과하지 못 할 경우 API 호출을 하지 못 하도록 button의 disable 처리와 그에 맞는 CSS를 적용해주었습니다.
+<br/>
 
 ### 회원가입
 
@@ -69,7 +72,7 @@ FireBase의 Authentication을 사용하여 회원가입 / 로그인 기능을 �
 
 - email의 경우 @과 .이 포함된 8 자리 이상의 입력, password의 경우 영문, 숫자, 특수문자가 포함 된 8 자리에서 20 자리 입력 시 회원가입이 가능합니다.
 - 회원가입 시 FireBase에 존재하는 이메일로 회원가입이 불가능하며, 입력 시 피드백을 전달합니다. 
-
+<br/><br/>
 
 ### 로그인 
 
@@ -78,11 +81,17 @@ FireBase의 Authentication을 사용하여 회원가입 / 로그인 기능을 �
 - 로그인 시 FireBase에 저장된 이메일 / 비밀번호 조합이 아닌 입력으로 API 호출 시 피드백을 전달합니다.
 - 로그인으로 얻은 토큰, 토큰 유효 시간, localId(uId)가 로컬 스토리지에 저장됩니다. 저장된 토큰, 토큰 유효 시간의 경우 로그아웃을 하지 않고 애플리케이션에 접속 시 유효 시간이 남아있다면 별도의 로그인 없이 애플리케이션 사용이 가능하며, 유효 시간 만료 시 자동 로그아웃이 됩니다.
 - 저장된 localId(uId)의 FireBase에 저장된 todoList 중 사용자 uId와 일치하는 데이터를 가져오는데 사욥됩니다.
+<br/><br/>
 
 ### 로그아웃
 
+![화면 기록 2023-02-01 오후 3 19 40 mov](https://user-images.githubusercontent.com/85052351/215966854-8b6cfd0d-c757-498a-bf7b-1679e6c13c15.gif)<br/>
 
+- 로그아웃 시 로컬스토리지에 저장된 토큰, 토큰 유효시간, uId를 삭제합니다.
+
+<br/><br/>
 ## 📝 CRUD
+<br/>
 
 ### todo 작성
 
@@ -99,6 +108,7 @@ jeqDmZ8GP59wyJ62vVgq
 ㄴuId : "Yuq9U9uqyiREUe4tCjvAHXpoAf73"
 ㄴupdatedAt : "2월 1일 수요일 14 : 49"
 ```
+<br/><br/>
 
 ### todo 상세보기 / 수정하기
 
@@ -107,6 +117,7 @@ jeqDmZ8GP59wyJ62vVgq
 - todo 상세 보기의 경우 별도의 API 호출 없이 Store에 저장된 데이터를 사용합니다.
 - todo 수정 시 updateToDo API를 호출하여 FireBase의 데이터를 수정합니다.
 - 수정 유효성의 경우 작성 유효성과 동일합니다.
+<br/><br/>
 
 ### todo 삭제하기
 
@@ -114,4 +125,5 @@ jeqDmZ8GP59wyJ62vVgq
 
 - todo 삭제 시 deleteToDo API를 호출합니다.
 - 삭제 후 todoList 페이지로 이동 후 getToDo API를 호출하여 최신의 todo 데이터를 유지합니다.
+<br/><br/>
 
