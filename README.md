@@ -61,19 +61,44 @@ jsonwebtoken
 FireBase의 Authentication을 사용하여 회원가입 / 로그인 기능을 구현했습니다.<br/
 >
 
-각각의 입력 유효성 양식을 통과하지 못 할 경우 API 호출을 하지 못 하도록 button의 disable 처리와 그에 맞는 CSS를 적용해주었습니다.
+- 각각의 입력 유효성 양식을 통과하지 못 할 경우 API 호출을 하지 못 하도록 button의 disable 처리와 그에 맞는 CSS를 적용해주었습니다.
 
 ### 회원가입
 
 ![화면 기록 2023-02-01 오후 2 16 42 mov](https://user-images.githubusercontent.com/85052351/215959536-6b1fe294-e83e-4817-955b-5e03f7a6038c.gif) <br/>
 
-회원가입 시 FireBase에 존재하는 이메일로 회원가입이 불가능하며, 입력 시 피드백을 전달합니다. 
+- email의 경우 @과 .이 포함된 8 자리 이상의 입력, password의 경우 영문, 숫자, 특수문자가 포함 된 8 자리에서 20 자리 입력 시 회원가입이 가능합니다.
+- 회원가입 시 FireBase에 존재하는 이메일로 회원가입이 불가능하며, 입력 시 피드백을 전달합니다. 
 
 
 ### 로그인 
 
+![화면 기록 2023-02-01 오후 2 16 42 mov](https://user-images.githubusercontent.com/85052351/215960824-74cdbeb1-94d6-40b1-9ad0-040da7a633d4.gif)<br/>
+
+- 로그인 시 FireBase에 저장된 이메일 / 비밀번호 조합이 아닌 입력으로 API 호출 시 피드백을 전달합니다.
+- 로그인으로 얻은 토큰, 토큰 유효 시간, localId(uId)가 로컬 스토리지에 저장됩니다. 저장된 토큰, 토큰 유효 시간의 경우 로그아웃을 하지 않고 애플리케이션에 접속 시 유효 시간이 남아있다면 별도의 로그인 없이 애플리케이션 사용이 가능하며, 유효 시간 만료 시 자동 로그아웃이 됩니다.
+- 저장된 localId(uId)의 FireBase에 저장된 todoList 중 사용자 uId와 일치하는 데이터를 가져오는데 사욥됩니다.
+
+### 로그아웃
 
 
+## 📝 CRUD
 
+### todo 작성
+
+![화면 기록 2023-02-01 오후 2 29 15 mov](https://user-images.githubusercontent.com/85052351/215962842-ccf7e3bd-cb1b-4db8-8612-57251b3f0c64.gif)<br/>
+
+- todo 작성 시 제목과 내용 최소 5글자 입력 시 저장이 가능합니다.
+- 저장한 todo 데이터는 FireBase에 아래의 양식으로 저장됩니다. 
+```planinText
+jeqDmZ8GP59wyJ62vVgq
+ㄴcontent : "투두리스트 투두리스트!!!!"
+ㄴcreatedAt : "2월 1일 수요일 14 : 49"
+ㄴid : "jeqDmZ8GP59wyJ62vVgq"
+ㄴtitle : "재미있는 투두리스트 작성"
+ㄴuId : "Yuq9U9uqyiREUe4tCjvAHXpoAf73"
+ㄴupdatedAt : "2월 1일 수요일 14 : 49"
+:
+```
 
 
