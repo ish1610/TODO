@@ -4,6 +4,9 @@ import { calculateRemainingTime } from "../utils/token";
 
 let logoutTimer: NodeJS.Timeout;
 
+const REACT_APP_FIREBASE_AUTH_API_KEY =
+  process.env.REACT_APP_FIREBASE_AUTH_API_KEY;
+
 export const loginAPI: LoginAPI = {
   login: async (
     email,
@@ -22,7 +25,7 @@ export const loginAPI: LoginAPI = {
     try {
       const response = await axios.post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
-          process.env.REACT_APP_FIREBASE_AUTH_API_KEY,
+          REACT_APP_FIREBASE_AUTH_API_KEY,
         {
           email,
           password,
