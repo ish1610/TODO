@@ -2,9 +2,17 @@
 
 ![스크린샷 2023-01-13 오후 12 18 11](https://user-images.githubusercontent.com/85052351/212458836-3702ad4e-0394-4d58-b3a3-7be9488dae9b.png)<br/><br/>
 
-[챌린지 과제](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api) | [과제 관련 게시글](https://nicehyun12.tistory.com/category/Project/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9) | [데모](https://wanted-pre-onboarding-challenge-fe-1-nine.vercel.app/)<br/><br/>
+[챌린지 과제](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api) | [과제 관련 게시글](https://nicehyun12.tistory.com/category/Project/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9) | [데모](https://wanted-pre-onboarding-challenge-fe-1-nine.vercel.app/)
+<br/><br/>
 
-## 로컬 실행 환경
+- [로컬 실행 환경](#localEnvironment)
+- [사용 라이브러리](#library)
+- [createTodo](#createTodo)
+- [updateTodo](#updateTodo)
+- [deleteTodo](#deleteTodo)
+
+
+## <span id="localEnvironment">로컬 실행 환경</span>
 
 ```bash
 > npm i 
@@ -12,7 +20,17 @@
 ```
 <br/><br/>
 
-## 사용 라이브러리
+```bash
+REACT_APP_FIREBASE_AUTH_API_KEY = "파이어베이스 Authentication API key"
+REACT_APP_FIREBASE_DB_URL = "파이어베이스 리얼타임 데이터베이스 URL"
+```
+<br/>
+로컬 환경에서 실행시 위와 같이 루트 경로에 FireBase RealTime DataBase URL, FireBase Authentication API KEY 설정해야 합니다.
+
+<br/><br/>
+
+
+## <span id="library">사용 라이브러리</span>
 
 ```plaintext
 axios
@@ -20,7 +38,6 @@ redux
 redux-tookit
 @emotion-react
 @emotion-styled
-jsonwebtoken
 ```
 <br/><br/>
 
@@ -282,4 +299,47 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
   ➡️ 각 라우트 별로 사용하는 types, api, utils, hooks를 각각의 라우트 폴더에서 관리하는 것으로 수정하여 응집도를 높이고자 하였습니다.
 - 기존 하나의 파일에서 View 로직, View 렌더링 로직, 비지니스 로직을 모두 관리 <br/> 
   ➡️ HTML, CSS 로직 관리는 View 폴더, View 렌더링 로직 관리는 상위 컴포넌트에서 관리하여 추상화된 Props Object로 전달, 비지니스 로직는 API 폴더에서 관리로 수정하여 비지니스 로직, View 렌더링 로직, View 로직 분리해주어 [관심사를 분리](https://nicehyun12.tistory.com/132)하고자 하였습니다.
+- Route 로직 또한 별도의 관심사로 취급하여 별도의 폴더을 구성하여 관리하도록 하였습니다.
+- Empty 컴포넌트 또한 todoList와 별도의 관심하로 취급하여 별도의 폴더를 구성하여 관리하도록 하였습니다.
+- Common 폴더에서는 util 함수, View, style 등 공통으로 사용되는 로직을 분리하여 관리하도록 하였습니다.
+<br/><br/>
+
+# 🧭 라우트 관리
+```javascript
+const AppRoute = () => {
+  const isLogin = useSelector((state: Store) => state.login.isLogin);
+  return (
+    <Routes>
+      {isLogin && <Route path="/" element={<HomePage />} />}
+      {isLogin && <Route path="toDoDetail/:id" element={<ToDoDetailPage />} />}
+
+      {!isLogin && <Route path="signUp" element={<SignUpPage />} />}
+
+      <Route path="login" element={<LoginPage />} />
+      <Route path="*" element={<Navigate to="login" />} />
+    </Routes>
+  );
+};
+```
+<br/>
+라우트 가드를 사용하여 로그인이 되어있을 경우만 todo관련 페이지 이용이 가능하도록 하였으며, 404의 경우 login 페이지로 리다이렉트 되도록 했습니다.
+<br/><br/>
+
+# 🤔 과제 진행 주안점
+- 타입스크립트 타입 단언, any 타입 사용하지 않기
+타입스크립트를 배운지 얼마되지 않아 챌린지를 진행했기 때문에 타입 단언과 any 타입을 최대한 사용하지 않기 위해 타입스크립트에 대해 지속적으로 공부하며 타입을 적용했습니다.<br/>
+- [VAC 패턴](https://nicehyun12.tistory.com/132) 적용하기
+VAC 패턴을 적용하여 View, View 렌더링 로직, 비지니스 로직을 분리 관리하여 관심사를 분리했습니다.<br/>
+- [Suspense RFC 톺아보고](https://nicehyun12.tistory.com/135) 사용하기
+한번도 사용해본적 없는 Suspense 다른 사람의 게시글이 아닌 RFC 문서를 직접 톺아보고 파악하여 프로젝트에 적용했습니다.<br/>
+- [사용자 인증 토큰 관리하기](https://nicehyun12.tistory.com/139)
+과제의 요구사항 중 하나인 사용자 토큰 관리 해결을 위해 토큰에 대한 지식이 없었기에 토큰에 대해 공부하고 프로젝트에 적용했습니다.
+<br/><br/>
+
+# 😭 한계점 및 개선 사항
+- 타입스크립트를 온전히 사용하지 못한 것에 대해 아쉬움이 남습니다. 추후 타입스크립트에 대해 공부하여 수정하겠습니다.
+- 과제 요구 사항 중 하나였던 리액트 쿼리를 적용하지 못 했습니다. 추후 공부하여 적용하겠습니다.
+- <br/><br/>
+
+
 
