@@ -58,9 +58,21 @@ jsonwebtoken
 
 ## 🗝️ Auth
 
+FireBase의 Authentication을 사용하여 회원가입 / 로그인 기능을 구현했습니다.<br/
+>
+
+각각의 입력 유효성 양식을 통과하지 못 할 경우 API 호출을 하지 못 하도록 button의 disable 처리와 그에 맞는 CSS를 적용해주었습니다.
+
 ### 회원가입
 
-https://user-images.githubusercontent.com/85052351/215957984-aecf2d3e-bfff-4d70-a948-242fb8ff90c6.mov
+![화면 기록 2023-02-01 오후 2 16 42 mov](https://user-images.githubusercontent.com/85052351/215959536-6b1fe294-e83e-4817-955b-5e03f7a6038c.gif) <br/>
+
+회원가입 시 FireBase에 존재하는 이메일로 회원가입이 불가능하며, 입력 시 피드백을 전달합니다. 
+
+
+### 로그인 
+
+
 
 
 
