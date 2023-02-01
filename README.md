@@ -4,7 +4,7 @@
 
 [챌린지 과제](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api) | [과제 관련 게시글](https://nicehyun12.tistory.com/category/Project/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9) | [데모](https://wanted-pre-onboarding-challenge-fe-1-nine.vercel.app/)<br/><br/>
 
-## 실행 환경
+## 로컬 실행 환경
 
 ```bash
 > npm i 
@@ -21,6 +21,14 @@ redux-tookit
 @emotion-react
 @emotion-styled
 jsonwebtoken
+```
+<br/><br/>
+
+## 사용 데이터베이스
+
+```plaintext
+FireBase Authentication (사용자 관리 DB)
+FireBase Realtime DataBase (ToDo 데이터 관리)
 ```
 
 # 💁🏻‍♂️ 클라이언트 구현 과제
@@ -56,7 +64,6 @@ jsonwebtoken
 <br/><br/>
 
 # 🖥️ ToDoList 기능
-<br/>
 
 ## 🗝️ Auth
 
@@ -126,4 +133,33 @@ jeqDmZ8GP59wyJ62vVgq
 - todo 삭제 시 deleteToDo API를 호출합니다.
 - 삭제 후 todoList 페이지로 이동 후 getToDo API를 호출하여 최신의 todo 데이터를 유지합니다.
 <br/><br/>
+
+# 💄 디자인 / 기능 주안점
+
+### 피드백 전달
+<br/>
+![스크린샷 2023-02-01 오후 3 33 37](https://user-images.githubusercontent.com/85052351/215969452-677b6d1e-a038-4677-a275-713d40ada7a2.png)
+<br/>
+![스크린샷 2023-02-01 오후 3 34 15](https://user-images.githubusercontent.com/85052351/215969570-80075b00-6915-4f2b-a4de-821d5e493d29.png)
+<br/>
+
+이번 todoList 프로젝트에서는 사용자에게 입력에 대한 피드백 전달에 대한 UI에 대한 고민을 많이 하였으며, 로그인 시 유효하지 않은 입력을 할 경우 input 요소의 색상 변경 및 피드백 문구, 회원가입 시 이미 존재하는 이메일로 회원가입 시도 시 피드백 전달합니다.
+
+### 방어적 / 파괴적 버튼
+<br/>
+![스크린샷 2023-02-01 오후 3 35 05](https://user-images.githubusercontent.com/85052351/215970409-df208fff-be65-4da3-bba6-b18fdbb8f9fa.png)
+<br/>
+![스크린샷 2023-02-01 오후 3 35 14](https://user-images.githubusercontent.com/85052351/215970428-a0ac46ba-06d2-4dfe-937f-cd32bcdf0211.png)
+<br/>
+
+todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 않도록 UI를 구현했으며, 삭제 버튼 클릭 시 사용자에게 한번 더 확인 받도록 구현하였습니다.
+
+<br/><br/>
+
+![스크린샷 2023-02-01 오후 3 35 45](https://user-images.githubusercontent.com/85052351/215970982-1a03f993-5c76-4302-a18b-9c2bdef2bcdb.png)
+<br/>
+로그아웃의 경우 작은 화면 일때 실수로 클릭하는 일을 방지하고자 사용자의 클릭이 있을 경우만 로그아웃 버튼 사용이 가능하도록 구현하였습니다.
+
+
+
 
