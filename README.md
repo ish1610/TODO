@@ -138,9 +138,9 @@ jeqDmZ8GP59wyJ62vVgq
 
 ### 피드백 전달
 <br/>
-![스크린샷 2023-02-01 오후 3 33 37](https://user-images.githubusercontent.com/85052351/215969452-677b6d1e-a038-4677-a275-713d40ada7a2.png)
+![스크린샷 2023-02-01 오후 3 35 05](https://user-images.githubusercontent.com/85052351/215971537-9bfc2f38-3f8a-44da-82c2-27e29f3263c6.png)
 <br/>
-![스크린샷 2023-02-01 오후 3 34 15](https://user-images.githubusercontent.com/85052351/215969570-80075b00-6915-4f2b-a4de-821d5e493d29.png)
+![스크린샷 2023-02-01 오후 3 35 14](https://user-images.githubusercontent.com/85052351/215971587-efdcaebb-d4c7-450d-ba31-665994c61978.png)
 <br/>
 
 이번 todoList 프로젝트에서는 사용자에게 입력에 대한 피드백 전달에 대한 UI에 대한 고민을 많이 하였으며, 로그인 시 유효하지 않은 입력을 할 경우 input 요소의 색상 변경 및 피드백 문구, 회원가입 시 이미 존재하는 이메일로 회원가입 시도 시 피드백 전달합니다.
