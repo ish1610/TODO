@@ -22,6 +22,8 @@
 ```
 <br/><br/>
 
+### 환경 변수 설정
+
 ```bash
 REACT_APP_FIREBASE_AUTH_API_KEY = "파이어베이스 Authentication API key"
 REACT_APP_FIREBASE_DB_URL = "파이어베이스 리얼타임 데이터베이스 URL"
