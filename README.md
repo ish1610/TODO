@@ -1,4 +1,4 @@
-# 원티드 프리온보딩 챌린지
+# 🔥 원티드 프리온보딩 챌린지
 
 ![스크린샷 2023-01-13 오후 12 18 11](https://user-images.githubusercontent.com/85052351/212458836-3702ad4e-0394-4d58-b3a3-7be9488dae9b.png)<br/><br/>
 
@@ -23,7 +23,7 @@ redux-tookit
 jsonwebtoken
 ```
 
-# 클라이언트 구현 과제
+# 💁🏻‍♂️ 클라이언트 구현 과제
 
 ## Assignment 1 - Login / SignUp
 
@@ -50,20 +50,18 @@ jsonwebtoken
 - 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현해주세요
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
 
-## API 스펙
+# 🗒️ 프로젝트 개요
+- [원티드 프리온보딩 FE 챌린지](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api)의 과제 수행
+- 타입스크립트 첫 프로젝트 적용한 todoList
 
-## [ToDos](#todos)
+# 🖥️ ToDoList 기능
 
-- [getToDo](#getTodos)
-- [createToDo](#createTodo)
-- [updateToDo](#updateTodo)
-- [deleteToDo](#deleteTodo)
+## 🗝️ Auth
 
-## [SignUp](#SignUp)
+### 회원가입
 
-- [signUp](#signUp)
+https://user-images.githubusercontent.com/85052351/215957984-aecf2d3e-bfff-4d70-a948-242fb8ff90c6.mov
 
-## [Login](#Login)
 
-- [login](#login)
+
 
