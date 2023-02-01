@@ -138,8 +138,10 @@ jeqDmZ8GP59wyJ62vVgq
 
 ### 피드백 전달
 <br/>
+
 ![스크린샷 2023-02-01 오후 3 35 05](https://user-images.githubusercontent.com/85052351/215971537-9bfc2f38-3f8a-44da-82c2-27e29f3263c6.png)
 <br/>
+
 ![스크린샷 2023-02-01 오후 3 35 14](https://user-images.githubusercontent.com/85052351/215971587-efdcaebb-d4c7-450d-ba31-665994c61978.png)
 <br/>
 
@@ -147,8 +149,10 @@ jeqDmZ8GP59wyJ62vVgq
 
 ### 방어적 / 파괴적 버튼
 <br/>
+
 ![스크린샷 2023-02-01 오후 3 35 05](https://user-images.githubusercontent.com/85052351/215970409-df208fff-be65-4da3-bba6-b18fdbb8f9fa.png)
 <br/>
+
 ![스크린샷 2023-02-01 오후 3 35 14](https://user-images.githubusercontent.com/85052351/215970428-a0ac46ba-06d2-4dfe-937f-cd32bcdf0211.png)
 <br/>
 
