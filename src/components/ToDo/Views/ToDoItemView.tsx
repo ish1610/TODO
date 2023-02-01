@@ -65,6 +65,7 @@ const ToDoControl = styled.div`
   right: 10px;
 
   svg {
+    color: #333;
     width: 28px;
     height: 28px;
     margin-right: 10px;
