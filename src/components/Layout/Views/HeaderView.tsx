@@ -14,7 +14,7 @@ const HeaderWrap = styled.header`
   padding: 22px 20px 22px;
   height: 100px;
   border-bottom: 1px solid ${blue};
-  z-index: 10;
+  z-index: 5;
   background-color: ${blue};
 
   @media (max-width: 750px) {

@@ -81,7 +81,7 @@ const BackDrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 10;
   background-color: rgba(255, 255, 255, 0.8);
 `;
 
@@ -91,7 +91,7 @@ const AddToModal = styled.div`
   right: 0;
   margin: 0 auto;
   top: 250px;
-  z-index: 2;
+  z-index: 10;
   width: 80%;
   border: 1px solid ${blue};
   border-radius: 5px;
