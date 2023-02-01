@@ -60,6 +60,7 @@ export const loginAPI: LoginAPI = {
   logout: (dispatchLogoutCb) => {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
+    localStorage.removeItem("uId");
     dispatchLogoutCb();
 
     if (logoutTimer) {
