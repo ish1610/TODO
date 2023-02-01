@@ -5,9 +5,7 @@
 [챌린지 과제](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api) | [과제 관련 게시글](https://nicehyun12.tistory.com/category/Project/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9) | [데모](https://wanted-pre-onboarding-challenge-fe-1-nine.vercel.app/)
 <br/><br/>
 
-- [로컬 실행 환경](#localEnvironment)
-- [사용 라이브러리](#library)
-- [사용 데이터베이스](#database)
+- [프로젝트 환경](#localEnvironment)
 - [클라이언트 구현 과제](#assignment)
 - [ToDoList 기능](#function)
 - [디자인 / 기능 주안점](#design)
@@ -34,7 +32,7 @@ REACT_APP_FIREBASE_DB_URL = "파이어베이스 리얼타임 데이터베이스 
 <br/><br/>
 
 
-## <span id="library">사용 라이브러리</span>
+## 사용 라이브러리
 
 ```plaintext
 axios
@@ -45,7 +43,7 @@ redux-tookit
 ```
 <br/><br/>
 
-## <span id="database">사용 데이터베이스</span>
+## 사용 데이터베이스
 
 ```plaintext
 FireBase Authentication (사용자 관리 DB)
