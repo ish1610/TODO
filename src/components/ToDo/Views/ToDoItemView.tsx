@@ -24,6 +24,7 @@ const ToDoItemWrap = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  min-width: 350px;
 
   animation: create 1s;
 
@@ -89,11 +90,11 @@ const ToDoControl = styled.div`
 `;
 
 const ToDoItemContent = styled.div`
-  width: 500px;
   height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
+  min-width: 300px;
 
   h3,
   .todo-content {
@@ -129,8 +130,6 @@ const ToDoItemContent = styled.div`
   }
 
   @media (max-width: 750px) {
-    max-width: 350px;
-
     h3,
     .todo-content {
       width: 100%;

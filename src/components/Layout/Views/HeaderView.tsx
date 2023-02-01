@@ -16,6 +16,7 @@ const HeaderWrap = styled.header`
   border-bottom: 1px solid ${blue};
   z-index: 5;
   background-color: ${blue};
+  min-width: 450px;
 
   @media (max-width: 750px) {
     justify-content: center;
