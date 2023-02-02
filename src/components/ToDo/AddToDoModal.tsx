@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ToDoAPI } from "./api/toDo";
+import { toDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import {
   IAddToDoModalProps,
   IAddToDoModalViewProps,
-  ToDo,
   ToDoInputValue,
 } from "./types/todos";
 import AddToDoModalView from "./Views/AddToDoModalView";
@@ -26,17 +25,15 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
     onCloseModal();
   };
 
-  const onClickAddToDo = (todo: ToDoInputValue) => {
-    ToDoAPI.createToDo(todo, (toDoContent: ToDo) =>
-      dispatch(toDoAction.createToDo(toDoContent))
-    );
+  const onClickAddToDo = async (todo: ToDoInputValue) => {
+    const newToDo = await toDoAPI.createToDo(todo);
+    dispatch(toDoAction.createToDo(newToDo));
     resetToDoInput();
     onCloseModal();
   };
 
   const addToDoProps: IAddToDoModalViewProps = {
     isShowModal,
-    // onClickAddToDo: () => onClickAddToDo(toDoInput),
     onClickCancel: () => onClickCancel(),
     onChangeTitle: (e) =>
       setToDoInput((prev) => {

@@ -48,6 +48,9 @@ export type OnCloseModal = (
   setContentCb: (content: string) => void
 ) => void;
 
-export type GetToDoCb = (toDoList: ToDo[]) => void;
-export type CreateToDoCb = (toDo: ToDo) => void;
-export type DeleteToDoCb = (toDoId: string) => void;
+export type ToDoAPI = {
+  createToDo: (toDo: ToDoInputValue) => void;
+  getToDo: () => Promise<ToDo[] | undefined>;
+  deleteToDo: (id: string) => Promise<null>;
+  updateToDo: (toDo: ToDo) => Promise<ToDo>;
+};

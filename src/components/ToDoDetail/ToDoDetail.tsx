@@ -5,7 +5,7 @@ import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { Store } from "../../store/types/store";
 import ButtonDeative from "../Common/Element/ButtonDeative";
 import { lightOrange } from "../Common/styles/commonColor";
-import { ToDoAPI } from "../ToDo/api/toDo";
+import { toDoAPI } from "../ToDo/api/toDo";
 
 import toDoValidation from "../ToDo/Utils/toDoValidation";
 import { ITodoDetailProps } from "./types/toDoDetail";
@@ -29,9 +29,12 @@ const ToDoDetail = () => {
   };
 
   const onClickSave = () => {
-    setIsEdit(false);
-    onMoveHome();
-    ToDoAPI.updateToDo(toDoDetail);
+    toDoAPI.updateToDo(toDoDetail).then((response) => {
+      if (response) {
+        setIsEdit(false);
+        onMoveHome();
+      }
+    });
   };
 
   const toDoDetailProps: ITodoDetailProps = {

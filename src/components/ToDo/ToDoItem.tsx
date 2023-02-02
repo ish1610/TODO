@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ToDoAPI } from "./api/toDo";
+import { toDoAPI } from "./api/toDo";
 import { toDoAction } from "../../store/ToDo/toDoSlice";
 import { IToDoItemProps, ToDo } from "./types/todos";
 import ToDoItemView from "./Views/ToDoItemView";
@@ -12,9 +12,11 @@ const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
 
   const onClickDelete = (id: string) => {
     if (window.confirm("ToDo를 정말 삭제하시겠습니까?")) {
-      ToDoAPI.deleteToDo(id, (toDoId: string) =>
-        dispatch(toDoAction.deleteToDo(toDoId))
-      );
+      toDoAPI.deleteToDo(id).then((response) => {
+        if (response === null) {
+          dispatch(toDoAction.deleteToDo(id));
+        }
+      });
     }
   };
 

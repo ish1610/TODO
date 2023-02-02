@@ -1,18 +1,12 @@
 import axios from "axios";
-import {
-  CreateToDoCb,
-  DeleteToDoCb,
-  GetToDoCb,
-  ToDo,
-  ToDoInputValue,
-} from "../types/todos";
+import { ToDo, ToDoAPI, ToDoInputValue } from "../types/todos";
 import { randomString } from "../../Common/Util/randomString";
 import { getDate } from "../../Common/Util/date";
 
 const DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
 
-export const ToDoAPI = {
-  createToDo: async (toDo: ToDoInputValue, createToDoCb: CreateToDoCb) => {
+export const toDoAPI: ToDoAPI = {
+  createToDo: async (toDo: ToDoInputValue) => {
     const uId = localStorage.getItem("uId");
     let newToDo = {
       id: randomString(20),
@@ -33,41 +27,43 @@ export const ToDoAPI = {
     }
 
     try {
-      const { status } = await axios.patch(
+      const { status, data } = await axios.patch(
         `${DB_URL}/todos/${newToDo.id}.json`,
         newToDo
       );
       if (status >= 200 && status < 300) {
-        createToDoCb(newToDo);
+        return data;
       }
     } catch (error: any) {
       console.log(`🚨 CreateToDoAPI : ${error.message}`);
     }
   },
-  getToDo: async (disPatchGetToDoList: GetToDoCb) => {
+
+  getToDo: async () => {
     const uId = localStorage.getItem("uId");
     const loadedToDos: ToDo[] = [];
 
     try {
-      const { data: toDos } = await axios.get(`${DB_URL}/todos.json`);
+      const { data: toDos, status } = await axios.get(`${DB_URL}/todos.json`);
 
-      for (const key in toDos) {
-        loadedToDos.push(toDos[key]);
+      if (status >= 200 && status < 300) {
+        for (const key in toDos) {
+          loadedToDos.push(toDos[key]);
+        }
+        const filtedToDo = loadedToDos.filter((todo) => todo.uId === uId);
+
+        return filtedToDo;
       }
-
-      const filtedToDo = loadedToDos.filter((todo) => todo.uId === uId);
-
-      disPatchGetToDoList(filtedToDo);
     } catch (error: any) {
       console.log(`🚨 getToDoAPI : ${error.message}`);
     }
   },
-  deleteToDo: async (id: string, deleteToDoCb: DeleteToDoCb) => {
+  deleteToDo: async (id: string) => {
     try {
-      const { status } = await axios.delete(`${DB_URL}/todos/${id}.json`);
+      const { data, status } = await axios.delete(`${DB_URL}/todos/${id}.json`);
 
       if (status >= 200 && status < 300) {
-        deleteToDoCb(id);
+        return data;
       }
     } catch (error: any) {
       console.log(`🚨 deleteToDoAPI : ${error.message}`);
@@ -75,15 +71,17 @@ export const ToDoAPI = {
   },
   updateToDo: async (toDo: ToDo) => {
     try {
-      await axios.patch(
+      const { data, status } = await axios.patch(
         `${DB_URL}/todos/${toDo.id}.json`,
-
         {
-          content: toDo.content,
-          title: toDo.title,
+          ...toDo,
           updatedAt: getDate(),
         }
       );
+
+      if (status >= 200 && status < 300) {
+        return data;
+      }
     } catch (error: any) {
       console.log(`🚨 deleteToDoAPI : ${error.message}`);
     }
