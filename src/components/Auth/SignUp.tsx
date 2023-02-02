@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signUpAction } from "../../store/Auth/signUpSlice";
@@ -43,9 +43,9 @@ const SignUp = () => {
     navigate("/login", { replace: true });
   };
 
-  const dispatchResetFeedback = () => {
+  const dispatchResetFeedback = useCallback(() => {
     dispatch(signUpAction.reset());
-  };
+  }, [dispatch]);
 
   const dispatchExistEmail = () => {
     dispatch(signUpAction.existEmail());
@@ -93,7 +93,7 @@ const SignUp = () => {
 
   useEffect(() => {
     dispatchResetFeedback();
-  }, []);
+  }, [dispatchResetFeedback]);
 
   const authContainerProps = {
     onMove: () => handleMoveLogin(),
