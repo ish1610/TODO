@@ -54,17 +54,27 @@ const Login = () => {
     e.preventDefault();
 
     if (isEmailValid && isPasswordValid) {
-      loginAPI.login(
-        emailValue,
-        passwordValue,
-        handleMoveHome,
-        dispatchNotFoundEmail,
-        dispatchInvalidPassword,
-        resetEmailInputState,
-        resetPasswordInputState,
-        dispatchLogin,
-        dispatchLogout
-      );
+      loginAPI
+        .login(emailValue, passwordValue, dispatchLogout)
+        .then((response) => {
+          switch (response) {
+            case "SUCCESS_LOGIN": {
+              handleMoveHome();
+              resetEmailInputState();
+              resetPasswordInputState();
+              dispatchLogin();
+              break;
+            }
+            case "EMAIL_NOT_FOUND": {
+              dispatchNotFoundEmail();
+              break;
+            }
+            case "INVALID_PASSWORD": {
+              dispatchInvalidPassword();
+              break;
+            }
+          }
+        });
     }
   };
 

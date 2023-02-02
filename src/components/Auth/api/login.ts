@@ -5,22 +5,12 @@ import { calculateRemainingTime } from "../utils/token";
 let logoutTimer: NodeJS.Timeout;
 
 export const loginAPI: LoginAPI = {
-  login: async (
-    email,
-    password,
-    onMoveHomeCb,
-    dispatchNotFoundEmailCb,
-    dispatchInvalidPasswordCb,
-    resetEmailInputStateCb,
-    resetPasswordInputStateCb,
-    dispatchLoginCb,
-    dispatchLogoutCb
-  ) => {
+  login: async (email, password, dispatchLogoutCb) => {
     let token: string;
     let expirationTime: string;
     let uId: string;
     try {
-      const response = await axios.post(
+      const { data, status } = await axios.post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
           process.env.REACT_APP_FIREBASE_AUTH_API_KEY,
         {
@@ -29,39 +19,39 @@ export const loginAPI: LoginAPI = {
           returnSecureToken: true,
         }
       );
-      // 토큰 만료 시각
-      expirationTime = new Date(
-        new Date().getTime() + +response.data.expiresIn * 1000
-      ).toISOString();
+      if (status >= 200 && status < 300) {
+        // 토큰 만료 시각
+        expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000
+        ).toISOString();
 
-      token = response.data.idToken;
-      uId = response.data.localId;
+        token = data.idToken;
+        uId = data.localId;
+
+        const remainingTime = calculateRemainingTime(expirationTime);
+        localStorage.setItem("token", token);
+        localStorage.setItem("expirationTime", expirationTime);
+        localStorage.setItem("uId", uId);
+        // 만료 시간 지나면 자동 로그아웃
+        logoutTimer = setTimeout(() => {
+          loginAPI.logout(dispatchLogoutCb);
+        }, remainingTime);
+
+        return "SUCCESS_LOGIN";
+      }
     } catch (error: any) {
       if (error.response.data.error.message === "EMAIL_NOT_FOUND") {
-        dispatchNotFoundEmailCb();
+        return "EMAIL_NOT_FOUND";
       } else if (error.response.data.error.message === "INVALID_PASSWORD") {
-        dispatchInvalidPasswordCb();
+        return "INVALID_PASSWORD";
       }
-
-      return;
     }
-    const remainingTime = calculateRemainingTime(expirationTime);
-    localStorage.setItem("token", token);
-    localStorage.setItem("expirationTime", expirationTime);
-    localStorage.setItem("uId", uId);
-    // 만료 시간 지나면 자동 로그아웃
-    logoutTimer = setTimeout(() => {
-      loginAPI.logout(dispatchLogoutCb);
-    }, remainingTime);
-    dispatchLoginCb();
-    onMoveHomeCb();
-    resetEmailInputStateCb();
-    resetPasswordInputStateCb();
   },
   logout: (dispatchLogoutCb) => {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
     localStorage.removeItem("uId");
+
     dispatchLogoutCb();
 
     if (logoutTimer) {

@@ -25,10 +25,5 @@ export type SignUpInfoValues = Pick<signUpInputValues, "email" | "password">;
 export type MoveHomeCb = (route: string) => void;
 
 export type SignUpAPI = {
-  signUp: (
-    signUpInfo: SignUpInfoValues,
-    moveHomeCb: () => void,
-    disfatchResetFeedbackCb: () => void,
-    dispatchExistEmail: () => void
-  ) => void;
+  signUp: (signUpInfo: SignUpInfoValues) => Promise<string | undefined>;
 };

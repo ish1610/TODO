@@ -24,13 +24,7 @@ export type LoginAPI = {
   login: (
     email: string,
     password: string,
-    onMoveHomeCb: () => void,
-    dispatchNotFoundEmailCb: () => void,
-    dispatchInvalidPasswordCb: () => void,
-    resetEmailInputStateCb: () => void,
-    resetPasswordInputStateCb: () => void,
-    dispatchLoginCb: () => void,
     dispatchLogoutCb: () => void
-  ) => void;
+  ) => Promise<string | undefined>;
   logout: (dispatchLogoutCb: () => void) => void;
 };

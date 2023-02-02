@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../store/Auth/loginSlice";
@@ -26,13 +26,9 @@ const Header = () => {
     navigate("/login");
   };
 
-  const dispatchLogout = () => {
-    dispatch(loginAction.logout());
-  };
-
-  const handleLogout = () => {
-    loginAPI.logout(dispatchLogout);
-  };
+  const handleLogout = useCallback(() => {
+    loginAPI.logout(() => dispatch(loginAction.logout()));
+  }, [dispatch]);
 
   const handleToggleSlide = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();

@@ -53,12 +53,21 @@ const SignUp = () => {
 
   const handleSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUpAPI.signUp(
-      signUpInputValues,
-      handleMoveHome,
-      dispatchResetFeedback,
-      dispatchExistEmail
-    );
+    signUpAPI.signUp(signUpInputValues).then((response) => {
+      if (response) {
+        switch (response) {
+          case "SUCCESS_SIGNUP": {
+            window.alert("회원가입을 축하합니다 🎉");
+            handleMoveHome();
+            dispatchResetFeedback();
+            break;
+          }
+          case "EMAIL_EXISTS": {
+            dispatchExistEmail();
+          }
+        }
+      }
+    });
   };
 
   const signUpProps: ISignUpProps = {
