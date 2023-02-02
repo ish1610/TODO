@@ -49,7 +49,7 @@ export type OnCloseModal = (
 ) => void;
 
 export type ToDoAPI = {
-  createToDo: (toDo: ToDoInputValue) => void;
+  createToDo: (toDo: ToDoInputValue) => Promise<ToDo>;
   getToDo: () => Promise<ToDo[] | undefined>;
   deleteToDo: (id: string) => Promise<null>;
   updateToDo: (toDo: ToDo) => Promise<ToDo>;

@@ -25,11 +25,12 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
     onCloseModal();
   };
 
-  const onClickAddToDo = async (todo: ToDoInputValue) => {
-    const newToDo = await toDoAPI.createToDo(todo);
-    dispatch(toDoAction.createToDo(newToDo));
-    resetToDoInput();
-    onCloseModal();
+  const onClickAddToDo = (todo: ToDoInputValue) => {
+    toDoAPI.createToDo(todo).then((newToDo) => {
+      dispatch(toDoAction.createToDo(newToDo));
+      resetToDoInput();
+      onCloseModal();
+    });
   };
 
   const addToDoProps: IAddToDoModalViewProps = {
