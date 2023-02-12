@@ -1,4 +1,4 @@
-import { ToDo } from "../../components/ToDo/types/todos";
+import { ToDo } from "../../components/Features/ToDo/Types/todos";
 
 export type ToDoListState = {
   toDoList: ToDo[];

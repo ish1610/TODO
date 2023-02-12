@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import loginSlice from "./Auth/loginSlice";
-import signUpSlice from "./Auth/signUpSlice";
-import toDoModalSlice from "./ToDo/toDoModalSlice";
-import toDoSlice from "./ToDo/toDoSlice";
+import loginSlice from "../components/Features/Auth/Slice/loginSlice";
+import signUpSlice from "../components/Features/Auth/Slice/signUpSlice";
+import toDoModalSlice from "../components/Features/ToDo/Slice/toDoModalSlice";
+import toDoSlice from "../components/Features/ToDo/Slice/toDoSlice";
 
 const store = configureStore({
   reducer: {

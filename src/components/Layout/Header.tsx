@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginAction } from "../../store/Auth/loginSlice";
+import { loginAction } from "../Features/Auth/Slice/loginSlice";
 import { Store } from "../../store/types/store";
-import { loginAPI } from "../Auth/api/login";
-import { retrieveStoredToken } from "../Auth/utils/token";
+import { loginAPI } from "../Features/Auth/Api/login";
+import { retrieveStoredToken } from "../Features/Auth/Utils/token";
 import { IHeaderProps } from "./types/header";
 import HeaderView from "./Views/HeaderView";
 
