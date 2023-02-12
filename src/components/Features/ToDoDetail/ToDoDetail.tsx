@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toDoAction } from "../ToDo/Slice/toDoSlice";
-import { Store } from "../../../store/types/store";
+
 import ButtonDeative from "../../Common/Element/ButtonDeative";
 import { lightOrange } from "../../Common/styles/commonColor";
 import { toDoAPI } from "../ToDo/Api/toDo";
@@ -10,7 +9,7 @@ import { toDoAPI } from "../ToDo/Api/toDo";
 import toDoValidation from "../ToDo/Utils/toDoValidation";
 import { ITodoDetailProps } from "./Types/toDoDetail";
 import ToDoDetailView from "./Views/ToDoDetailView";
-import useToDoDetail from "./Hooks/useToDoDetail";
+
 import {
   changeToDoDetailContent,
   changeToDoDetailTitle,
