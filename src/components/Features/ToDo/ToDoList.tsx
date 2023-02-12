@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toDoAction } from "./Slice/toDoSlice";
-import { Store } from "../../../store/types/store";
+import { getToDoList, selectTodoList } from "./Slice/toDoSlice";
+
 import { toDoAPI } from "./Api/toDo";
 
 import { IToDoListProps, ToDo } from "./Types/todos";
@@ -9,7 +9,7 @@ import ToDoListView from "./Views/ToDoListView";
 
 const ToDoList = ({ onShowModal }: IToDoListProps) => {
   const dispatch = useDispatch();
-  const toDoList = useSelector((state: Store) => state.toDoList.toDoList);
+  const toDoList = useSelector(selectTodoList);
 
   const toDoListProps = {
     onShowModal,
@@ -18,7 +18,7 @@ const ToDoList = ({ onShowModal }: IToDoListProps) => {
 
   const disPatchGetToDoList = useCallback(
     (toDoList: ToDo[]) => {
-      dispatch(toDoAction.getToDoList(toDoList));
+      dispatch(getToDoList(toDoList));
     },
     [dispatch]
   );

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toDoAPI } from "./Api/toDo";
-import { toDoAction } from "./Slice/toDoSlice";
 import {
   IAddToDoModalProps,
   IAddToDoModalViewProps,
@@ -11,6 +10,7 @@ import AddToDoModalView from "./Views/AddToDoModalView";
 import toDoValidation from "./Utils/toDoValidation";
 import ButtonDeative from "../../Common/Element/ButtonDeative";
 import { lightOrange } from "../../Common/styles/commonColor";
+import { createToDo } from "./Slice/toDoSlice";
 
 const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
   const [toDoInput, setToDoInput] = useState({ title: "", content: "" });
@@ -27,7 +27,7 @@ const AddToDoModal = ({ isShowModal, onCloseModal }: IAddToDoModalProps) => {
 
   const onClickAddToDo = (todo: ToDoInputValue) => {
     toDoAPI.createToDo(todo).then((newToDo) => {
-      dispatch(toDoAction.createToDo(newToDo));
+      dispatch(createToDo(newToDo));
       resetToDoInput();
       onCloseModal();
     });

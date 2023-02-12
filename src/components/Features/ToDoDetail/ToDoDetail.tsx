@@ -17,11 +17,7 @@ import {
 } from "./Slice/toDoDetailSlice";
 
 const ToDoDetail = () => {
-  // const toDoDetail1 = useSelector((state: Store) => state.toDoList.toDoDetail);
-
   const toDoDetail = useSelector(selectTodoDetail);
-
-  console.log(toDoDetail);
 
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useDispatch();
