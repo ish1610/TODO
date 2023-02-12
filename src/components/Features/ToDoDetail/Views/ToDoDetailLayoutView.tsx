@@ -4,11 +4,12 @@ import EmptyTodo from "../../../Common/Empty/EmptyTodo";
 import { flexCenter } from "../../../Common/styles/FlexCenter";
 
 import ToDoDetail from "../ToDoDetail";
+import { ITodoDetailLayoutProps } from "../Types/toDoDetail";
 
-const ToDoDetailLayoutView = ({ createdAt }: { createdAt: string }) => {
+const ToDoDetailLayoutView = ({ toDoDetail }: ITodoDetailLayoutProps) => {
   return (
     <Container>
-      {!createdAt ? (
+      {!toDoDetail.createdAt ? (
         <EmptyTodo isExistBtn={true}>
           ToDo 정보를 확인 할 수 없습니다.
         </EmptyTodo>

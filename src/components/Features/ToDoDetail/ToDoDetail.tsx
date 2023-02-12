@@ -10,9 +10,19 @@ import { toDoAPI } from "../ToDo/Api/toDo";
 import toDoValidation from "../ToDo/Utils/toDoValidation";
 import { ITodoDetailProps } from "./Types/toDoDetail";
 import ToDoDetailView from "./Views/ToDoDetailView";
+import useToDoDetail from "./Hooks/useToDoDetail";
+import {
+  changeToDoDetailContent,
+  changeToDoDetailTitle,
+  selectTodoDetail,
+} from "./Slice/toDoDetailSlice";
 
 const ToDoDetail = () => {
-  const toDoDetail = useSelector((state: Store) => state.toDoList.toDoDetail);
+  // const toDoDetail1 = useSelector((state: Store) => state.toDoList.toDoDetail);
+
+  const toDoDetail = useSelector(selectTodoDetail);
+
+  console.log(toDoDetail);
 
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useDispatch();
@@ -37,16 +47,22 @@ const ToDoDetail = () => {
     });
   };
 
+  const dispatchChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    dispatch(changeToDoDetailTitle(e.target.value));
+  };
+
+  const dispatchChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    dispatch(changeToDoDetailContent(e.target.value));
+  };
+
   const toDoDetailProps: ITodoDetailProps = {
     toDoDetail,
     isEdit,
     onClickCancel: onMoveHome,
     onClickEdit,
     onClickSave,
-    onChangeTitle: (e) =>
-      dispatch(toDoAction.changeToDoDetailTitle(e.target.value)),
-    onChangeContent: (e) =>
-      dispatch(toDoAction.changeToDoDetailContent(e.target.value)),
+    onChangeTitle: dispatchChangeTitle,
+    onChangeContent: dispatchChangeContent,
   };
 
   const editButtonDeativeProps = {

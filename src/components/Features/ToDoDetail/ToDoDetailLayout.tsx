@@ -1,24 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { toDoAction } from "../ToDo/Slice/toDoSlice";
+import { Store } from "../../../store/types/store";
+
+import { getDetailToDo, selectTodoDetail } from "./Slice/toDoDetailSlice";
+import { ITodoDetailLayoutProps } from "./Types/toDoDetail";
 
 import ToDoDetailLayoutView from "./Views/ToDoDetailLayoutView";
 
 const ToDoDetailLayout = () => {
-  const { createdAt } = useSelector((state: any) => state.toDoList.toDoDetail);
+  const toDoDetail = useSelector(selectTodoDetail);
+  const toDoList = useSelector((state: Store) => state.toDoList.toDoList);
   const toDoId = useParams();
   const dispatch = useDispatch();
 
-  const toDoDetail = {
-    createdAt,
+  const toDoDetailLayoutProps: ITodoDetailLayoutProps = {
+    toDoDetail,
   };
 
   useEffect(() => {
-    dispatch(toDoAction.detailToDo(toDoId));
+    dispatch(getDetailToDo({ toDoList, id: toDoId.id }));
   }, []);
 
-  return <ToDoDetailLayoutView {...toDoDetail} />;
+  return <ToDoDetailLayoutView {...toDoDetailLayoutProps} />;
 };
 
 export default ToDoDetailLayout;

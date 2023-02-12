@@ -54,3 +54,7 @@ export type ToDoAPI = {
   deleteToDo: (id: string) => Promise<null>;
   updateToDo: (toDo: ToDo) => Promise<ToDo>;
 };
+
+export type ToDoListSliceState = {
+  toDoList: ToDo[];
+};

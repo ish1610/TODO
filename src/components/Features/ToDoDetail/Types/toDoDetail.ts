@@ -11,3 +11,11 @@ export interface ITodoDetailProps {
   onChangeTitle: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onChangeContent: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
+
+export interface ITodoDetailLayoutProps {
+  toDoDetail: ToDo;
+}
+
+export type ToDoDetailSliceState = {
+  toDoDetail: ToDo;
+};

@@ -1,9 +1,5 @@
-import { ToDo } from "../../components/Features/ToDo/Types/todos";
-
-export type ToDoListState = {
-  toDoList: ToDo[];
-  toDoDetail: ToDo;
-};
+import { ToDoListSliceState } from "../../components/Features/ToDo/Types/todos";
+import { ToDoDetailSliceState } from "../../components/Features/ToDoDetail/Types/toDoDetail";
 
 export type ToDoModalState = {
   isShowDeleteModal: boolean;
@@ -20,7 +16,8 @@ export type SignUpState = {
 };
 
 export type Store = {
-  toDoList: ToDoListState;
+  toDoList: ToDoListSliceState;
+  toDoDetail: ToDoDetailSliceState;
   toDoModal: ToDoModalState;
   login: LoginState;
   signUp: SignUpState;

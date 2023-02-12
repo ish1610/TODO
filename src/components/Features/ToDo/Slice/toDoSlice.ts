@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ToDoListState } from "../../../../store/types/store";
+import { Store } from "../../../../store/types/store";
+import { ToDoListSliceState } from "../Types/todos";
 
-const initialToDoState: ToDoListState = {
+const initialToDoState: ToDoListSliceState = {
   toDoList: [],
-  toDoDetail: {
-    content: "",
-    createdAt: "",
-    id: "",
-    title: "",
-    updatedAt: "",
-    uId: "",
-  },
+  // toDoDetail: {
+  //   content: "",
+  //   createdAt: "",
+  //   id: "",
+  //   title: "",
+  //   updatedAt: "",
+  //   uId: "",
+  // },
 };
 
 const toDoSlice = createSlice({
@@ -30,23 +31,26 @@ const toDoSlice = createSlice({
 
       state.toDoList = filtedToDo;
     },
-    detailToDo: (state, action) => {
-      const toDoDetail = state.toDoList.find(
-        (todo) => todo.id === action.payload.id
-      );
+    // detailToDo: (state, action) => {
+    //   const toDoDetail = state.toDoList.find(
+    //     (todo) => todo.id === action.payload.id
+    //   );
 
-      if (toDoDetail) {
-        state.toDoDetail = toDoDetail;
-      }
-    },
-    changeToDoDetailTitle: (state, action) => {
-      state.toDoDetail.title = action.payload;
-    },
-    changeToDoDetailContent: (state, action) => {
-      state.toDoDetail.content = action.payload;
-    },
+    //   if (toDoDetail) {
+    //     state.toDoDetail = toDoDetail;
+    //   }
+    // },
+    // changeToDoDetailTitle: (state, action) => {
+    //   state.toDoDetail.title = action.payload;
+    // },
+    // changeToDoDetailContent: (state, action) => {
+    //   state.toDoDetail.content = action.payload;
+    // },
   },
 });
 
 export const toDoAction = toDoSlice.actions;
+
+export const selectTodoList = (state: Store) => state.toDoList.toDoList;
+
 export default toDoSlice.reducer;
