@@ -38,7 +38,7 @@ REACT_APP_FIREBASE_DB_URL = "파이어베이스 리얼타임 데이터베이스 
 
 ```plaintext
 axios
-redux
+react-redux
 redux-tookit
 @emotion-react
 @emotion-styled
