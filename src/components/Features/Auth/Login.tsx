@@ -105,15 +105,15 @@ const Login = () => {
     passwordValue,
     isFeedbackEmail,
     isFeedbackPassword,
-    onBluredEmail: () => handleEmailInputBlured(),
-    onBluredPassword: () => handlePasswordInputBlured(),
+    onBluredEmail: handleEmailInputBlured,
+    onBluredPassword: handlePasswordInputBlured,
     onChangedEmail: handleChangedEmail,
     onChangedPassword: handleChangedPassword,
     onSubmitLogin: (e) => handleSubmitLogin(e),
   };
 
   const authContainerProps = {
-    onMove: () => handleMoveSignUp(),
+    onMove: handleMoveSignUp,
     moveText: "회원가입하러 갈래요!",
   };
 
