@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SignUpState, Store } from "../../../../store/types/store";
+import { Store } from "../../../../store/types/store";
+import { SignUpSliceState } from "../Types/signUp";
 
-const initialSignUpState: SignUpState = {
+const initialSignUpState: SignUpSliceState = {
   feedbackMessage: "",
 };
 

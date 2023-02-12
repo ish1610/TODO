@@ -28,3 +28,9 @@ export type LoginAPI = {
   ) => Promise<string | undefined>;
   logout: (dispatchLogoutCb: () => void) => void;
 };
+
+export type LoginSliceState = {
+  isLogin: boolean;
+  feedbackMessage: string;
+  tokenData: { token: string; duration: number };
+};

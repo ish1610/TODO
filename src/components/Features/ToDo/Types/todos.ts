@@ -58,3 +58,7 @@ export type ToDoAPI = {
 export type ToDoListSliceState = {
   toDoList: ToDo[];
 };
+
+export type ToDoModalSliceState = {
+  isShowDeleteModal: boolean;
+};

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ToDoModalState } from "../../../../store/types/store";
+import { ToDoModalSliceState } from "../Types/todos";
 
-const initialToDoModalState: ToDoModalState = {
+const initialToDoModalState: ToDoModalSliceState = {
   isShowDeleteModal: false,
 };
 

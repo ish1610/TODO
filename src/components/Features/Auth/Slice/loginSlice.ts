@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { retrieveStoredToken } from "../Utils/token";
-import { LoginState, Store } from "../../../../store/types/store";
+import { Store } from "../../../../store/types/store";
+import { LoginSliceState } from "../Types/login";
 
-const initialLoginState: LoginState = {
+const initialLoginState: LoginSliceState = {
   isLogin: !!retrieveStoredToken(),
   feedbackMessage: "",
   tokenData: {

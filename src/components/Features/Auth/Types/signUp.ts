@@ -27,3 +27,7 @@ export type MoveHomeCb = (route: string) => void;
 export type SignUpAPI = {
   signUp: (signUpInfo: SignUpInfoValues) => Promise<string | undefined>;
 };
+
+export type SignUpSliceState = {
+  feedbackMessage: string;
+};
