@@ -155,6 +155,7 @@ jeqDmZ8GP59wyJ62vVgq
 - 삭제 후 todoList 페이지로 이동 후 getToDo API를 호출하여 최신의 todo 데이터를 유지합니다.
 <br/><br/>
 
+
 # 💄 <span id="design">디자인 / 기능 주안점</span>
 
 ### 피드백 전달
