@@ -195,8 +195,8 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 │       ├── homeBackground.png
 │       └── todoIcon-monky.png
 ├── 📂 components
-│   ├── 📂 Common
-│   │   ├── 📂 Auth
+│   ├── 📂 Common // 공통으로 사용되는 요소, 타입, 유틸, 컴포넌트 등 관리
+│   │   ├── 📂 Auth
 │   │   │   ├── AuthContainer.tsx
 │   │   │   ├── View
 │   │   │   │   └── AuthContainerView.tsx
@@ -230,8 +230,8 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 │   │       ├── image.d.ts
 │   │       └── validation.ts
 │   ├── 📂 Features
-│   │   ├── 📂 Auth
-│   │   │   ├── 📂 Api
+│   │   ├── 📂 Auth // Auth에서 사용하는 API, Hook, Store Slice, Type 등 관리
+│   │   │   ├── 📂 Api
 │   │   │   │   ├── login.ts
 │   │   │   │   └── signUp.ts
 │   │   │   ├── 📂 Hooks
@@ -253,7 +253,7 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 │   │   │       ├── LoginView.tsx
 │   │   │       ├── SignUpLayoutView.tsx
 │   │   │       └── SignUpView.tsx
-│   │   ├── 📂 ToDo
+│   │   ├── 📂 ToDo // ToDo에서 사용하는 API, Util, Store Slice, Type 등 관리
 │   │   │   ├── 📂 AddToDoModal.tsx
 │   │   │   ├── 📂 Api
 │   │   │   │   └── toDo.ts
@@ -273,7 +273,7 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 │   │   │       ├── ToDoItemView.tsx
 │   │   │       ├── ToDoLayoutView.tsx
 │   │   │       └── ToDoListView.tsx
-│   │   └── 📂 ToDoDetail
+│   │   └── 📂 ToDoDetail // ToDoDetail에서 사용하는 Type 등 관리
 │   │       ├── ToDoDetail.tsx
 │   │       ├── ToDoDetailLayout.tsx
 │   │       ├── 📂 Types
@@ -281,8 +281,8 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 │   │       └── 📂 Views
 │   │           ├── ToDoDetailLayoutView.tsx
 │   │           └── ToDoDetailView.tsx
-│   ├── 📂 Layout
-│   │   ├── Header.tsx
+│   ├── 📂 Layout // Layout 관련 파일 관리
+│   │   ├── Header.tsx
 │   │   ├── 📂 Views
 │   │   │   └── HeaderView.tsx
 │   │   └── 📂 types
