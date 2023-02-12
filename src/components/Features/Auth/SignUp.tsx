@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signUpAction } from "./Slice/signUpSlice";
 import { Store } from "../../../store/types/store";
 import AuthContainer from "../../Common/Auth/AuthContainer";
 import ButtonDeative from "../../Common/Element/ButtonDeative";
@@ -11,6 +10,11 @@ import {
   passwordValidator,
 } from "../../Common/Util/validation";
 import { signUpAPI } from "./Api/signUp";
+import {
+  existEmail,
+  reset,
+  selectSignUpFeedbackMessage,
+} from "./Slice/signUpSlice";
 
 import { ISignUpProps } from "./Types/signUp";
 import SignUpView from "./Views/SignUpView";
@@ -18,9 +22,7 @@ import SignUpView from "./Views/SignUpView";
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const signUpFeedbackMessage = useSelector(
-    (state: Store) => state.signUp.feedbackMessage
-  );
+  const signUpFeedbackMessage = useSelector(selectSignUpFeedbackMessage);
 
   const [signUpInputValues, setSignUpInputValues] = useState({
     email: "",
@@ -47,11 +49,11 @@ const SignUp = () => {
   };
 
   const dispatchResetFeedback = useCallback(() => {
-    dispatch(signUpAction.reset());
+    dispatch(reset());
   }, [dispatch]);
 
   const dispatchExistEmail = () => {
-    dispatch(signUpAction.existEmail());
+    dispatch(existEmail());
   };
 
   const handleSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {

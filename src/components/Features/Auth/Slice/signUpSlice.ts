@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SignUpState } from "../../../../store/types/store";
+import { SignUpState, Store } from "../../../../store/types/store";
 
 const initialSignUpState: SignUpState = {
   feedbackMessage: "",
@@ -19,5 +19,9 @@ const signUpSlice = createSlice({
   },
 });
 
-export const signUpAction = signUpSlice.actions;
+export const { existEmail, reset } = signUpSlice.actions;
+
+export const selectSignUpFeedbackMessage = (state: Store) =>
+  state.signUp.feedbackMessage;
+
 export default signUpSlice.reducer;
