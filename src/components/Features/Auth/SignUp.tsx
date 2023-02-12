@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Store } from "../../../store/types/store";
 import AuthContainer from "../../Common/Auth/AuthContainer";
 import ButtonDeative from "../../Common/Element/ButtonDeative";
 import { lightOrange } from "../../Common/styles/commonColor";
