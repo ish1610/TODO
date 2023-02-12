@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginAction } from "./Slice/loginSlice";
-import { Store } from "../../../store/types/store";
 import AuthContainer from "../../Common/Auth/AuthContainer";
 import ButtonDeative from "../../Common/Element/ButtonDeative";
 import { blue } from "../../Common/styles/commonColor";
@@ -12,6 +10,14 @@ import {
 } from "../../Common/Util/validation";
 import { loginAPI } from "./Api/login";
 import useLogin from "./Hooks/useLogin";
+import {
+  invalidPassword,
+  login,
+  logout,
+  notFoundEmail,
+  resetFeedback,
+  selectLoginFeedbackMessage,
+} from "./Slice/loginSlice";
 import { ILoginProps } from "./Types/login";
 import { retrieveStoredToken } from "./Utils/token";
 import LoginView from "./Views/LoginView";
@@ -19,9 +25,7 @@ import LoginView from "./Views/LoginView";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const feedbackMessage = useSelector(
-    (state: Store) => state.login.feedbackMessage
-  );
+  const feedbackMessage = useSelector(selectLoginFeedbackMessage);
 
   const {
     value: emailValue,
@@ -48,10 +52,10 @@ const Login = () => {
   const handleMoveHome = () => {
     navigate("/", { replace: true });
   };
-  const dispatchLogout = () => dispatch(loginAction.logout());
-  const dispatchLogin = () => dispatch(loginAction.login());
-  const dispatchNotFoundEmail = () => dispatch(loginAction.notFoundEmail());
-  const dispatchInvalidPassword = () => dispatch(loginAction.invalidPassword());
+  const dispatchLogout = () => dispatch(logout());
+  const dispatchLogin = () => dispatch(login());
+  const dispatchNotFoundEmail = () => dispatch(notFoundEmail());
+  const dispatchInvalidPassword = () => dispatch(invalidPassword());
 
   const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,7 +90,7 @@ const Login = () => {
   );
 
   useEffect(() => {
-    dispatch(loginAction.resetFeedback());
+    dispatch(resetFeedback());
 
     const tokenData = retrieveStoredToken();
 

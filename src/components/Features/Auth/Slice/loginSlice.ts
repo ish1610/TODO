@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { retrieveStoredToken } from "../Utils/token";
-import { LoginState } from "../../../../store/types/store";
+import { LoginState, Store } from "../../../../store/types/store";
 
 const initialLoginState: LoginState = {
   isLogin: !!retrieveStoredToken(),
@@ -33,5 +33,12 @@ const loginSlice = createSlice({
   },
 });
 
-export const loginAction = loginSlice.actions;
+export const { login, logout, notFoundEmail, invalidPassword, resetFeedback } =
+  loginSlice.actions;
+
+export const selectIsLogin = (state: Store) => state.login.isLogin;
+export const selectLoginFeedbackMessage = (state: Store) =>
+  state.login.feedbackMessage;
+export const selectLoginTokenData = (state: Store) => state.login.tokenData;
+
 export default loginSlice.reducer;

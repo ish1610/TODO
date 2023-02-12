@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginAction } from "../Features/Auth/Slice/loginSlice";
-import { Store } from "../../store/types/store";
 import { loginAPI } from "../Features/Auth/Api/login";
+import { logout, selectIsLogin } from "../Features/Auth/Slice/loginSlice";
 import { retrieveStoredToken } from "../Features/Auth/Utils/token";
 import { IHeaderProps } from "./types/header";
 import HeaderView from "./Views/HeaderView";
@@ -11,7 +10,7 @@ import HeaderView from "./Views/HeaderView";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isLogin = useSelector((state: Store) => state.login.isLogin);
+  const isLogin = useSelector(selectIsLogin);
   const [isShowControl, setIsShowControl] = useState(false);
 
   const handleMoveRegist = () => {
@@ -27,7 +26,7 @@ const Header = () => {
   };
 
   const handleLogout = useCallback(() => {
-    loginAPI.logout(() => dispatch(loginAction.logout()));
+    loginAPI.logout(() => dispatch(logout()));
   }, [dispatch]);
 
   const handleToggleSlide = (event: React.MouseEvent<HTMLButtonElement>) => {
