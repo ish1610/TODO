@@ -1,22 +1,17 @@
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toDoAPI } from "./Api/toDo";
 import { IToDoItemProps, ToDo } from "./Types/todos";
 import ToDoItemView from "./Views/ToDoItemView";
 import truncate from "./Utils/truncateString";
-import { deleteToDo } from "./Slice/toDoSlice";
+import { deleteToDoAsync } from "./Slice/toDoSlice";
+import { useAppDispatch } from "../../../store/Hooks/hook";
 
 const ToDoItem = ({ toDo }: { toDo: ToDo }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onClickDelete = (id: string) => {
     if (window.confirm("ToDo를 정말 삭제하시겠습니까?")) {
-      toDoAPI.deleteToDo(id).then((response) => {
-        if (response === null) {
-          dispatch(deleteToDo(id));
-        }
-      });
+      dispatch(deleteToDoAsync(id));
     }
   };
 
