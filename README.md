@@ -301,6 +301,58 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
     ├── index.ts
     └── 📂 types
         └── store.ts
+        
+├── App.tsx
+├── 📂 assets
+│   └── 📂 images
+├── 📂 components
+│   ├── 📂 Common
+│   │   ├── 📂 Auth
+│   │   │   ├── 📂 View - Auth 공통 사용 View 
+│   │   │   └── 📂 types
+│   │   ├── 📂 Element
+│   │   │   ├── 📂 View - 공통 사용 요소 View 
+│   │   │   └── 📂 types - 공통 사용 요소 타입 
+│   │   ├── 📂 Empty
+│   │   │   ├── 📂 Views - 공통 사용 Empty View 
+│   │   │   └── 📂 types - 공통 사용 Empty 타입 
+│   │   ├── 📂 Loading
+│   │   │   └── 📂 Views - 로딩 View 
+│   │   ├── 📂 Util - 공통 사용 Util 
+│   │   ├── 📂 styles - 전역 스타일 
+│   │   └── 📂 types - 전역 공통 타입 
+│   ├── 📂 Features - 기능별 관리
+│   │   ├── 📂 Auth
+│   │   │   ├── 📂 Api - Auth API
+│   │   │   ├── 📂 Hooks - Auth Hook
+│   │   │   ├── 📂 Slice - Auth Store slice
+│   │   │   ├── 📂 Types - Auth 타입
+│   │   │   ├── 📂 Utils - Auth Util
+│   │   │   └── 📂 Views - Auth View
+│   │   ├── 📂 ToDo
+│   │   │   ├── 📂 Api - ToDo API
+│   │   │   ├── 📂 Slice - ToDo Store slice
+│   │   │   ├── 📂 Types - ToDo 타입
+│   │   │   ├── 📂 Utils - ToDo Util
+│   │   │   └── 📂 Views - ToDo View
+│   │   └── 📂 ToDoDetail
+│   │       ├── 📂 Slice - ToDoDetail store slice
+│   │       ├── 📂 Types - ToDoDetail 타입
+│   │       └── 📂 Views - ToDoDetail View
+│   ├── 📂 Layout
+│   │   ├── Views - 레이아웃 View
+│   │   └── types - 레이아웃 타입
+│   └── 📂 Routes
+│       └── AppRoute.tsx
+├── index.tsx
+├── 📂 pages
+├── react-app-env.d.ts
+└── 📂 store
+    ├── 📂 Hooks
+    │   └── hook.ts
+    ├── index.ts
+    └── 📂 types
+     
 ```
 가장 많이 고민하고 수정이 많았던 부분입니다. 폴더 구조에 대해 고민한 부분은 아래와 같습니다.
 - 기존 types(애플리케이션 모든 타입 관리), api(애플리케이션에 모든 커스텀 api 관리), utils(애플리케이션 모든 util 함수 관리) <br/>
