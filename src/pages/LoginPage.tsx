@@ -1,4 +1,4 @@
-import LoginLayout from "../components/Features/Auth/LoginLayout";
+import LoginLayout from "../features/auth/components/LoginLayout";
 
 const LoginPage = () => {
   return <LoginLayout />;

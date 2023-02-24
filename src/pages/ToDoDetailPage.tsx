@@ -1,4 +1,4 @@
-import ToDoDetailLayout from "../components/Features/ToDoDetail/ToDoDetailLayout";
+import ToDoDetailLayout from "../features/toDoDetail/components/ToDoDetailLayout";
 
 const ToDoDetailPage = () => {
   return <ToDoDetailLayout />;

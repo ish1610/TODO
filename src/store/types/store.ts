@@ -1,10 +1,10 @@
-import { LoginSliceState } from "../../components/Features/Auth/Types/login";
-import { SignUpSliceState } from "../../components/Features/Auth/Types/signUp";
+import { LoginSliceState } from "../../features/auth/types/login";
+import { SignUpSliceState } from "../../features/auth/types/signUp";
 import {
   ToDoListSliceState,
   ToDoModalSliceState,
-} from "../../components/Features/ToDo/Types/todos";
-import { ToDoDetailSliceState } from "../../components/Features/ToDoDetail/Types/toDoDetail";
+} from "../../features/toDo/types/todos";
+import { ToDoDetailSliceState } from "../../features/toDoDetail/types/toDoDetail";
 
 import { ThunkAction, Action } from "@reduxjs/toolkit";
 import store from "../index";

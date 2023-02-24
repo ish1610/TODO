@@ -1,4 +1,4 @@
-import ToDoLayout from "../components/Features/ToDo/ToDoLayout";
+import ToDoLayout from "../features/toDo/components/ToDoLayout";
 
 const HomePage = () => {
   return <ToDoLayout />;
