@@ -9,7 +9,7 @@
 - [클라이언트 구현 과제](#assignment)
 - [ToDoList 기능](#function)
 - [디자인 / 기능 주안점](#design)
-- [폴더 구조](#folder)
+- [ 구조](#folder)
 - [라우트](#route)
 - [과제 진행 ](#emphasis)
 
@@ -187,69 +187,68 @@ todo를 삭제하는 파괴적 버튼의 경우 배치는 하되 강조되지 �
 로그아웃의 경우 작은 화면 일때 실수로 클릭하는 일을 방지하고자 사용자의 클릭이 있을 경우만 로그아웃 버튼 사용이 가능하도록 구현하였습니다.
 
 
-# <span id="folder">📂 폴더 구조</span>
+# <span id="folder">📂  구조</span>
 
 ```planinText        
-├── App.tsx
-├── 📂 assets
-│   └── 📂 images
-├── 📂 components
-│   ├── 📂 Common
-│   │   ├── 📂 Auth
-│   │   │   ├── 📂 View - Auth 공통 사용 View 
-│   │   │   └── 📂 types
-│   │   ├── 📂 Element
-│   │   │   ├── 📂 View - 공통 사용 요소 View 
-│   │   │   └── 📂 types - 공통 사용 요소 타입 
-│   │   ├── 📂 Empty
-│   │   │   ├── 📂 Views - 공통 사용 Empty View 
-│   │   │   └── 📂 types - 공통 사용 Empty 타입 
-│   │   ├── 📂 Loading
-│   │   │   └── 📂 Views - 로딩 View 
-│   │   ├── 📂 Util - 공통 사용 Util 
-│   │   ├── 📂 styles - 전역 스타일 
-│   │   └── 📂 types - 전역 공통 타입 
-│   ├── 📂 Features - 기능별 관리
-│   │   ├── 📂 Auth
-│   │   │   ├── 📂 Api - Auth API
-│   │   │   ├── 📂 Hooks - Auth Hook
-│   │   │   ├── 📂 Slice - Auth Store slice
-│   │   │   ├── 📂 Types - Auth 타입
-│   │   │   ├── 📂 Utils - Auth Util
-│   │   │   └── 📂 Views - Auth View
-│   │   ├── 📂 ToDo
-│   │   │   ├── 📂 Api - ToDo API
-│   │   │   ├── 📂 Slice - ToDo Store slice
-│   │   │   ├── 📂 Types - ToDo 타입
-│   │   │   ├── 📂 Utils - ToDo Util
-│   │   │   └── 📂 Views - ToDo View
-│   │   └── 📂 ToDoDetail
-│   │       ├── 📂 Slice - ToDoDetail store slice
-│   │       ├── 📂 Types - ToDoDetail 타입
-│   │       └── 📂 Views - ToDoDetail View
-│   ├── 📂 Layout
-│   │   ├── Views - 레이아웃 View
-│   │   └── types - 레이아웃 타입
-│   └── 📂 Routes
-│       └── AppRoute.tsx
-├── index.tsx
-├── 📂 pages
-├── react-app-env.d.ts
-└── 📂 store
-    ├── 📂 Hooks
-    │   └── hook.ts
-    ├── index.ts
-    └── 📂 types
+
+├── 📁 assets // 이미지 파일 관리
+├── 📁 common // 공통 사용 컴포넌트, 타입, 스타일, 유틸리티 함수 관리
+│   ├── 📁 Loading
+│   │   └── 📁 components
+│   ├── 📁 auth
+│   │   ├── 📁 components
+│   │   └── 📁 types
+│   ├── 📁 element
+│   │   ├── 📁 components
+│   │   └── 📁 types
+│   ├── 📁 empty
+│   │   ├── 📁 components
+│   │   └── 📁 types
+│   ├── 📁 styles
+│   ├── 📁 types
+│   └── 📁 utils
+├── 📁 features // 기능별 분리
+│   ├── 📁 auth // auth 관련 컴포넌트, api, 훅, slice, 타입, 유틸리티 함수 관리
+│   │   ├── 📁 api
+│   │   ├── 📁 components
+│   │   ├── 📁 hooks
+│   │   ├── 📁 slice
+│   │   ├── 📁 types
+│   │   └── 📁 utils
+│   │   │       ├── LoginView.tsx
+│   ├── 📁 toDo // todo 관련 컴포넌트, api, slice, 타입, 유틸리티 함수 관리
+│   │   ├── 📁 api
+│   │   ├── 📁 components
+│   │   ├── 📁 slice
+│   │   ├── 📁 types
+│   │   └── 📁 utils
+│   └── 📁 toDoDetail // todoDetail 관련 컴포넌트, slice, 타입 관리
+│       ├── 📁 components
+│       ├── 📁 slice
+│       └── 📁 types
+├── 📁 layout // layout 관련 컴포넌트, 타입 관리
+│   ├── 📁 components
+│   └── 📁 types
+├── 📁 pages // route와 연결하는 페이지 관리
+├── 📁 routes // route 관련 코드 관리
+└── 📁 store
+
      
 ```
-가장 많이 고민하고 수정이 많았던 부분입니다. 폴더 구조에 대해 고민한 부분은 아래와 같습니다.
-- 기존 types(애플리케이션 모든 타입 관리), api(애플리케이션에 모든 커스텀 api 관리), utils(애플리케이션 모든 util 함수 관리) <br/>
-  ➡️ 각 라우트 별로 사용하는 types, api, utils, hooks, store slice를 각각의 Feature 폴더에서 관리하는 것으로 수정하여 응집도를 높이고자 하였습니다.
-- 기존 하나의 파일에서 View 로직, View 렌더링 로직, 비지니스 로직을 모두 관리 <br/> 
-  ➡️ HTML, CSS 로직 관리는 View 폴더, View 렌더링 로직 관리는 상위 컴포넌트에서 관리하여 추상화된 Props Object로 전달, 비지니스 로직는 API 폴더에서 관리로 수정하여 비지니스 로직, View 렌더링 로직, View 로직 분리해주어 [관심사를 분리](https://nicehyun12.tistory.com/132)하고자 하였습니다.
-- Route 로직 또한 별도의 관심사로 취급하여 별도의 폴더을 구성하여 관리하도록 하였습니다.
-- Empty 컴포넌트 또한 todoList와 별도의 관심하로 취급하여 별도의 폴더를 구성하여 관리하도록 하였습니다.
-- Common 폴더에서는 util 함수, View, style 등 공통으로 사용되는 로직을 분리하여 관리하도록 하였습니다.
+가장 많이 고민하고 수정이 많았던 부분입니다. 디렉토리 구조에 대해 고민한 부분은 아래와 같습니다.
+
+
+* 기존 하나의 파일에서 View 로직, View 렌더링 로직, 비지니스 로직을 모두 관리 <br/> 
+    ➡️ HTML, CSS 로직 관리는 View 폴더, View 렌더링 로직 관리는 상위 컴포넌트에서 관리하여 추상화된 Props Object로 전달, 비지니스 로직는 API 폴더에서 관리로 수정하여 비지니스 로직, View 렌더링 로직, View 로직 분리해주어 [관심사를 분리](https://nicehyun12.tistory.com/132)하고자 하였습니다.
+* 기존 디렉토리 구조는 코드의 역할을 기준으로 디렉토리를 분리하였습니다. (모든 타입은 types 폴더에서 관리, 모든 유틸리티 함수는 utils 폴더에서 관리)<br/>
+    ➡️ 변경 후 디렉토리 구조는 코드가 속하는 기능에 따른 디렉토리를 분리합니다. (auth가 사용하는 type, 유틸리티 함수, 컴포넌트 등 auth 관련 코드를 auth 폴더에서 관리)<br/>
+* route 로직 또한 별도의 관심사로 취급하여 별도의 폴더을 구성하여 관리하도록 하였습니다.<br/>
+* Empty 컴포넌트 또한 todoList와 별도의 관심사로 취급하여 별도의 폴더를 구성하여 관리하도록 하였습니다.<br/>
+* components 폴더에서는 View와 View 렌더링 로직을 구분하여 관리합니다.<br/>
+
+지역성과 관심사 분리에 대한 고민을 통해 위의 디렉토리를 구성하였습니다.
+
+
 <br/><br/>
 
 # <span id="route">🧭 라우트 관리</span>
