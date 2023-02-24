@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
-import logo from "../../assets/images/homeBackground.png";
-import { blue, orange } from "../../common/styles/commonColor";
-import { flexCenter } from "../../common/styles/FlexCenter";
-import { IHeaderProps, ThemeShowControl } from "../types/header";
+import logo from "../../../assets/images/homeBackground.png";
+import { blue, orange } from "../../../common/styles/commonColor";
+import { flexCenter } from "../../../common/styles/FlexCenter";
+import { IHeaderProps, ThemeShowControl } from "../../types/header";
 import { FaHamburger } from "react-icons/fa";
 
 const HeaderWrap = styled.header`
